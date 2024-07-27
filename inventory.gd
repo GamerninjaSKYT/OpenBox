@@ -9,6 +9,7 @@ extends Node
 @export var selectedsprite:Texture2D
 @export var mouse_on_slot = false
 @export var ui:TextureRect
+@export var hotbaritemnamedisplay:Label
 
 func _ready():
 	items.resize(slots.size())
@@ -17,6 +18,10 @@ func _process(delta):
 	if mouse_on_slot:
 		mouse_on_slot = false
 	if hotbarsize > 0:
+		if items[selected_hotbar_slot] != null:
+			hotbaritemnamedisplay.text = items[selected_hotbar_slot].item.name
+		else:
+			hotbaritemnamedisplay.text = ""
 		for s in slots:
 			if slots.find(s) == selected_hotbar_slot:
 				s.texture = selectedsprite
