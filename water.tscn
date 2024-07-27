@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b764ryke8k3xv"]
+
+[ext_resource type="Texture2D" uid="uid://dsx6mvhyxmkql" path="res://water.png" id="1_8xnvn"]
+[ext_resource type="Script" path="res://Block.gd" id="1_hu6o4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+
+[node name="Water" type="StaticBody2D" node_paths=PackedStringArray("col")]
+script = ExtResource("1_hu6o4")
+id = 1
+col = NodePath(".")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("1_8xnvn")

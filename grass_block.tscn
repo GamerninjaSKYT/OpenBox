@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnd0bg3gtl5qh"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_3hh88"]
+[ext_resource type="Texture2D" uid="uid://bxs4y3n81g7ca" path="res://grass.png" id="1_sback"]
+
+[node name="GrassBlock" type="StaticBody2D" node_paths=PackedStringArray("col")]
+script = ExtResource("1_3hh88")
+col = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("1_sback")

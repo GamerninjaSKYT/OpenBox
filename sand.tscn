@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://csg3h5ei52adq"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_dl6jm"]
+[ext_resource type="Texture2D" uid="uid://dq0xyd3ekb6jq" path="res://sand.png" id="2_lj0dn"]
+
+[node name="sand" type="StaticBody2D" node_paths=PackedStringArray("col")]
+script = ExtResource("1_dl6jm")
+id = 6
+col = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("2_lj0dn")

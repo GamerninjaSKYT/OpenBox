@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://tarmwqhxhvy2"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_l5q76"]
+[ext_resource type="Texture2D" uid="uid://cvsmqlfb87hgp" path="res://rockhill.png" id="1_uvdvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+
+[node name="RockHill" type="StaticBody2D" node_paths=PackedStringArray("col")]
+input_pickable = true
+script = ExtResource("1_l5q76")
+id = 2
+col = NodePath(".")
+destroyable = true
+destroy_time = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_uvdvo")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

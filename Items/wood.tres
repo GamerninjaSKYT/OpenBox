@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=4 format=3 uid="uid://bwjd5mc23wjxo"]
+
+[ext_resource type="Texture2D" uid="uid://drt3nem8rrneb" path="res://wood.png" id="1_7xgwd"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="1_jaduf"]
+[ext_resource type="Texture2D" uid="uid://dj2v5s8m7blld" path="res://tree.png" id="1_o0jnv"]
+
+[resource]
+script = ExtResource("1_jaduf")
+name = "Wood"
+image = ExtResource("1_7xgwd")
+id = 0
+maxcount = 100
+build_id = 4
+build_sprite = ExtResource("1_o0jnv")

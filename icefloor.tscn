@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://qh0jhve0r77n"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_ghoqc"]
+[ext_resource type="Texture2D" uid="uid://dlducynonbt5w" path="res://ice.png" id="2_tcn6a"]
+
+[node name="IceFloor" type="StaticBody2D" node_paths=PackedStringArray("col")]
+script = ExtResource("1_ghoqc")
+id = 9
+col = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.741385, 0.741385, 0.741385, 1)
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("2_tcn6a")

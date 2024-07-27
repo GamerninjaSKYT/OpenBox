@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wn500ku8hppx"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_0212x"]
+[ext_resource type="Texture2D" uid="uid://7luaxnvnaq14" path="res://snow.png" id="2_lcswi"]
+
+[node name="snow" type="StaticBody2D" node_paths=PackedStringArray("col")]
+script = ExtResource("1_0212x")
+id = 10
+col = NodePath(".")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.741385, 0.741385, 0.741385, 1)
+z_index = -1
+scale = Vector2(4, 4)
+texture = ExtResource("2_lcswi")

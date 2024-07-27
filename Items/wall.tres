@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://cgkbeiw7uefr5"]
+
+[ext_resource type="Texture2D" uid="uid://ct80jvhq30eol" path="res://wood_wall.png" id="2_jvkor"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="3_7vtq1"]
+
+[resource]
+script = ExtResource("3_7vtq1")
+name = "Wall"
+image = ExtResource("2_jvkor")
+id = 1
+maxcount = 100
+build_id = 11
+build_sprite = ExtResource("2_jvkor")

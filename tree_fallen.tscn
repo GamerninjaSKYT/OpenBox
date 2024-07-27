@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://c24bqm8e1jptb"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_p07iw"]
+[ext_resource type="Texture2D" uid="uid://o5hgl3u7xwsn" path="res://tree_fallen.png" id="2_32ohl"]
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="2_v512a"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_y16c2"]
+
+[sub_resource type="Resource" id="Resource_4grwl"]
+script = ExtResource("3_y16c2")
+item = ExtResource("2_v512a")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+size = Vector2(11.0769, 19.0769)
+
+[node name="Fallen Tree" type="StaticBody2D" node_paths=PackedStringArray("col")]
+input_pickable = true
+script = ExtResource("1_p07iw")
+id = 5
+col = NodePath(".")
+destroyable = true
+drop = SubResource("Resource_4grwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.49691e-07, 8.00001)
+rotation = 1.5708
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_32ohl")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

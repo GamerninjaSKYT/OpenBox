@@ -1,0 +1,48 @@
+[gd_scene load_steps=21 format=3 uid="uid://xbxxoc3djlr4"]
+
+[ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
+[ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
+[ext_resource type="PackedScene" uid="uid://dk7e7sbqdtqyy" path="res://chunk.tscn" id="3_2mld0"]
+[ext_resource type="PackedScene" uid="uid://cnd0bg3gtl5qh" path="res://grass_block.tscn" id="3_qbed4"]
+[ext_resource type="PackedScene" uid="uid://b764ryke8k3xv" path="res://water.tscn" id="4_epu7w"]
+[ext_resource type="PackedScene" uid="uid://tarmwqhxhvy2" path="res://rockhill.tscn" id="5_sgq64"]
+[ext_resource type="PackedScene" uid="uid://bdfvmxd55w21u" path="res://rockfloor.tscn" id="6_4c445"]
+[ext_resource type="PackedScene" uid="uid://b60r8p4kn8w6o" path="res://tree.tscn" id="6_valq8"]
+[ext_resource type="PackedScene" uid="uid://c24bqm8e1jptb" path="res://tree_fallen.tscn" id="7_r3538"]
+[ext_resource type="PackedScene" uid="uid://csg3h5ei52adq" path="res://sand.tscn" id="8_nwxeq"]
+[ext_resource type="PackedScene" uid="uid://cfx55ep3awdyi" path="res://sandhill.tscn" id="9_ygo0p"]
+[ext_resource type="PackedScene" uid="uid://g1id6d35sv58" path="res://sandfloor.tscn" id="10_3tatp"]
+[ext_resource type="Script" path="res://item_manager.gd" id="10_ksusm"]
+[ext_resource type="PackedScene" uid="uid://qh0jhve0r77n" path="res://icefloor.tscn" id="11_7ixh3"]
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="11_64ny3"]
+[ext_resource type="PackedScene" uid="uid://b45fnbno75oto" path="res://item_drop.tscn" id="12_0qiic"]
+[ext_resource type="PackedScene" uid="uid://wn500ku8hppx" path="res://snow.tscn" id="12_7vshg"]
+[ext_resource type="PackedScene" uid="uid://c45cpkktd45b0" path="res://wall.tscn" id="13_w8423"]
+[ext_resource type="Script" path="res://CraftingManager.gd" id="18_46wry"]
+[ext_resource type="Resource" uid="uid://cgkbeiw7uefr5" path="res://Items/wall.tres" id="19_q5i5p"]
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
+script = ExtResource("1_e5byj")
+objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423")])
+itemman = NodePath("ItemManager")
+craftman = NodePath("CraftingManager")
+player = NodePath("Player")
+itemdrop = ExtResource("12_0qiic")
+load_distance = 10000.0
+packedchunk = ExtResource("3_2mld0")
+chunkgroup = NodePath("LoadedChunks")
+grass = ExtResource("3_qbed4")
+water = ExtResource("4_epu7w")
+rockhill = ExtResource("5_sgq64")
+rockfloor = ExtResource("6_4c445")
+
+[node name="Player" parent="." instance=ExtResource("1_257w6")]
+
+[node name="LoadedChunks" type="Node" parent="."]
+
+[node name="ItemManager" type="Node" parent="."]
+script = ExtResource("10_ksusm")
+itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p")])
+
+[node name="CraftingManager" type="Node" parent="."]
+script = ExtResource("18_46wry")
