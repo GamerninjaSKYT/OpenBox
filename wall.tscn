@@ -18,7 +18,7 @@ script = ExtResource("1_pqhnl")
 id = 11
 col = NodePath(".")
 destroyable = true
-destroy_time = 5.0
+destroy_time = 2.0
 drop = SubResource("Resource_kvyra")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
