@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="recipe" load_steps=7 format=3 uid="uid://gue1pydctwbx"]
+
+[ext_resource type="Script" path="res://recipe.gd" id="1_7nvpx"]
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="1_if8pn"]
+[ext_resource type="Resource" uid="uid://cgkbeiw7uefr5" path="res://Items/wall.tres" id="1_wfru7"]
+[ext_resource type="Script" path="res://item_instance.gd" id="2_mbrbf"]
+
+[sub_resource type="Resource" id="Resource_m15o8"]
+script = ExtResource("2_mbrbf")
+item = ExtResource("1_if8pn")
+count = 5
+
+[sub_resource type="Resource" id="Resource_o1akp"]
+script = ExtResource("2_mbrbf")
+item = ExtResource("1_wfru7")
+count = 1
+
+[resource]
+script = ExtResource("1_7nvpx")
+result = SubResource("Resource_o1akp")
+ingredients = Array[ExtResource("2_mbrbf")]([SubResource("Resource_m15o8")])
