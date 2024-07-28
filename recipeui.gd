@@ -22,5 +22,16 @@ func _on_craft_button_down():
 			cancraft = false
 		elif inv.items[craftui.ingredientslots[n].id].item.id != rec.ingredients[n].item.id:
 			cancraft = false
+		elif inv.items[craftui.ingredientslots[n].id].count < rec.ingredients[n].count:
+			cancraft = false
 		n += 1
-	print(cancraft)
+	if cancraft:
+		var nn = 0
+		for ii in rec.ingredients:
+			inv.items[craftui.ingredientslots[nn].id].count -= rec.ingredients[nn].count
+			nn += 1
+		if inv.items[craftui.resultslot.id] == null:
+			inv.items[craftui.resultslot.id] = item_instance.new()
+			inv.items[craftui.resultslot.id].count = 0
+		inv.items[craftui.resultslot.id].item = rec.result.item
+		inv.items[craftui.resultslot.id].count += rec.result.count
