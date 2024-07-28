@@ -15,6 +15,9 @@ func LoadRecipes():
 		if r.ingredients.size() <= ingredientslots.size():
 			var p = recipepackedscene.instantiate()
 			recipes_ui.add_child(p)
+			p.rec = r
+			p.inv = ingredientslots[0].inv
+			p.craftui = self
 			for im in p.ingredientimages:
 				im.visible = false
 			var n = 0
