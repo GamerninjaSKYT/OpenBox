@@ -1,7 +1,7 @@
 class_name item_drop
 extends Sprite2D
 @export var item:item_instance = null
-@export var cantpickuptime = 1
+@export var cantpickuptime = 0.5
 @export var chunkparent:chunk
 
 func _ready():

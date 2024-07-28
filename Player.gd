@@ -11,6 +11,9 @@ var last_chunkpos:Vector2
 @export var cursor_item:item_instance
 @export var inv_ui:TextureRect
 
+func _ready():
+	inv_ui.visible = false
+
 func _process(delta):
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:

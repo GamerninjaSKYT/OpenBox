@@ -42,3 +42,4 @@ func Destroy():
 
 func UpdateInChunkPos():
 	chunkpos = get_tree().root.get_child(0).blockpos_to_inchunkpos(get_tree().root.get_child(0).pos_to_blockpos(global_position))
+	return chunkpos

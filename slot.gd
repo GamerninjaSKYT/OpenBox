@@ -4,7 +4,7 @@ extends TextureRect
 @export var image:TextureRect
 @export var id = 0
 @export var inv:inventory
-
+@export var cant_put_into = false
 
 func _on_gui_input(event):
 	inv.mouse_on_slot = true
@@ -20,7 +20,7 @@ func Click(click_index):
 			var countlefttoadd = item.count
 			var ii = inv.items[id]
 			if ii != null:
-				if ii.item.id == item.item.id and ii.count != ii.item.maxcount:
+				if ii.item.id == item.item.id and ii.count != ii.item.maxcount and !cant_put_into:
 					inv.items[id].count += item.count
 					countlefttoadd = 0
 					player.cursor_item.count = 0
@@ -36,7 +36,7 @@ func Click(click_index):
 					var i = item.duplicate()
 					player.cursor_item = e
 					inv.items[id] = i
-			else:
+			elif !cant_put_into:
 				inv.items[id] = item.duplicate()
 				player.cursor_item = null
 				return
