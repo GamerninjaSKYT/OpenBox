@@ -47,4 +47,4 @@ itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), 
 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")
-recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("21_gqv77")])
+recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("21_gqv77"), ExtResource("21_gqv77"), ExtResource("21_gqv77")])
