@@ -18,6 +18,7 @@ func LoadRecipes():
 			p.rec = r
 			p.inv = ingredientslots[0].inv
 			p.craftui = self
+			p.resultname.text = r.result.item.name
 			for im in p.ingredientimages:
 				im.visible = false
 			var n = 0

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="1_cflcr"]
 [ext_resource type="Texture2D" uid="uid://ct80jvhq30eol" path="res://wood_wall.png" id="3_645o4"]
 
-[node name="Recipe" type="Control" node_paths=PackedStringArray("ingredientimages", "ingredientcounts", "resultimage", "resultcount")]
+[node name="Recipe" type="Control" node_paths=PackedStringArray("ingredientimages", "ingredientcounts", "resultimage", "resultcount", "resultname")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,11 +16,12 @@ ingredientimages = [NodePath("TextureRect/Image"), NodePath("TextureRect/Image2"
 ingredientcounts = [NodePath("TextureRect/Image/Amount"), NodePath("TextureRect/Image2/Amount2"), NodePath("TextureRect/Image3/Amount3"), NodePath("TextureRect/Image4/Amount4"), NodePath("TextureRect/Image5/Amount5")]
 resultimage = NodePath("TextureRect/Result")
 resultcount = NodePath("TextureRect/Result/AmountR")
+resultname = NodePath("TextureRect/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.362829, 0.362829, 0.362829, 1)
 layout_mode = 0
-offset_right = 500.0
+offset_right = 703.0
 offset_bottom = 250.0
 texture = ExtResource("1_cflcr")
 
@@ -146,12 +147,26 @@ horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="TextureRect"]
 layout_mode = 0
-offset_left = 246.0
+offset_left = 451.0
 offset_top = 140.0
-offset_right = 406.0
+offset_right = 611.0
 offset_bottom = 200.0
 scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 25
 text = "Craft"
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 148.0
+offset_right = 748.0
+offset_bottom = 285.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 75
+text = "Wall"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
 
 [connection signal="button_down" from="TextureRect/Button" to="." method="_on_craft_button_down"]

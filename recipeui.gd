@@ -8,6 +8,7 @@ extends Control
 @export var rec:recipe
 @export var inv:inventory
 @export var craftui:CraftingUI
+@export var resultname:Label
 
 func _on_craft_button_down():
 	if inv.items[craftui.resultslot.id] != null:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=25 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b45fnbno75oto" path="res://item_drop.tscn" id="12_0qiic"]
 [ext_resource type="PackedScene" uid="uid://wn500ku8hppx" path="res://snow.tscn" id="12_7vshg"]
 [ext_resource type="PackedScene" uid="uid://c45cpkktd45b0" path="res://wall.tscn" id="13_w8423"]
+[ext_resource type="PackedScene" uid="uid://cmda407cfkqxy" path="res://snowtree.tscn" id="14_egh5u"]
 [ext_resource type="Script" path="res://CraftingManager.gd" id="18_46wry"]
 [ext_resource type="Resource" uid="uid://cgkbeiw7uefr5" path="res://Items/wall.tres" id="19_q5i5p"]
 [ext_resource type="Resource" uid="uid://bebntepflu2p1" path="res://Items/stick.tres" id="20_1e6n6"]
@@ -26,7 +27,7 @@
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
 script = ExtResource("1_e5byj")
-objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423")])
+objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423"), ExtResource("14_egh5u")])
 itemman = NodePath("ItemManager")
 craftman = NodePath("CraftingManager")
 player = NodePath("Player")

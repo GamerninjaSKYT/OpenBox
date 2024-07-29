@@ -31,7 +31,7 @@ func Click(click_index):
 					if countlefttoadd < 1:
 						player.cursor_item = null
 						return
-				else:
+				elif !cant_put_into:
 					var e = ii.duplicate()
 					var i = item.duplicate()
 					player.cursor_item = e

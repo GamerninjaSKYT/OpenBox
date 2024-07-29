@@ -141,10 +141,12 @@ func LoadChunk(pos):
 							AddBlockToChunk(c,rockhill,x,y)
 						else:
 							AddBlockToChunk(c,objectlist[7],x,y)
-					elif height > 0.3 and height < 0.35 and treevalue > (0.5 - height/3.75) and temp <= desert_temp_threshold: # fallen tree
+					elif height > 0.3 and height < 0.35 and treevalue > (0.5 - height/3.75) and temp <= desert_temp_threshold and temp >= snow_threshold: # fallen tree
 						AddBlockToChunk(c,objectlist[5],x,y)
-					elif height > 0.15 and height < 0.35 and treevalue > 0 and temp <= desert_temp_threshold: # tree
+					elif height > 0.15 and height < 0.35 and treevalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
 						AddBlockToChunk(c,objectlist[4],x,y)
+					elif height > 0.15 and height < 0.35 and treevalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
+						AddBlockToChunk(c,objectlist[12],x,y)
 		else:
 			var file = FileAccess.open("user://chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data",FileAccess.READ)
 			var data = file.get_var()
