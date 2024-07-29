@@ -16,7 +16,12 @@ func _ready():
 
 func _process(delta):
 	if mouse_on_slot:
-		mouse_on_slot = false
+		var b = false
+		for s in slots:
+			if s.mouse_over:
+				b = true
+		if b == false:
+			mouse_on_slot = false
 	if hotbarsize > 0:
 		if items[selected_hotbar_slot] != null:
 			hotbaritemnamedisplay.text = items[selected_hotbar_slot].item.name

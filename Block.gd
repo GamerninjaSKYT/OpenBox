@@ -9,6 +9,8 @@ var mousehover = false
 var chunkparent:chunk
 var chunkpos:Vector2
 @export var drop:item_instance = null
+@export var inv:inventory = null
+@export var inv_ui:TextureRect
 
 func _process(delta):
 	if mousehover:

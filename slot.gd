@@ -5,13 +5,15 @@ extends TextureRect
 @export var id = 0
 @export var inv:inventory
 @export var cant_put_into = false
+var mouse_over = false
 
-func _on_gui_input(event):
-	inv.mouse_on_slot = true
-	if Input.is_action_just_pressed("ML"):
-		Click(1)
-	if Input.is_action_just_pressed("MR"):
-		Click(2)
+func _process(delta):
+	if mouse_over:
+		inv.mouse_on_slot = true
+		if Input.is_action_just_pressed("ML"):
+			Click(1)
+		if Input.is_action_just_pressed("MR"):
+			Click(2)
 func Click(click_index):
 	var player = get_tree().root.get_child(0).player
 	var item = player.cursor_item
@@ -56,3 +58,9 @@ func Click(click_index):
 					inv.items[id].count += 1
 					player.cursor_item.count -= 1
 					return
+
+
+func _on_mouse_entered():
+	mouse_over = true
+func _on_mouse_exited():
+	mouse_over = false
