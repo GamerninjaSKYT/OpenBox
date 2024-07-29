@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=24 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -20,7 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://c45cpkktd45b0" path="res://wall.tscn" id="13_w8423"]
 [ext_resource type="Script" path="res://CraftingManager.gd" id="18_46wry"]
 [ext_resource type="Resource" uid="uid://cgkbeiw7uefr5" path="res://Items/wall.tres" id="19_q5i5p"]
+[ext_resource type="Resource" uid="uid://bebntepflu2p1" path="res://Items/stick.tres" id="20_1e6n6"]
 [ext_resource type="Resource" uid="uid://gue1pydctwbx" path="res://Recipes/wall.tres" id="21_gqv77"]
+[ext_resource type="Resource" uid="uid://de73b1onfggaq" path="res://Recipes/stick.tres" id="23_uebsp"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
 script = ExtResource("1_e5byj")
@@ -43,8 +45,8 @@ rockfloor = ExtResource("6_4c445")
 
 [node name="ItemManager" type="Node" parent="."]
 script = ExtResource("10_ksusm")
-itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p")])
+itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6")])
 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")
-recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77")])
+recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("23_uebsp")])

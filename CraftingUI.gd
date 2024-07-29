@@ -26,5 +26,5 @@ func LoadRecipes():
 				p.ingredientimages[n].texture = i.item.image
 				p.ingredientcounts[n].text = str(i.count)
 				n += 1
-			p.resultimage = r.result.item.image
+			p.resultimage.texture = r.result.item.image
 			p.resultcount.text = str(r.result.count)

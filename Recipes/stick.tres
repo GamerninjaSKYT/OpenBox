@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="recipe" load_steps=7 format=3 uid="uid://de73b1onfggaq"]
+
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="1_x78rq"]
+[ext_resource type="Script" path="res://item_instance.gd" id="2_ghy1l"]
+[ext_resource type="Resource" uid="uid://bebntepflu2p1" path="res://Items/stick.tres" id="3_y6jys"]
+[ext_resource type="Script" path="res://recipe.gd" id="4_37kxu"]
+
+[sub_resource type="Resource" id="Resource_x0njq"]
+script = ExtResource("2_ghy1l")
+item = ExtResource("1_x78rq")
+count = 1
+
+[sub_resource type="Resource" id="Resource_784u1"]
+script = ExtResource("2_ghy1l")
+item = ExtResource("3_y6jys")
+count = 1
+
+[resource]
+script = ExtResource("4_37kxu")
+result = SubResource("Resource_784u1")
+ingredients = Array[ExtResource("2_ghy1l")]([SubResource("Resource_x0njq")])
