@@ -26,12 +26,17 @@ var tempmap = FastNoiseLite.new()
 var time = 0
 var daytime = 0
 var ingame_hour = 6
+var day_beginning_hour = 6
 
 func _ready():
 	if FileAccess.file_exists("user://save.data"):
 		var file = FileAccess.open("user://save.data",FileAccess.READ)
 		var data = file.get_var()
 		if data != null:
+			if data.has("day_beginning_hour"):
+				day_beginning_hour = data["day_beginning_hour"]
+			if data.has("time"):
+				time = data["time"]
 			if data.has("player_pos"):
 				player.position = data["player_pos"]
 			if data.has("player_item_ids"):
@@ -56,6 +61,8 @@ func _save():
 	var data = {}
 	var item_ids = []
 	var item_counts = []
+	data["day_beginning_hour"] = day_beginning_hour
+	data["time"] = time
 	data["player_pos"] = player.position
 	for s in player.inv.items:
 		var i = -1
@@ -81,7 +88,7 @@ func _save():
 
 func _process(delta):
 	time += delta
-	daytime = fmod(time + 60*6, 60*24)
+	daytime = fmod(time + 60*day_beginning_hour, 60*24)
 	ingame_hour = (daytime/60)
 
 	if loadchunks:
