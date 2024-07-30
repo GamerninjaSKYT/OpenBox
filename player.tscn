@@ -1,9 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://csivhmue28l3k"]
+[gd_scene load_steps=16 format=3 uid="uid://csivhmue28l3k"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_45kwr"]
 [ext_resource type="Texture2D" uid="uid://beetiyyai248f" path="res://Ali.png" id="2_lrmkq"]
+[ext_resource type="Texture2D" uid="uid://d0dkquterknrw" path="res://Ali_back.png" id="3_j60p5"]
 [ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="3_yohk6"]
 [ext_resource type="PackedScene" uid="uid://mjoowts3smo6" path="res://slot.tscn" id="4_guat4"]
+[ext_resource type="Texture2D" uid="uid://bvbprkb2ya5lh" path="res://Ali_side.png" id="4_xcd1m"]
+[ext_resource type="Texture2D" uid="uid://cbss0i7g8kkgt" path="res://ali_side2.png" id="5_3f56x"]
 [ext_resource type="Script" path="res://CraftingUI.gd" id="5_f7hiq"]
 [ext_resource type="Script" path="res://inventory.gd" id="5_p2agf"]
 [ext_resource type="Texture2D" uid="uid://tywc06sc0bj5" path="res://arrow.png" id="5_u6hmr"]
@@ -16,8 +19,13 @@ size = Vector2(12.8, 3.16667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7peci"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("buildzone", "buildsprite", "inv", "inv_ui") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "inv", "inv_ui") groups=["Player"]]
 script = ExtResource("1_45kwr")
+image_front = ExtResource("2_lrmkq")
+image_back = ExtResource("3_j60p5")
+image_side_left = ExtResource("4_xcd1m")
+image_side_right = ExtResource("5_3f56x")
+sprite = NodePath("Sprite2D")
 buildzone = NodePath("BuildZone")
 buildsprite = NodePath("BuildZone/Sprite2D")
 buildcan_color = Color(1, 1, 1, 0.509804)

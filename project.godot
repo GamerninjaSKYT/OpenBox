@@ -21,7 +21,7 @@ boot_splash/minimum_display_time=3000
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [input]
 

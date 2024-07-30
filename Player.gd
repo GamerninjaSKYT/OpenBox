@@ -3,6 +3,11 @@ extends CharacterBody2D
 
 @export var base_speed = 400  # base speed in pixels/sec
 var last_chunkpos:Vector2
+@export var image_front:Texture2D
+@export var image_back:Texture2D
+@export var image_side_left:Texture2D
+@export var image_side_right:Texture2D
+@export var sprite:Sprite2D
 @export var buildzone:Area2D
 @export var buildsprite:Sprite2D
 @export var buildcan_color:Color
@@ -56,6 +61,14 @@ func _physics_process(delta):
 func move():
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * get_speed()
+	if Input.is_action_pressed("left"):
+		sprite.texture = image_side_left
+	elif Input.is_action_pressed("right"):
+		sprite.texture = image_side_right
+	elif Input.is_action_pressed("down"):
+		sprite.texture = image_front
+	elif Input.is_action_pressed("up"):
+		sprite.texture = image_back
 	move_and_slide()
 
 func UpdateBuildZone(item):
