@@ -7,3 +7,5 @@ extends Resource
 @export var maxcount = 100 #item stack size
 @export var build_id = -1 #keep to -1 if not buildable
 @export var build_sprite:Texture2D #keep null if not buildable
+@export var build_offset = Vector2.ZERO
+@export var build_col_size = Vector2(6.25,6.25)

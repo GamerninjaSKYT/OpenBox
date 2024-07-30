@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbtxv47biv1cp"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_3ule8"]
+[ext_resource type="Resource" uid="uid://cmmltdhqrc5cx" path="res://Items/crafting_bench.tres" id="2_v2hvp"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_2yia7"]
+[ext_resource type="Texture2D" uid="uid://lqcj4tecqgkp" path="res://crafting_bench.png" id="4_vgbl7"]
+
+[sub_resource type="Resource" id="Resource_6fuo1"]
+script = ExtResource("3_2yia7")
+item = ExtResource("2_v2hvp")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+
+[node name="CraftingBench" type="StaticBody2D" node_paths=PackedStringArray("col")]
+input_pickable = true
+script = ExtResource("1_3ule8")
+id = 13
+col = NodePath(".")
+destroyable = true
+destroy_time = 2.0
+drop = SubResource("Resource_6fuo1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(64, 0)
+scale = Vector2(12.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("4_vgbl7")
+offset = Vector2(16, 0)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

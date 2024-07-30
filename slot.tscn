@@ -20,6 +20,7 @@ offset_top = 20.0
 offset_right = 220.0
 offset_bottom = 220.0
 scale = Vector2(0.8, 0.8)
+stretch_mode = 5
 
 [node name="Amount" type="Label" parent="."]
 layout_mode = 0

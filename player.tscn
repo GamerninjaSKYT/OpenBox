@@ -19,7 +19,7 @@ size = Vector2(12.8, 3.16667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7peci"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "inv", "inv_ui") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui") groups=["Player"]]
 script = ExtResource("1_45kwr")
 image_front = ExtResource("2_lrmkq")
 image_back = ExtResource("3_j60p5")
@@ -30,6 +30,7 @@ buildzone = NodePath("BuildZone")
 buildsprite = NodePath("BuildZone/Sprite2D")
 buildcan_color = Color(1, 1, 1, 0.509804)
 buildcant_color = Color(1, 0, 0, 0.509804)
+build_col = NodePath("BuildZone/CollisionShape2D")
 inv = NodePath("Inventory")
 inv_ui = NodePath("Control/Inv")
 
@@ -160,9 +161,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
+offset_left = -984.0
 offset_top = 780.0
-offset_right = 300.0
+offset_right = 2958.0
 offset_bottom = 917.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -170,6 +171,8 @@ scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 100
 text = "Item"
 horizontal_alignment = 1
+autowrap_mode = 1
+clip_text = true
 
 [node name="Inv" type="TextureRect" parent="Control"]
 visible = false

@@ -12,6 +12,7 @@ var last_chunkpos:Vector2
 @export var buildsprite:Sprite2D
 @export var buildcan_color:Color
 @export var buildcant_color:Color
+@export var build_col:CollisionShape2D
 @export var inv:inventory
 @export var cursor_item:item_instance
 @export var inv_ui:TextureRect
@@ -73,8 +74,9 @@ func move():
 
 func UpdateBuildZone(item):
 	buildsprite.visible = true
-	buildzone.position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) - position
+	buildzone.position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) - position + item.build_offset
 	buildsprite.texture = item.build_sprite
+	build_col.scale = item.build_col_size
 	if buildzone.get_overlapping_bodies().size() == 0:
 		buildsprite.modulate = buildcan_color
 		return true
