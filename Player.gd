@@ -87,7 +87,7 @@ func UpdateBuildZone(item):
 func Build():
 	inv.items[inv.selected_hotbar_slot].count -= 1
 	var m = get_tree().root.get_child(0)
-	var pos = m.pos_to_blockpos(buildzone.global_position)
+	var pos = m.pos_to_blockpos(buildzone.global_position - inv.items[inv.selected_hotbar_slot].item.build_offset)
 	var c = m.GetChunkFromChunkPos(m.blockpos_to_chunkpos(pos))
 	var b = m.AddBlockToChunk(c,m.objectlist[inv.items[inv.selected_hotbar_slot].item.build_id],0,0)
 	b.global_position = pos*128
