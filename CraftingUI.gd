@@ -15,6 +15,7 @@ func LoadRecipes():
 		if r.ingredients.size() <= ingredientslots.size():
 			var p = recipepackedscene.instantiate()
 			recipes_ui.add_child(p)
+			recipes_ui.custom_minimum_size.y += 270
 			p.rec = r
 			p.inv = ingredientslots[0].inv
 			p.craftui = self
