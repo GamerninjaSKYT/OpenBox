@@ -10,6 +10,7 @@ var last_chunkpos:Vector2
 @export var inv:inventory
 @export var cursor_item:item_instance
 @export var inv_ui:TextureRect
+@export var open_inv:inventory = null
 
 func _ready():
 	inv_ui.visible = false
@@ -19,7 +20,7 @@ func _process(delta):
 	if inv.items[inv.selected_hotbar_slot] != null:
 		if inv.items[inv.selected_hotbar_slot].item.build_id >= 0:
 			if (UpdateBuildZone(inv.items[inv.selected_hotbar_slot].item)):
-				if Input.is_action_just_pressed("MR") and !inv_ui.visible and !inv.mouse_on_slot:
+				if Input.is_action_just_pressed("MR") and open_inv == null and !inv.mouse_on_slot:
 					Build()
 		else:
 			buildsprite.visible = false
@@ -32,7 +33,12 @@ func _process(delta):
 	else:
 		Input.set_custom_mouse_cursor(null)
 	if Input.is_action_just_pressed("inv"):
-		inv_ui.visible = !inv_ui.visible
+		if open_inv != null:
+			open_inv.ui.visible = false
+			open_inv = null
+		else:
+			open_inv = inv
+			open_inv.ui.visible = true
 	if Input.is_action_just_pressed("save"):
 		get_tree().root.get_child(0)._save()
 		get_tree().quit()

@@ -23,6 +23,9 @@ func OnMouseHover():
 		destroy_progress += get_process_delta_time()
 		if destroy_progress >= destroy_time:
 			Destroy()
+	elif Input.is_action_just_pressed("MR") and inv != null:
+		get_tree().root.get_child(0).player.open_inv = inv
+		inv_ui.visible = true
 
 func _on_mouse_entered():
 	mousehover = true
