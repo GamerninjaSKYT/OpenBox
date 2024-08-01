@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0c5juuwqabm8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y6d2g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4bjc"]
+bg_color = Color(0.184314, 0.705882, 0, 1)
+
+[node name="MiningProgress" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 143.0
+offset_bottom = 145.0
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+z_index = 25
+layout_mode = 0
+offset_left = -50.0
+offset_right = 450.0
+offset_bottom = 137.0
+scale = Vector2(0.2, 0.2)
+mouse_filter = 2
+theme_override_font_sizes/font_size = 100
+theme_override_styles/background = SubResource("StyleBoxFlat_y6d2g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b4bjc")

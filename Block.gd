@@ -11,21 +11,29 @@ var chunkpos:Vector2
 @export var drop:item_instance = null
 @export var inv:inventory = null
 @export var inv_ui:TextureRect
+@export var mining_progress:ProgressBar
 
 func _process(delta):
+	if mining_progress != null:
+		mining_progress.visible = (destroy_progress > 0)
+		mining_progress.max_value = destroy_time
+		mining_progress.value = destroy_progress
 	if mousehover:
-		OnMouseHover()
+		OnMouseHover(delta)
 	elif destroy_progress > 0 and destroyable:
 		destroy_progress -= delta
 
-func OnMouseHover():
+func OnMouseHover(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable:
 		destroy_progress += get_process_delta_time()
 		if destroy_progress >= destroy_time:
 			Destroy()
-	elif Input.is_action_just_pressed("MR") and inv != null:
-		get_tree().root.get_child(0).player.open_inv = inv
-		inv_ui.visible = true
+	elif destroy_progress > 0:
+		destroy_progress -= delta
+	if Input.is_action_just_pressed("MR") and inv != null:
+		if get_tree().root.get_child(0).player.open_inv == null:
+			get_tree().root.get_child(0).player.open_inv = inv
+			inv_ui.visible = true
 
 func _on_mouse_entered():
 	mousehover = true

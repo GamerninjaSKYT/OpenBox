@@ -38,13 +38,13 @@ func _process(delta):
 			cursor_item = null
 	else:
 		Input.set_custom_mouse_cursor(null)
+	inv_ui.visible = (open_inv != null)
 	if Input.is_action_just_pressed("inv"):
 		if open_inv != null:
 			open_inv.ui.visible = false
 			open_inv = null
 		else:
 			open_inv = inv
-			open_inv.ui.visible = true
 	if Input.is_action_just_pressed("save"):
 		get_tree().root.get_child(0)._save()
 		get_tree().quit()
@@ -74,7 +74,7 @@ func move():
 
 func UpdateBuildZone(item):
 	buildsprite.visible = true
-	buildzone.position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) - position + item.build_offset
+	buildzone.global_position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) + item.build_offset
 	buildsprite.texture = item.build_sprite
 	build_col.scale = item.build_col_size
 	if buildzone.get_overlapping_bodies().size() == 0:
