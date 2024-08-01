@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c45cpkktd45b0"]
+[gd_scene load_steps=8 format=3 uid="uid://c45cpkktd45b0"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_pqhnl"]
 [ext_resource type="Resource" uid="uid://cgkbeiw7uefr5" path="res://Items/wall.tres" id="2_6np0i"]
 [ext_resource type="Texture2D" uid="uid://ct80jvhq30eol" path="res://wood_wall.png" id="2_ugc1a"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_ylyub"]
+[ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_4qqbv"]
 
 [sub_resource type="Resource" id="Resource_kvyra"]
 script = ExtResource("3_ylyub")
@@ -12,7 +13,7 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("col")]
+[node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
 input_pickable = true
 script = ExtResource("1_pqhnl")
 id = 11
@@ -20,6 +21,7 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 2.0
 drop = SubResource("Resource_kvyra")
+mining_progress_control = NodePath("MiningProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)
@@ -28,6 +30,8 @@ shape = SubResource("RectangleShape2D_3ri5i")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("2_ugc1a")
+
+[node name="MiningProgress" parent="." instance=ExtResource("5_4qqbv")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

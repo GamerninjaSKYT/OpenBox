@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b60r8p4kn8w6o"]
+[gd_scene load_steps=8 format=3 uid="uid://b60r8p4kn8w6o"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_nqhkd"]
 [ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="2_t57d0"]
 [ext_resource type="Texture2D" uid="uid://dj2v5s8m7blld" path="res://tree.png" id="2_tledw"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_qoexf"]
+[ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_830d2"]
 
 [sub_resource type="Resource" id="Resource_nuu8p"]
 script = ExtResource("3_qoexf")
@@ -13,7 +14,7 @@ count = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(8.61539, 19.0769)
 
-[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("col")]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
 input_pickable = true
 script = ExtResource("1_nqhkd")
 id = 4
@@ -21,6 +22,7 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 5.0
 drop = SubResource("Resource_nuu8p")
+mining_progress_control = NodePath("MiningProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -30,6 +32,8 @@ shape = SubResource("RectangleShape2D_3ri5i")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
 texture = ExtResource("2_tledw")
+
+[node name="MiningProgress" parent="." instance=ExtResource("5_830d2")]
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

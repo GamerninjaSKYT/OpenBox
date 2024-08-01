@@ -11,10 +11,11 @@ var chunkpos:Vector2
 @export var drop:item_instance = null
 @export var inv:inventory = null
 @export var inv_ui:TextureRect
-@export var mining_progress:ProgressBar
+@export var mining_progress_control:Control
 
 func _process(delta):
-	if mining_progress != null:
+	if mining_progress_control != null:
+		var mining_progress = mining_progress_control.get_child(0)
 		mining_progress.visible = (destroy_progress > 0)
 		mining_progress.max_value = destroy_time
 		mining_progress.value = destroy_progress
