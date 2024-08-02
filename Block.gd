@@ -14,6 +14,8 @@ var chunkpos:Vector2
 @export var mining_progress_control:Control
 
 func _process(delta):
+	if inv != null:
+		inv.Updateslots()
 	if mining_progress_control != null:
 		var mining_progress = mining_progress_control.get_child(0)
 		mining_progress.visible = (destroy_progress > 0)

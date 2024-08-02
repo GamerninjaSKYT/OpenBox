@@ -17,6 +17,7 @@ var last_chunkpos:Vector2
 @export var cursor_item:item_instance
 @export var inv_ui:TextureRect
 @export var open_inv:inventory = null
+@export var extended_inv:Control
 
 func _ready():
 	inv_ui.visible = false
@@ -39,6 +40,7 @@ func _process(delta):
 	else:
 		Input.set_custom_mouse_cursor(null)
 	inv_ui.visible = (open_inv != null)
+	extended_inv.visible = (open_inv == inv)
 	if Input.is_action_just_pressed("inv"):
 		if open_inv != null:
 			open_inv.ui.visible = false

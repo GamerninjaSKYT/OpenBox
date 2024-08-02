@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbtxv47biv1cp"]
+[gd_scene load_steps=16 format=3 uid="uid://cbtxv47biv1cp"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_3ule8"]
 [ext_resource type="Resource" uid="uid://cmmltdhqrc5cx" path="res://Items/crafting_bench.tres" id="2_v2hvp"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_2yia7"]
 [ext_resource type="Texture2D" uid="uid://lqcj4tecqgkp" path="res://crafting_bench.png" id="4_vgbl7"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_f47nm"]
+[ext_resource type="Script" path="res://inventory.gd" id="6_0xruj"]
+[ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="6_5qtob"]
+[ext_resource type="Script" path="res://CraftingUI.gd" id="7_jafwj"]
+[ext_resource type="Texture2D" uid="uid://cw8spxkiv51sr" path="res://slot.png" id="7_s1mbh"]
+[ext_resource type="PackedScene" uid="uid://dcaxypdui6gmv" path="res://recipe.tscn" id="8_c01j5"]
+[ext_resource type="Texture2D" uid="uid://duaabsefefqmb" path="res://slot_selected.png" id="8_p68jb"]
+[ext_resource type="PackedScene" uid="uid://mjoowts3smo6" path="res://slot.tscn" id="9_eyh65"]
+[ext_resource type="Texture2D" uid="uid://tywc06sc0bj5" path="res://arrow.png" id="10_88ffv"]
 
 [sub_resource type="Resource" id="Resource_6fuo1"]
 script = ExtResource("3_2yia7")
@@ -13,7 +21,7 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="CraftingBench" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
+[node name="CraftingBench" type="StaticBody2D" node_paths=PackedStringArray("col", "inv", "inv_ui", "mining_progress_control")]
 input_pickable = true
 script = ExtResource("1_3ule8")
 id = 13
@@ -21,6 +29,8 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 2.0
 drop = SubResource("Resource_6fuo1")
+inv = NodePath("CanvasLayer/ExtendedInv")
+inv_ui = NodePath("CanvasLayer/ExtendedInv/TextureRect2")
 mining_progress_control = NodePath("MiningProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -36,6 +46,116 @@ offset = Vector2(16, 0)
 [node name="MiningProgress" parent="." instance=ExtResource("5_f47nm")]
 offset_left = 64.0
 offset_right = 207.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ExtendedInv" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("slots", "ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1079.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_0xruj")
+slots = [NodePath("TextureRect2/slot"), NodePath("TextureRect2/slot2"), NodePath("TextureRect2/slot3"), NodePath("TextureRect2/slot4"), NodePath("TextureRect2/slot5"), NodePath("TextureRect2/slotR")]
+slotsprite = ExtResource("7_s1mbh")
+selectedsprite = ExtResource("8_p68jb")
+ui = NodePath("TextureRect2")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ExtendedInv"]
+visible = false
+self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 0
+offset_left = 2075.0
+offset_top = 1165.0
+offset_right = 4875.0
+offset_bottom = 2096.0
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+texture = ExtResource("6_5qtob")
+
+[node name="CraftRecipes" type="ScrollContainer" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui")]
+layout_mode = 0
+offset_top = 229.0
+offset_right = 1023.0
+offset_bottom = 885.0
+script = ExtResource("7_jafwj")
+recipepackedscene = ExtResource("8_c01j5")
+ingredientslots = [NodePath("../slot"), NodePath("../slot2"), NodePath("../slot3"), NodePath("../slot4"), NodePath("../slot5")]
+resultslot = NodePath("../slotR")
+recipes_ui = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ExtendedInv/TextureRect2/CraftRecipes"]
+layout_mode = 2
+theme_override_constants/separation = 270
+
+[node name="slot" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_eyh65")]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 19.0
+offset_right = 220.0
+offset_bottom = 219.0
+inv = NodePath("../..")
+
+[node name="slot2" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_eyh65")]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 19.0
+offset_right = 420.0
+offset_bottom = 219.0
+id = 1
+inv = NodePath("../..")
+
+[node name="slot3" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_eyh65")]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 19.0
+offset_right = 620.0
+offset_bottom = 219.0
+id = 2
+inv = NodePath("../..")
+
+[node name="slot4" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_eyh65")]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 19.0
+offset_right = 820.0
+offset_bottom = 219.0
+id = 3
+inv = NodePath("../..")
+
+[node name="slot5" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_eyh65")]
+layout_mode = 0
+offset_left = 820.0
+offset_top = 19.0
+offset_right = 1020.0
+offset_bottom = 219.0
+id = 4
+inv = NodePath("../..")
+
+[node name="slotR" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_eyh65")]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 19.0
+offset_right = 1320.0
+offset_bottom = 219.0
+id = 5
+inv = NodePath("../..")
+cant_put_into = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ExtendedInv/TextureRect2"]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 75.0
+offset_right = 1060.0
+offset_bottom = 115.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("10_88ffv")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -19,7 +19,7 @@ size = Vector2(12.8, 3.16667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7peci"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv") groups=["Player"]]
 script = ExtResource("1_45kwr")
 image_front = ExtResource("2_lrmkq")
 image_back = ExtResource("3_j60p5")
@@ -33,6 +33,7 @@ buildcant_color = Color(1, 0, 0, 0.509804)
 build_col = NodePath("BuildZone/CollisionShape2D")
 inv = NodePath("Inventory")
 inv_ui = NodePath("Control/Inv")
+extended_inv = NodePath("Control/ExtendedInv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
@@ -184,7 +185,7 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -1400.0
-offset_top = -800.0
+offset_top = 114.0
 offset_right = 1400.0
 offset_bottom = 800.0
 grow_horizontal = 2
@@ -194,319 +195,335 @@ texture = ExtResource("3_yohk6")
 [node name="slot11" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 400.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 600.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 10
 inv = NodePath("../../../Inventory")
 
 [node name="slot12" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 600.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 800.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 11
 inv = NodePath("../../../Inventory")
 
 [node name="slot13" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 800.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 1000.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 12
 inv = NodePath("../../../Inventory")
 
 [node name="slot14" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1000.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 1200.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 13
 inv = NodePath("../../../Inventory")
 
 [node name="slot15" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1200.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 1400.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 14
 inv = NodePath("../../../Inventory")
 
 [node name="slot16" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1400.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 1600.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 15
 inv = NodePath("../../../Inventory")
 
 [node name="slot17" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1600.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 1800.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 16
 inv = NodePath("../../../Inventory")
 
 [node name="slot18" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1800.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 2000.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 17
 inv = NodePath("../../../Inventory")
 
 [node name="slot19" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 2000.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 2200.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 18
 inv = NodePath("../../../Inventory")
 
 [node name="slot20" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 2200.0
-offset_top = 1300.0
+offset_top = 457.0
 offset_right = 2400.0
-offset_bottom = 1500.0
+offset_bottom = 657.0
 id = 19
 inv = NodePath("../../../Inventory")
 
 [node name="slot21" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 400.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 600.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 20
 inv = NodePath("../../../Inventory")
 
 [node name="slot22" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 600.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 800.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 21
 inv = NodePath("../../../Inventory")
 
 [node name="slot23" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 800.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 1000.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 22
 inv = NodePath("../../../Inventory")
 
 [node name="slot24" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1000.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 1200.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 23
 inv = NodePath("../../../Inventory")
 
 [node name="slot25" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1200.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 1400.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 24
 inv = NodePath("../../../Inventory")
 
 [node name="slot26" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1400.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 1600.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 25
 inv = NodePath("../../../Inventory")
 
 [node name="slot27" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1600.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 1800.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 26
 inv = NodePath("../../../Inventory")
 
 [node name="slot28" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1800.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 2000.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 27
 inv = NodePath("../../../Inventory")
 
 [node name="slot29" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 2000.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 2200.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 28
 inv = NodePath("../../../Inventory")
 
 [node name="slot30" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 2200.0
-offset_top = 1100.0
+offset_top = 257.0
 offset_right = 2400.0
-offset_bottom = 1300.0
+offset_bottom = 457.0
 id = 29
 inv = NodePath("../../../Inventory")
 
 [node name="slot31" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 400.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 600.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 30
 inv = NodePath("../../../Inventory")
 
 [node name="slot32" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 600.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 800.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 31
 inv = NodePath("../../../Inventory")
 
 [node name="slot33" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 800.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 1000.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 32
 inv = NodePath("../../../Inventory")
 
 [node name="slot34" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1000.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 1200.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 33
 inv = NodePath("../../../Inventory")
 
 [node name="slot35" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1200.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 1400.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 34
 inv = NodePath("../../../Inventory")
 
 [node name="slot36" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1400.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 1600.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 35
 inv = NodePath("../../../Inventory")
 
 [node name="slot37" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1600.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 1800.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 36
 inv = NodePath("../../../Inventory")
 
 [node name="slot38" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 1800.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 2000.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 37
 inv = NodePath("../../../Inventory")
 
 [node name="slot39" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 2000.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 2200.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 38
 inv = NodePath("../../../Inventory")
 
 [node name="slot40" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
 offset_left = 2200.0
-offset_top = 900.0
+offset_top = 57.0
 offset_right = 2400.0
-offset_bottom = 1100.0
+offset_bottom = 257.0
 id = 39
 inv = NodePath("../../../Inventory")
 
-[node name="slot41" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 30.0
-offset_right = 220.0
-offset_bottom = 230.0
-id = 40
-inv = NodePath("../../../Inventory")
+[node name="ExtendedInv" type="Control" parent="Control"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="slot42" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+[node name="TextureRect2" type="TextureRect" parent="Control/ExtendedInv"]
+self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
 layout_mode = 0
-offset_left = 324.0
-offset_top = 30.0
-offset_right = 524.0
-offset_bottom = 230.0
-id = 41
-inv = NodePath("../../../Inventory")
-cant_put_into = true
+offset_left = -1400.0
+offset_top = -789.0
+offset_right = 1400.0
+offset_bottom = 142.0
+texture = ExtResource("3_yohk6")
 
-[node name="CraftRecipes" type="ScrollContainer" parent="Control/Inv" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui")]
+[node name="CraftRecipes" type="ScrollContainer" parent="Control/ExtendedInv" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui")]
 layout_mode = 0
-offset_top = 240.0
-offset_right = 1023.0
-offset_bottom = 896.0
+offset_left = -1400.0
+offset_top = -560.0
+offset_right = -377.0
+offset_bottom = 96.0
 script = ExtResource("5_f7hiq")
 recipepackedscene = ExtResource("6_6ycr5")
 ingredientslots = [NodePath("../slot41")]
 resultslot = NodePath("../slot42")
 recipes_ui = NodePath("VBoxContainer")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Inv/CraftRecipes"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ExtendedInv/CraftRecipes"]
 layout_mode = 2
 theme_override_constants/separation = 270
 
-[node name="TextureRect" type="TextureRect" parent="Control/Inv"]
+[node name="slot41" parent="Control/ExtendedInv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 85.0
-offset_right = 264.0
-offset_bottom = 125.0
+offset_left = -1380.0
+offset_top = -770.0
+offset_right = -1180.0
+offset_bottom = -570.0
+id = 40
+inv = NodePath("../../../Inventory")
+
+[node name="slot42" parent="Control/ExtendedInv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -1076.0
+offset_top = -770.0
+offset_right = -876.0
+offset_bottom = -570.0
+id = 41
+inv = NodePath("../../../Inventory")
+cant_put_into = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/ExtendedInv"]
+layout_mode = 0
+offset_left = -1176.0
+offset_top = -715.0
+offset_right = -1136.0
+offset_bottom = -675.0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_u6hmr")
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("slots", "ui", "hotbaritemnamedisplay")]
 script = ExtResource("5_p2agf")
-slots = [NodePath("../Control/slot"), NodePath("../Control/slot2"), NodePath("../Control/slot3"), NodePath("../Control/slot4"), NodePath("../Control/slot5"), NodePath("../Control/slot6"), NodePath("../Control/slot7"), NodePath("../Control/slot8"), NodePath("../Control/slot9"), NodePath("../Control/slot10"), NodePath("../Control/Inv/slot11"), NodePath("../Control/Inv/slot12"), NodePath("../Control/Inv/slot13"), NodePath("../Control/Inv/slot14"), NodePath("../Control/Inv/slot15"), NodePath("../Control/Inv/slot16"), NodePath("../Control/Inv/slot17"), NodePath("../Control/Inv/slot18"), NodePath("../Control/Inv/slot19"), NodePath("../Control/Inv/slot20"), NodePath("../Control/Inv/slot21"), NodePath("../Control/Inv/slot22"), NodePath("../Control/Inv/slot23"), NodePath("../Control/Inv/slot24"), NodePath("../Control/Inv/slot25"), NodePath("../Control/Inv/slot26"), NodePath("../Control/Inv/slot27"), NodePath("../Control/Inv/slot28"), NodePath("../Control/Inv/slot29"), NodePath("../Control/Inv/slot30"), NodePath("../Control/Inv/slot31"), NodePath("../Control/Inv/slot32"), NodePath("../Control/Inv/slot33"), NodePath("../Control/Inv/slot34"), NodePath("../Control/Inv/slot35"), NodePath("../Control/Inv/slot36"), NodePath("../Control/Inv/slot37"), NodePath("../Control/Inv/slot38"), NodePath("../Control/Inv/slot39"), NodePath("../Control/Inv/slot40"), NodePath("../Control/Inv/slot41"), NodePath("../Control/Inv/slot42")]
+slots = [NodePath("../Control/slot"), NodePath("../Control/slot2"), NodePath("../Control/slot3"), NodePath("../Control/slot4"), NodePath("../Control/slot5"), NodePath("../Control/slot6"), NodePath("../Control/slot7"), NodePath("../Control/slot8"), NodePath("../Control/slot9"), NodePath("../Control/slot10"), NodePath("../Control/Inv/slot11"), NodePath("../Control/Inv/slot12"), NodePath("../Control/Inv/slot13"), NodePath("../Control/Inv/slot14"), NodePath("../Control/Inv/slot15"), NodePath("../Control/Inv/slot16"), NodePath("../Control/Inv/slot17"), NodePath("../Control/Inv/slot18"), NodePath("../Control/Inv/slot19"), NodePath("../Control/Inv/slot20"), NodePath("../Control/Inv/slot21"), NodePath("../Control/Inv/slot22"), NodePath("../Control/Inv/slot23"), NodePath("../Control/Inv/slot24"), NodePath("../Control/Inv/slot25"), NodePath("../Control/Inv/slot26"), NodePath("../Control/Inv/slot27"), NodePath("../Control/Inv/slot28"), NodePath("../Control/Inv/slot29"), NodePath("../Control/Inv/slot30"), NodePath("../Control/Inv/slot31"), NodePath("../Control/Inv/slot32"), NodePath("../Control/Inv/slot33"), NodePath("../Control/Inv/slot34"), NodePath("../Control/Inv/slot35"), NodePath("../Control/Inv/slot36"), NodePath("../Control/Inv/slot37"), NodePath("../Control/Inv/slot38"), NodePath("../Control/Inv/slot39"), NodePath("../Control/Inv/slot40"), NodePath("../Control/ExtendedInv/slot41"), NodePath("../Control/ExtendedInv/slot42")]
 hotbarsize = 10
 slotsprite = ExtResource("6_h3x8g")
 selectedsprite = ExtResource("7_qwn2n")
