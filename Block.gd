@@ -47,15 +47,22 @@ func _on_mouse_exited():
 	
 func Destroy():
 	if drop != null:
-		var d = get_tree().root.get_child(0).itemdrop.instantiate()
-		chunkparent.add_child(d)
-		d.position = position
-		d.item = drop.duplicate()
-		d.chunkparent = chunkparent
-		d.chunkparent.drops.append(d)
-		d.UpdateItemDrop()
+		DropItem(drop)
+	if inv != null:
+		for i in inv.items:
+			if i != null:
+				DropItem(i)
 	chunkparent.blocks.erase(self)
 	queue_free()
+
+func DropItem(item):
+	var d = get_tree().root.get_child(0).itemdrop.instantiate()
+	chunkparent.add_child(d)
+	d.position = position
+	d.item = item.duplicate()
+	d.chunkparent = chunkparent
+	d.chunkparent.drops.append(d)
+	d.UpdateItemDrop()
 
 func UpdateInChunkPos():
 	chunkpos = get_tree().root.get_child(0).blockpos_to_inchunkpos(get_tree().root.get_child(0).pos_to_blockpos(global_position))
