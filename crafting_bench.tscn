@@ -20,6 +20,7 @@ item = ExtResource("2_v2hvp")
 count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+size = Vector2(19.76, 19.2308)
 
 [node name="CraftingBench" type="StaticBody2D" node_paths=PackedStringArray("col", "inv", "inv_ui", "mining_progress_control")]
 input_pickable = true
@@ -34,7 +35,7 @@ inv_ui = NodePath("CanvasLayer/ExtendedInv/TextureRect2")
 mining_progress_control = NodePath("MiningProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(64, 0)
+position = Vector2(63.5, 2.5)
 scale = Vector2(12.5, 6.5)
 shape = SubResource("RectangleShape2D_3ri5i")
 
