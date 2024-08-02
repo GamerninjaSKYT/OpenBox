@@ -160,9 +160,24 @@ func LoadChunk(pos):
 			if data != null:
 				var i = 0
 				for b in data["ids"]:
+					#Load block
 					var px = (data["poses"][i].x)
 					var py = (data["poses"][i].y)
-					AddBlockToChunk(c,objectlist[b],px,py)
+					var p = AddBlockToChunk(c,objectlist[b],px,py)
+					#Load inventory
+					if p.inv != null:
+						var item_ids = data["invs_ids"][i]
+						var item_counts = data["invs_counts"][i]
+						print(p.inv.items.size())
+						var item_i = 0
+						for ii in p.inv.items:
+							if item_ids[item_i] != -1:
+								print("a")
+								var item = item_instance.new()
+								item.item = itemman.itemlist[item_ids[item_i]]
+								item.count = item_counts[item_i]
+								p.inv.items[item_i] = item.duplicate()
+							item_i += 1
 					i += 1
 				if data.has("drop_ids"):
 					var e = 0
@@ -184,12 +199,26 @@ func UnloadChunk(c):
 	var data = {}
 	var ids = []
 	var poses = []
+	var invs_ids = []
+	var invs_counts = []
 	var drop_ids = []
 	var drop_poses = []
 	var drop_counts = []
 	for b in c.blocks:
 		ids.append(b.id)
 		poses.append(b.chunkpos)
+		var item_ids = []
+		var item_counts = []
+		if b.inv != null:
+			for i in b.inv.items:
+				if i == null:
+					item_ids.append(-1)
+					item_counts.append(0)
+				else:
+					item_ids.append(i.item.id)
+					item_counts.append(i.count)
+		invs_ids.append(item_ids)
+		invs_counts.append(item_counts)
 	for d in c.drops:
 		drop_ids.append(d.item.item.id)
 		drop_counts.append(d.item.count)
@@ -199,6 +228,8 @@ func UnloadChunk(c):
 	data["drop_ids"] = drop_ids
 	data["drop_poses"] = drop_poses
 	data["drop_counts"] = drop_counts
+	data["invs_ids"] = invs_ids
+	data["invs_counts"] = invs_counts
 	file.store_var(data)
 	file.close()
 	loadedchunkpositions.erase(pos_to_chunkpos(c.position)) # removes the chunk from the list of chunks

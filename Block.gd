@@ -22,7 +22,8 @@ func _process(delta):
 		mining_progress.max_value = destroy_time
 		mining_progress.value = destroy_progress
 	if mousehover:
-		OnMouseHover(delta)
+		if get_tree().root.get_child(0).player.open_inv == null:
+			OnMouseHover(delta)
 	elif destroy_progress > 0 and destroyable:
 		destroy_progress -= delta
 
