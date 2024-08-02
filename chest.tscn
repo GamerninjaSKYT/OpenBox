@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv5jqf8gjvg6j"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_j4gpd"]
+[ext_resource type="Resource" uid="uid://dn45bgq058oqd" path="res://Items/chest.tres" id="2_hvr56"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_ea0wi"]
+[ext_resource type="Texture2D" uid="uid://66c4jeiedi1i" path="res://chest.png" id="4_irot0"]
+[ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_hkg4s"]
+
+[sub_resource type="Resource" id="Resource_wsxh3"]
+script = ExtResource("3_ea0wi")
+item = ExtResource("2_hvr56")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+size = Vector2(18.4615, 11.8462)
+
+[node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
+input_pickable = true
+script = ExtResource("1_j4gpd")
+id = 14
+col = NodePath(".")
+destroyable = true
+destroy_time = 2.5
+drop = SubResource("Resource_wsxh3")
+mining_progress_control = NodePath("MiningProgress")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(4, 4)
+texture = ExtResource("4_irot0")
+
+[node name="MiningProgress" parent="." instance=ExtResource("5_hkg4s")]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="recipe" load_steps=9 format=3 uid="uid://bb0c471lignuq"]
+
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="1_dsnkf"]
+[ext_resource type="Script" path="res://item_instance.gd" id="2_job77"]
+[ext_resource type="Resource" uid="uid://bebntepflu2p1" path="res://Items/stick.tres" id="3_5fw33"]
+[ext_resource type="Resource" uid="uid://dn45bgq058oqd" path="res://Items/chest.tres" id="3_82ica"]
+[ext_resource type="Script" path="res://recipe.gd" id="4_h28jv"]
+
+[sub_resource type="Resource" id="Resource_hi6v4"]
+script = ExtResource("2_job77")
+item = ExtResource("1_dsnkf")
+count = 5
+
+[sub_resource type="Resource" id="Resource_eg8pd"]
+script = ExtResource("2_job77")
+item = ExtResource("3_5fw33")
+count = 2
+
+[sub_resource type="Resource" id="Resource_o1uvn"]
+script = ExtResource("2_job77")
+item = ExtResource("3_82ica")
+count = 1
+
+[resource]
+script = ExtResource("4_h28jv")
+result = SubResource("Resource_o1uvn")
+ingredients = Array[ExtResource("2_job77")]([SubResource("Resource_hi6v4"), SubResource("Resource_eg8pd")])

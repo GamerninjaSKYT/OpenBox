@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://dn45bgq058oqd"]
+
+[ext_resource type="Texture2D" uid="uid://66c4jeiedi1i" path="res://chest.png" id="1_ecrat"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_fbd6o"]
+
+[resource]
+script = ExtResource("2_fbd6o")
+name = "Chest"
+image = ExtResource("1_ecrat")
+id = 4
+maxcount = 100
+build_id = 14
+build_sprite = ExtResource("1_ecrat")
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
