@@ -29,6 +29,7 @@ var ingame_hour = 6
 var day_beginning_hour = 6
 
 func _ready():
+	get_tree().auto_accept_quit = false
 	if FileAccess.file_exists("user://save.data"):
 		var file = FileAccess.open("user://save.data",FileAccess.READ)
 		var data = file.get_var()
@@ -266,3 +267,8 @@ func GetChunkFromChunkPos(chunkpos):
 			if pos_to_chunkpos(c.position) == chunkpos:
 				return c
 	return null
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_save()
+		get_tree().quit()
