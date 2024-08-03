@@ -4,6 +4,7 @@ extends StaticBody2D
 @export var col:CollisionObject2D
 @export var destroyable:bool = false
 @export var destroy_time:float = 1
+@export var mining_tool_needed:String = ""
 var destroy_progress = 0
 var mousehover = false
 var chunkparent:chunk
@@ -29,7 +30,12 @@ func _process(delta):
 
 func OnMouseHover(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable:
-		destroy_progress += get_process_delta_time()
+		var mining_tool = get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot]
+		if mining_tool != null:
+			mining_tool = mining_tool.item
+			if mining_tool.mining_tool_type == mining_tool_needed and mining_tool_needed != "":
+				destroy_progress += delta * mining_tool.mining_multiplier - delta
+		destroy_progress += delta
 		if destroy_progress >= destroy_time:
 			Destroy()
 	elif destroy_progress > 0:

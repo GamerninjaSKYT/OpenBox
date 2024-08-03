@@ -13,6 +13,7 @@ id = 7
 col = NodePath(".")
 destroyable = true
 destroy_time = 20.0
+mining_tool_needed = "pickaxe"
 mining_progress_control = NodePath("MiningProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
