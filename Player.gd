@@ -78,6 +78,7 @@ func UpdateBuildZone(item):
 	buildsprite.visible = true
 	buildzone.global_position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) + item.build_offset
 	buildsprite.texture = item.build_sprite
+	buildsprite.position = item.build_sprite_offset
 	build_col.scale = item.build_col_size
 	if buildzone.get_overlapping_bodies().size() == 0:
 		buildsprite.modulate = buildcan_color

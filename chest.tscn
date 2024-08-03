@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv5jqf8gjvg6j"]
+[gd_scene load_steps=13 format=3 uid="uid://dv5jqf8gjvg6j"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_j4gpd"]
 [ext_resource type="Resource" uid="uid://dn45bgq058oqd" path="res://Items/chest.tres" id="2_hvr56"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_ea0wi"]
 [ext_resource type="Texture2D" uid="uid://66c4jeiedi1i" path="res://chest.png" id="4_irot0"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_hkg4s"]
+[ext_resource type="Script" path="res://inventory.gd" id="6_rjxmi"]
+[ext_resource type="Texture2D" uid="uid://cw8spxkiv51sr" path="res://slot.png" id="7_kbm46"]
+[ext_resource type="Texture2D" uid="uid://duaabsefefqmb" path="res://slot_selected.png" id="8_llmri"]
+[ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="9_ykgl6"]
+[ext_resource type="PackedScene" uid="uid://mjoowts3smo6" path="res://slot.tscn" id="12_nbmmd"]
 
 [sub_resource type="Resource" id="Resource_wsxh3"]
 script = ExtResource("3_ea0wi")
@@ -14,7 +19,7 @@ count = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(18.4615, 11.8462)
 
-[node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
+[node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("col", "inv", "inv_ui", "mining_progress_control")]
 input_pickable = true
 script = ExtResource("1_j4gpd")
 id = 14
@@ -22,6 +27,8 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 2.5
 drop = SubResource("Resource_wsxh3")
+inv = NodePath("CanvasLayer/ExtendedInv")
+inv_ui = NodePath("CanvasLayer/ExtendedInv/TextureRect2")
 mining_progress_control = NodePath("MiningProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,6 +42,307 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_irot0")
 
 [node name="MiningProgress" parent="." instance=ExtResource("5_hkg4s")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ExtendedInv" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("slots", "ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1079.0
+offset_right = 768.0
+offset_bottom = 432.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_rjxmi")
+slots = [NodePath("TextureRect2/slot"), NodePath("TextureRect2/slot2"), NodePath("TextureRect2/slot3"), NodePath("TextureRect2/slot4"), NodePath("TextureRect2/slot5"), NodePath("TextureRect2/slot6"), NodePath("TextureRect2/slot7"), NodePath("TextureRect2/slot8"), NodePath("TextureRect2/slot9"), NodePath("TextureRect2/slot10"), NodePath("TextureRect2/slot11"), NodePath("TextureRect2/slot12"), NodePath("TextureRect2/slot13"), NodePath("TextureRect2/slot14"), NodePath("TextureRect2/slot15"), NodePath("TextureRect2/slot16"), NodePath("TextureRect2/slot17"), NodePath("TextureRect2/slot18"), NodePath("TextureRect2/slot19"), NodePath("TextureRect2/slot20"), NodePath("TextureRect2/slot21"), NodePath("TextureRect2/slot22"), NodePath("TextureRect2/slot23"), NodePath("TextureRect2/slot24"), NodePath("TextureRect2/slot25"), NodePath("TextureRect2/slot26"), NodePath("TextureRect2/slot27"), NodePath("TextureRect2/slot28"), NodePath("TextureRect2/slot29"), NodePath("TextureRect2/slot30")]
+slotsprite = ExtResource("7_kbm46")
+selectedsprite = ExtResource("8_llmri")
+ui = NodePath("TextureRect2")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ExtendedInv"]
+visible = false
+self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 0
+offset_left = 2075.0
+offset_top = 1165.0
+offset_right = 4875.0
+offset_bottom = 2096.0
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+texture = ExtResource("9_ykgl6")
+
+[node name="slot" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 403.333
+offset_top = 570.0
+offset_right = 603.333
+offset_bottom = 770.0
+inv = NodePath("../..")
+
+[node name="slot2" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 603.333
+offset_top = 570.0
+offset_right = 803.333
+offset_bottom = 770.0
+id = 1
+inv = NodePath("../..")
+
+[node name="slot3" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 803.333
+offset_top = 570.0
+offset_right = 1003.33
+offset_bottom = 770.0
+id = 2
+inv = NodePath("../..")
+
+[node name="slot4" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1003.33
+offset_top = 570.0
+offset_right = 1203.33
+offset_bottom = 770.0
+id = 3
+inv = NodePath("../..")
+
+[node name="slot5" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1203.33
+offset_top = 570.0
+offset_right = 1403.33
+offset_bottom = 770.0
+id = 4
+inv = NodePath("../..")
+
+[node name="slot6" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1403.33
+offset_top = 570.0
+offset_right = 1603.33
+offset_bottom = 770.0
+id = 5
+inv = NodePath("../..")
+
+[node name="slot7" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1603.33
+offset_top = 570.0
+offset_right = 1803.33
+offset_bottom = 770.0
+id = 6
+inv = NodePath("../..")
+
+[node name="slot8" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1803.33
+offset_top = 570.0
+offset_right = 2003.33
+offset_bottom = 770.0
+id = 7
+inv = NodePath("../..")
+
+[node name="slot9" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 2003.33
+offset_top = 570.0
+offset_right = 2203.33
+offset_bottom = 770.0
+id = 8
+inv = NodePath("../..")
+
+[node name="slot10" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 2203.33
+offset_top = 570.0
+offset_right = 2403.33
+offset_bottom = 770.0
+id = 9
+inv = NodePath("../..")
+
+[node name="slot11" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 403.334
+offset_top = 370.0
+offset_right = 603.334
+offset_bottom = 570.0
+id = 10
+inv = NodePath("../..")
+
+[node name="slot12" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 603.334
+offset_top = 370.0
+offset_right = 803.334
+offset_bottom = 570.0
+id = 11
+inv = NodePath("../..")
+
+[node name="slot13" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 803.334
+offset_top = 370.0
+offset_right = 1003.33
+offset_bottom = 570.0
+id = 12
+inv = NodePath("../..")
+
+[node name="slot14" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1003.33
+offset_top = 370.0
+offset_right = 1203.33
+offset_bottom = 570.0
+id = 13
+inv = NodePath("../..")
+
+[node name="slot15" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1203.33
+offset_top = 370.0
+offset_right = 1403.33
+offset_bottom = 570.0
+id = 14
+inv = NodePath("../..")
+
+[node name="slot16" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1403.33
+offset_top = 370.0
+offset_right = 1603.33
+offset_bottom = 570.0
+id = 15
+inv = NodePath("../..")
+
+[node name="slot17" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1603.33
+offset_top = 370.0
+offset_right = 1803.33
+offset_bottom = 570.0
+id = 16
+inv = NodePath("../..")
+
+[node name="slot18" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1803.33
+offset_top = 370.0
+offset_right = 2003.33
+offset_bottom = 570.0
+id = 17
+inv = NodePath("../..")
+
+[node name="slot19" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 2003.33
+offset_top = 370.0
+offset_right = 2203.33
+offset_bottom = 570.0
+id = 18
+inv = NodePath("../..")
+
+[node name="slot20" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 2203.33
+offset_top = 370.0
+offset_right = 2403.33
+offset_bottom = 570.0
+id = 19
+inv = NodePath("../..")
+
+[node name="slot21" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 403.334
+offset_top = 163.333
+offset_right = 603.334
+offset_bottom = 363.333
+id = 20
+inv = NodePath("../..")
+
+[node name="slot22" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 603.334
+offset_top = 163.333
+offset_right = 803.334
+offset_bottom = 363.333
+id = 21
+inv = NodePath("../..")
+
+[node name="slot23" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 803.334
+offset_top = 163.333
+offset_right = 1003.33
+offset_bottom = 363.333
+id = 22
+inv = NodePath("../..")
+
+[node name="slot24" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1003.33
+offset_top = 163.333
+offset_right = 1203.33
+offset_bottom = 363.333
+id = 23
+inv = NodePath("../..")
+
+[node name="slot25" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1203.33
+offset_top = 163.333
+offset_right = 1403.33
+offset_bottom = 363.333
+id = 24
+inv = NodePath("../..")
+
+[node name="slot26" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1403.33
+offset_top = 163.333
+offset_right = 1603.33
+offset_bottom = 363.333
+id = 25
+inv = NodePath("../..")
+
+[node name="slot27" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1603.33
+offset_top = 163.333
+offset_right = 1803.33
+offset_bottom = 363.333
+id = 26
+inv = NodePath("../..")
+
+[node name="slot28" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 1803.33
+offset_top = 163.333
+offset_right = 2003.33
+offset_bottom = 363.333
+id = 27
+inv = NodePath("../..")
+
+[node name="slot29" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 2003.33
+offset_top = 163.333
+offset_right = 2203.33
+offset_bottom = 363.333
+id = 28
+inv = NodePath("../..")
+
+[node name="slot30" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("12_nbmmd")]
+layout_mode = 0
+offset_left = 2203.33
+offset_top = 163.333
+offset_right = 2403.33
+offset_bottom = 363.333
+id = 29
+inv = NodePath("../..")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

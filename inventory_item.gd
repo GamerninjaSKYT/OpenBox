@@ -9,3 +9,4 @@ extends Resource
 @export var build_sprite:Texture2D #keep null if not buildable
 @export var build_offset = Vector2.ZERO
 @export var build_col_size = Vector2(6.25,6.25)
+@export var build_sprite_offset = Vector2.ZERO

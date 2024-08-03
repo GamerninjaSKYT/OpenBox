@@ -13,3 +13,4 @@ build_id = 14
 build_sprite = ExtResource("1_ecrat")
 build_offset = Vector2(0, 0)
 build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, -48)

@@ -95,8 +95,12 @@ func AddItem(item:item_instance):
 				if countlefttoadd < 1:
 					item = null
 					return
-		else:
-			items[i] = item.duplicate()
-			item.count = 0
-			return
 		i += 1
+	if countlefttoadd > 0:
+		i = 0
+		for s in slots:
+			if items[i] == null:
+				items[i] = item.duplicate()
+				item.count = 0
+				return
+			i += 1

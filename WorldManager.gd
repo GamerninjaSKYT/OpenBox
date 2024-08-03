@@ -168,15 +168,14 @@ func LoadChunk(pos):
 					if p.inv != null:
 						var item_ids = data["invs_ids"][i]
 						var item_counts = data["invs_counts"][i]
-						print(p.inv.items.size())
 						var item_i = 0
 						for ii in p.inv.items:
-							if item_ids[item_i] != -1:
-								print("a")
-								var item = item_instance.new()
-								item.item = itemman.itemlist[item_ids[item_i]]
-								item.count = item_counts[item_i]
-								p.inv.items[item_i] = item.duplicate()
+							if item_ids.size() > item_i:
+								if item_ids[item_i] != -1:
+									var item = item_instance.new()
+									item.item = itemman.itemlist[item_ids[item_i]]
+									item.count = item_counts[item_i]
+									p.inv.items[item_i] = item.duplicate()
 							item_i += 1
 					i += 1
 				if data.has("drop_ids"):
