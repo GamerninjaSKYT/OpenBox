@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=36 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -31,6 +31,7 @@
 [ext_resource type="Resource" uid="uid://b33uiwsnhvxi7" path="res://Items/pickaxe_wooden.tres" id="26_ytd6b"]
 [ext_resource type="Resource" uid="uid://b4gg4avrtw6xg" path="res://Items/axe_wooden.tres" id="27_08ugh"]
 [ext_resource type="Resource" uid="uid://baaqn85ictlul" path="res://Recipes/craftingbench.tres" id="27_llapu"]
+[ext_resource type="Resource" uid="uid://cdxriyjs2nacd" path="res://Items/rock.tres" id="28_02yg4"]
 [ext_resource type="Resource" uid="uid://bb0c471lignuq" path="res://Recipes/chest.tres" id="30_1f4ef"]
 [ext_resource type="Resource" uid="uid://88nd0ex3cj78" path="res://Recipes/pickaxe_wooden.tres" id="32_aygyg"]
 [ext_resource type="Resource" uid="uid://gr5cs3cpbcq3" path="res://Recipes/axe_wooden.tres" id="34_ooigc"]
@@ -56,7 +57,7 @@ rockfloor = ExtResource("6_4c445")
 
 [node name="ItemManager" type="Node" parent="."]
 script = ExtResource("10_ksusm")
-itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh")])
+itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh"), ExtResource("28_02yg4")])
 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")

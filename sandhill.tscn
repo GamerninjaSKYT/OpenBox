@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfx55ep3awdyi"]
+[gd_scene load_steps=8 format=3 uid="uid://cfx55ep3awdyi"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_y5rb1"]
+[ext_resource type="Resource" uid="uid://cdxriyjs2nacd" path="res://Items/rock.tres" id="2_2y6tp"]
 [ext_resource type="Texture2D" uid="uid://dtwu5nfc2y0em" path="res://sandrock_floor.png" id="2_mpm7b"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="3_d7ofk"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_tanm3"]
+
+[sub_resource type="Resource" id="Resource_x58or"]
+script = ExtResource("3_tanm3")
+item = ExtResource("2_2y6tp")
+count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
@@ -15,6 +22,7 @@ destroyable = true
 destroy_time = 20.0
 mining_tool_needed = "pickaxe"
 need_tool_to_drop = true
+drop = SubResource("Resource_x58or")
 mining_progress_control = NodePath("MiningProgress")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

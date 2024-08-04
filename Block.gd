@@ -32,11 +32,12 @@ func _process(delta):
 func OnMouseHover(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable:
 		var mining_tool = get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot]
-		var correct_tool = true
+		var correct_tool = (mining_tool_needed == "")
 		if mining_tool != null:
 			mining_tool = mining_tool.item
 			if mining_tool.mining_tool_type == mining_tool_needed and mining_tool_needed != "":
 				destroy_progress += delta * mining_tool.mining_multiplier - delta
+				correct_tool = true
 			elif mining_tool_needed != "":
 				correct_tool = false
 		destroy_progress += delta
