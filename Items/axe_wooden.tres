@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://b4gg4avrtw6xg"]
+
+[ext_resource type="Texture2D" uid="uid://bxo1n1ehljh7w" path="res://axe_wooden.png" id="1_2wu5j"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_k4p5p"]
+
+[resource]
+script = ExtResource("2_k4p5p")
+name = "Wooden Axe"
+image = ExtResource("1_2wu5j")
+id = 6
+maxcount = 1
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+mining_tool_type = "axe"
+mining_multiplier = 1.25
