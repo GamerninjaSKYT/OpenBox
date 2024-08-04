@@ -22,6 +22,7 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 5.0
 mining_tool_needed = "axe"
+need_tool_to_drop = true
 drop = SubResource("Resource_nuu8p")
 mining_progress_control = NodePath("MiningProgress")
 

@@ -4,6 +4,7 @@ extends ScrollContainer
 @export var ingredientslots:Array[slot]
 @export var resultslot:slot
 @export var recipes_ui:VBoxContainer
+@export var search:LineEdit
 
 func _ready():
 	LoadRecipes()
@@ -12,6 +13,10 @@ func LoadRecipes():
 		c.queue_free()
 	var m = get_tree().root.get_child(0).craftman
 	for r in m.recipes:
+		if search != null:
+			if search.text != null and search.text != "":
+				if r.result.item.name.find(search.text) == -1:
+					continue
 		if r.ingredients.size() <= ingredientslots.size():
 			var p = recipepackedscene.instantiate()
 			recipes_ui.add_child(p)
