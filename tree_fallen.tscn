@@ -20,6 +20,7 @@ script = ExtResource("1_p07iw")
 id = 5
 col = NodePath(".")
 destroyable = true
+mining_tool_needed = "axe"
 drop = SubResource("Resource_4grwl")
 mining_progress_control = NodePath("MiningProgress")
 

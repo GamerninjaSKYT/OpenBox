@@ -5,6 +5,7 @@ extends StaticBody2D
 @export var destroyable:bool = false
 @export var destroy_time:float = 1
 @export var mining_tool_needed:String = ""
+@export var need_tool_to_drop = false
 var destroy_progress = 0
 var mousehover = false
 var chunkparent:chunk
@@ -31,13 +32,16 @@ func _process(delta):
 func OnMouseHover(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable:
 		var mining_tool = get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot]
+		var correct_tool = true
 		if mining_tool != null:
 			mining_tool = mining_tool.item
 			if mining_tool.mining_tool_type == mining_tool_needed and mining_tool_needed != "":
 				destroy_progress += delta * mining_tool.mining_multiplier - delta
+			elif mining_tool_needed != "":
+				correct_tool = false
 		destroy_progress += delta
 		if destroy_progress >= destroy_time:
-			Destroy()
+			Destroy(!(need_tool_to_drop and !correct_tool))
 	elif destroy_progress > 0:
 		destroy_progress -= delta
 	if Input.is_action_just_pressed("MR") and inv != null:
@@ -51,8 +55,8 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	mousehover = false
 	
-func Destroy():
-	if drop != null:
+func Destroy(do_drop = true):
+	if drop != null and do_drop:
 		DropItem(drop)
 	if inv != null:
 		for i in inv.items:

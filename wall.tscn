@@ -20,6 +20,7 @@ id = 11
 col = NodePath(".")
 destroyable = true
 destroy_time = 2.0
+mining_tool_needed = "axe"
 drop = SubResource("Resource_kvyra")
 mining_progress_control = NodePath("MiningProgress")
 

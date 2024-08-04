@@ -29,6 +29,7 @@ id = 13
 col = NodePath(".")
 destroyable = true
 destroy_time = 2.0
+mining_tool_needed = "axe"
 drop = SubResource("Resource_6fuo1")
 inv = NodePath("CanvasLayer/ExtendedInv")
 inv_ui = NodePath("CanvasLayer/ExtendedInv/TextureRect2")

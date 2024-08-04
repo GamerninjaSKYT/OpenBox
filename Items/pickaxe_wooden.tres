@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://b33uiwsnhvxi7"]
 
-[ext_resource type="Texture2D" uid="uid://66c4jeiedi1i" path="res://chest.png" id="1_skrhg"]
+[ext_resource type="Texture2D" uid="uid://vya021tvpmk6" path="res://pickaxe_wooden.png" id="1_a5h52"]
 [ext_resource type="Script" path="res://inventory_item.gd" id="2_jxo5t"]
 
 [resource]
 script = ExtResource("2_jxo5t")
 name = "Wooden Pickaxe"
-image = ExtResource("1_skrhg")
+image = ExtResource("1_a5h52")
 id = 5
 maxcount = 1
 build_id = -1
