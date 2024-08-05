@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=40 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -38,6 +38,7 @@
 [ext_resource type="Resource" uid="uid://88nd0ex3cj78" path="res://Recipes/pickaxe_wooden.tres" id="32_aygyg"]
 [ext_resource type="Resource" uid="uid://gr5cs3cpbcq3" path="res://Recipes/axe_wooden.tres" id="34_ooigc"]
 [ext_resource type="Resource" uid="uid://1owrsenljg1m" path="res://Recipes/pickaxe_stone.tres" id="38_uho0a"]
+[ext_resource type="Resource" uid="uid://br70b5cyj8lui" path="res://Recipes/axe_stone.tres" id="39_wvq4n"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
 script = ExtResource("1_e5byj")
@@ -64,4 +65,4 @@ itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), 
 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")
-recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("23_uebsp"), ExtResource("27_llapu"), ExtResource("30_1f4ef"), ExtResource("32_aygyg"), ExtResource("34_ooigc"), ExtResource("38_uho0a")])
+recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("23_uebsp"), ExtResource("27_llapu"), ExtResource("30_1f4ef"), ExtResource("32_aygyg"), ExtResource("34_ooigc"), ExtResource("38_uho0a"), ExtResource("39_wvq4n")])

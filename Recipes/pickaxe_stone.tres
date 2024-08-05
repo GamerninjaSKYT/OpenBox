@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_yler5"]
 script = ExtResource("2_ebfcp")
 item = ExtResource("1_mqhj2")
-count = 3
+count = 4
 
 [sub_resource type="Resource" id="Resource_ej4ro"]
 script = ExtResource("2_ebfcp")
