@@ -20,6 +20,7 @@ func _process(delta):
 		inv.Updateslots()
 	if mining_progress_control != null:
 		var mining_progress = mining_progress_control.get_child(0)
+		mining_progress.rotation = -rotation
 		mining_progress.visible = (destroy_progress > 0)
 		mining_progress.max_value = destroy_time
 		mining_progress.value = destroy_progress

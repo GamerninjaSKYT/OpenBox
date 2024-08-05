@@ -167,6 +167,8 @@ func LoadChunk(pos):
 					var px = (data["poses"][i].x)
 					var py = (data["poses"][i].y)
 					var p = AddBlockToChunk(c,objectlist[b],px,py)
+					if data.has("rots"):
+						p.rotation = data["rots"][i]
 					#Load inventory
 					if p.inv != null:
 						var item_ids = data["invs_ids"][i]
@@ -201,6 +203,7 @@ func UnloadChunk(c):
 	var data = {}
 	var ids = []
 	var poses = []
+	var rots = []
 	var invs_ids = []
 	var invs_counts = []
 	var drop_ids = []
@@ -209,6 +212,7 @@ func UnloadChunk(c):
 	for b in c.blocks:
 		ids.append(b.id)
 		poses.append(b.chunkpos)
+		rots.append(b.rotation)
 		var item_ids = []
 		var item_counts = []
 		if b.inv != null:
@@ -227,6 +231,7 @@ func UnloadChunk(c):
 		drop_poses.append(d.global_position)
 	data["ids"] = ids
 	data["poses"] = poses
+	data["rots"] = rots
 	data["drop_ids"] = drop_ids
 	data["drop_poses"] = drop_poses
 	data["drop_counts"] = drop_counts

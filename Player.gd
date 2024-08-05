@@ -13,6 +13,7 @@ var last_chunkpos:Vector2
 @export var buildcan_color:Color
 @export var buildcant_color:Color
 @export var build_col:CollisionShape2D
+var build_rot = 0
 @export var inv:inventory
 @export var cursor_item:item_instance
 @export var inv_ui:TextureRect
@@ -26,6 +27,8 @@ func _process(delta):
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:
 		if inv.items[inv.selected_hotbar_slot].item.build_id >= 0:
+			if Input.is_action_just_pressed("rotate"):
+				build_rot = fmod(build_rot + 1,4)
 			if (UpdateBuildZone(inv.items[inv.selected_hotbar_slot].item)):
 				if Input.is_action_just_pressed("MR") and open_inv == null and !inv.mouse_on_slot:
 					Build()
@@ -76,7 +79,15 @@ func move():
 
 func UpdateBuildZone(item):
 	buildsprite.visible = true
-	buildzone.global_position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) + item.build_offset
+	var offset = item.build_offset
+	if build_rot == 1:
+		offset = Vector2(item.build_offset.y, item.build_offset.x)
+	if build_rot == 2:
+		offset = Vector2(-item.build_offset.x, -item.build_offset.y)
+	if build_rot == 3:
+		offset = Vector2(-item.build_offset.y, -item.build_offset.x)
+	buildzone.global_position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) + offset
+	buildzone.rotation = deg_to_rad(build_rot*90)
 	buildsprite.texture = item.build_sprite
 	buildsprite.position = item.build_sprite_offset
 	build_col.scale = item.build_col_size
@@ -90,10 +101,18 @@ func UpdateBuildZone(item):
 func Build():
 	inv.items[inv.selected_hotbar_slot].count -= 1
 	var m = get_tree().root.get_child(0)
-	var pos = m.pos_to_blockpos(buildzone.global_position - inv.items[inv.selected_hotbar_slot].item.build_offset)
+	var offset = inv.items[inv.selected_hotbar_slot].item.build_offset
+	if build_rot == 1:
+		offset = Vector2(inv.items[inv.selected_hotbar_slot].item.build_offset.y, inv.items[inv.selected_hotbar_slot].item.build_offset.x)
+	if build_rot == 2:
+		offset = Vector2(-inv.items[inv.selected_hotbar_slot].item.build_offset.x, -inv.items[inv.selected_hotbar_slot].item.build_offset.y)
+	if build_rot == 3:
+		offset = Vector2(-inv.items[inv.selected_hotbar_slot].item.build_offset.y, -inv.items[inv.selected_hotbar_slot].item.build_offset.x)
+	var pos = m.pos_to_blockpos(buildzone.global_position - offset)
 	var c = m.GetChunkFromChunkPos(m.blockpos_to_chunkpos(pos))
 	var b = m.AddBlockToChunk(c,m.objectlist[inv.items[inv.selected_hotbar_slot].item.build_id],0,0)
 	b.global_position = pos*128
+	b.rotation = deg_to_rad(build_rot*90)
 	b.UpdateInChunkPos()
 
 func get_speed(): # apply speed modifiers here

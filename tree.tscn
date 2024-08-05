@@ -36,6 +36,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_tledw")
 
 [node name="MiningProgress" parent="." instance=ExtResource("5_830d2")]
+offset_left = -50.0
+offset_right = 93.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
