@@ -136,3 +136,11 @@ func DropItem(item, amount = 1):
 	d.chunkparent.drops.append(d)
 	d.UpdateItemDrop()
 	item.count -= amount
+
+func GetEveryItemInGame():
+	var items = get_tree().root.get_child(0).itemman.itemlist
+	for i in items:
+		var ii = item_instance.new()
+		ii.item = i
+		ii.count = i.maxcount
+		DropItem(ii, ii.count)
