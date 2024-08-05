@@ -14,15 +14,19 @@ var chunkpos:Vector2
 @export var inv:inventory = null
 @export var inv_ui:TextureRect
 @export var mining_progress_control:Control
+var mining_progress:ProgressBar = null
+
+func _ready():
+	if mining_progress_control != null:
+		mining_progress = mining_progress_control.get_child(0)
+		mining_progress.max_value = destroy_time
 
 func _process(delta):
 	if inv != null:
 		inv.Updateslots()
 	if mining_progress_control != null:
-		var mining_progress = mining_progress_control.get_child(0)
 		mining_progress.rotation = -rotation
 		mining_progress.visible = (destroy_progress > 0)
-		mining_progress.max_value = destroy_time
 		mining_progress.value = destroy_progress
 	if mousehover:
 		if get_tree().root.get_child(0).player.open_inv == null:
