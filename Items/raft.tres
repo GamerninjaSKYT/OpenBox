@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://sppwoyy2lgxw"]
+
+[ext_resource type="Texture2D" uid="uid://c57xmmgfeuura" path="res://raftbridge.png" id="1_j4kbj"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_17dpl"]
+
+[resource]
+script = ExtResource("2_17dpl")
+name = "Raft"
+image = ExtResource("1_j4kbj")
+id = 10
+maxcount = 100
+build_id = 15
+build_sprite = ExtResource("1_j4kbj")
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+mining_tool_type = ""
+mining_multiplier = 1.0
