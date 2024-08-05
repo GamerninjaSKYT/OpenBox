@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://cwcbd2ogn26nd"]
+
+[ext_resource type="Texture2D" uid="uid://dtrxrxvk15d0" path="res://axe_stone.png" id="1_epvyf"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_53nlv"]
+
+[resource]
+script = ExtResource("2_53nlv")
+name = "Stone Axe"
+image = ExtResource("1_epvyf")
+id = 9
+maxcount = 1
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+mining_tool_type = "axe"
+mining_multiplier = 2.0

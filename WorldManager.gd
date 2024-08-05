@@ -27,6 +27,7 @@ var time = 0
 var daytime = 0
 var ingame_hour = 6
 var day_beginning_hour = 6
+var is_day = true
 
 func _ready():
 	get_tree().auto_accept_quit = false
@@ -91,6 +92,7 @@ func _process(delta):
 	time += delta
 	daytime = fmod(time + 60*day_beginning_hour, 60*24)
 	ingame_hour = (daytime/60)
+	is_day = (ingame_hour >= 6 and ingame_hour <= 18)
 
 	if loadchunks:
 		chunkinterval_progress += delta

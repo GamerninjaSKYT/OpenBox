@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://bemdtt0br0odt"]
+
+[ext_resource type="Texture2D" uid="uid://csha2wwigbwlg" path="res://pickaxe_stone.png" id="1_30hb3"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_vti7u"]
+
+[resource]
+script = ExtResource("2_vti7u")
+name = "Stone Pickaxe"
+image = ExtResource("1_30hb3")
+id = 8
+maxcount = 1
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+mining_tool_type = "pickaxe"
+mining_multiplier = 2.0
