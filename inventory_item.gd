@@ -12,6 +12,12 @@ extends Resource
 @export var build_offset = Vector2.ZERO
 @export var build_col_size = Vector2(6.25,6.25)
 @export var build_sprite_offset = Vector2.ZERO
+@export var can_place_on_ids:Array[int]
 @export_category("Mining tool")
 @export var mining_tool_type:String = ""
 @export var mining_multiplier:float = 1
+
+func get_image():
+	return image
+func get_build_sprite():
+	return build_sprite

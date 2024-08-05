@@ -88,10 +88,16 @@ func UpdateBuildZone(item):
 		offset = Vector2(-item.build_offset.y, -item.build_offset.x)
 	buildzone.global_position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) + offset
 	buildzone.rotation = deg_to_rad(build_rot*90)
-	buildsprite.texture = item.build_sprite
+	buildsprite.texture = item.get_build_sprite()
 	buildsprite.position = item.build_sprite_offset
 	build_col.scale = item.build_col_size
-	if buildzone.get_overlapping_bodies().size() == 0:
+	var obstructions = buildzone.get_overlapping_bodies()
+	if item.can_place_on_ids.size() > 0:
+		for o in obstructions:
+			if o is block:
+				if item.can_place_on_ids.has(o.id):
+					obstructions.erase(o)
+	if obstructions.size() == 0:
 		buildsprite.modulate = buildcan_color
 		return true
 	else:

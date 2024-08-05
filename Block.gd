@@ -2,6 +2,7 @@ class_name block
 extends StaticBody2D
 @export var id = 0
 @export var col:CollisionObject2D
+@export var col_shape:CollisionShape2D
 @export var destroyable:bool = false
 @export var destroy_time:float = 1
 @export var mining_tool_needed:String = ""
@@ -15,6 +16,7 @@ var chunkpos:Vector2
 @export var inv_ui:TextureRect
 @export var mining_progress_control:Control
 var mining_progress:ProgressBar = null
+@export var makes_walkable = false
 
 func _ready():
 	if mining_progress_control != null:

@@ -68,7 +68,7 @@ func Updateslots():
 			s.amounttext.visible = true
 			s.amounttext.text = str(items[slots.find(s)].count)
 			s.image.visible = true
-			s.image.texture = items[slots.find(s)].item.image
+			s.image.texture = items[slots.find(s)].item.get_image()
 			if items[slots.find(s)].count < 1:
 				items[slots.find(s)] = null
 		else:

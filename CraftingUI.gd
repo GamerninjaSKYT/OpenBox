@@ -30,8 +30,8 @@ func LoadRecipes():
 			var n = 0
 			for i in r.ingredients:
 				p.ingredientimages[n].visible = true
-				p.ingredientimages[n].texture = i.item.image
+				p.ingredientimages[n].texture = i.item.get_image()
 				p.ingredientcounts[n].text = str(i.count)
 				n += 1
-			p.resultimage.texture = r.result.item.image
+			p.resultimage.texture = r.result.item.get_image()
 			p.resultcount.text = str(r.result.count)
