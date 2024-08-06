@@ -51,24 +51,25 @@ func OnMouseHover(delta):
 				if b.main_sprite.z_index > main_sprite.z_index:
 					on_top = false
 		if on_top:
-			var mining_tool = get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot]
-			var correct_tool = (mining_tool_needed == "")
-			if mining_tool != null:
-				mining_tool = mining_tool.item
-				if mining_tool.mining_tool_type == mining_tool_needed and mining_tool_needed != "":
-					destroy_progress += delta * mining_tool.mining_multiplier - delta
-					correct_tool = true
-				elif mining_tool_needed != "":
-					correct_tool = false
-			destroy_progress += delta
-			if destroy_progress >= destroy_time:
-				Destroy(!(need_tool_to_drop and !correct_tool))
+			Mine(get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot].item)
 	elif destroy_progress > 0:
 		destroy_progress -= delta
 	if Input.is_action_just_pressed("MR") and inv != null:
 		if get_tree().root.get_child(0).player.open_inv == null:
 			get_tree().root.get_child(0).player.open_inv = inv
 			inv_ui.visible = true
+
+func Mine(mining_tool:inventory_item):
+	var correct_tool = (mining_tool_needed == "")
+	if mining_tool != null:
+		if mining_tool.mining_tool_type == mining_tool_needed and mining_tool_needed != "":
+			destroy_progress += get_process_delta_time() * mining_tool.mining_multiplier - get_process_delta_time()
+			correct_tool = true
+		elif mining_tool_needed != "":
+			correct_tool = false
+	destroy_progress += get_process_delta_time()
+	if destroy_progress >= destroy_time:
+		Destroy(!(need_tool_to_drop and !correct_tool))
 
 func _on_mouse_entered():
 	mousehover = true

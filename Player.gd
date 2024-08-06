@@ -54,7 +54,7 @@ func _process(delta):
 		get_tree().root.get_child(0)._save()
 		get_tree().quit()
 	if Input.is_action_just_pressed("drop"):
-		if inv.items[inv.selected_hotbar_slot] != null:
+		if inv.items[inv.selected_hotbar_slot] != null and open_inv == null:
 			if !Input.is_action_pressed("shift"):
 				DropItem(inv.items[inv.selected_hotbar_slot])
 			else:
