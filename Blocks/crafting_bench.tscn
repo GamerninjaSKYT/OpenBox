@@ -22,7 +22,7 @@ count = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(19.76, 19.2308)
 
-[node name="CraftingBench" type="StaticBody2D" node_paths=PackedStringArray("col", "inv", "inv_ui", "mining_progress_control")]
+[node name="CraftingBench" type="StaticBody2D" node_paths=PackedStringArray("col", "inv", "inv_ui", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_3ule8")
 id = 13
@@ -34,6 +34,7 @@ drop = SubResource("Resource_6fuo1")
 inv = NodePath("CanvasLayer/ExtendedInv")
 inv_ui = NodePath("CanvasLayer/ExtendedInv/TextureRect2")
 mining_progress_control = NodePath("Node2D/MiningProgress")
+mining_progress_rot = NodePath("Node2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(63.5, 2.5)
