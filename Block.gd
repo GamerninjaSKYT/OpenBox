@@ -90,7 +90,6 @@ func DropItem(item):
 
 func MakeWalkable(on = true):
 	var blocks = GetBlocksInRadius(50)
-	print(blocks.size())
 	for b in blocks:
 		if b.can_walkable:
 			b.col.set_collision_layer_value(1,!on)
@@ -101,24 +100,7 @@ func UpdateInChunkPos():
 	return chunkpos
 
 func GetBlocksInRadius(radius):
-	var v_shape_rid = PhysicsServer2D.circle_shape_create()
-	PhysicsServer2D.shape_set_data(v_shape_rid, radius)
-	
-	var v_query = PhysicsShapeQueryParameters2D.new()
-	v_query.collide_with_areas = false
-	v_query.collide_with_bodies = true
-	v_query.shape_rid = v_shape_rid
-	
-	var v_transform = Transform2D()
-	v_transform.origin = global_position
-	v_query.transform = v_transform
-	
-	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query)
-	var blocks = []
-	for v in v_result:
-		if v["collider"] is block:
-			blocks.append(v["collider"])
+	var blocks = get_tree().root.get_child(0).GetBlocksInRadiusOnPos(radius, global_position)
 	if blocks.has(self):
 		blocks.erase(self)
 	return blocks
-	PhysicsServer2D.free_rid(v_shape_rid)
