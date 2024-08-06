@@ -13,7 +13,7 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="sandHill" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
+[node name="sandHill" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_y5rb1")
 id = 7
@@ -23,7 +23,8 @@ destroy_time = 20.0
 mining_tool_needed = "pickaxe"
 need_tool_to_drop = true
 drop = SubResource("Resource_x58or")
-mining_progress_control = NodePath("MiningProgress")
+mining_progress_control = NodePath("Node2D/MiningProgress")
+mining_progress_rot = NodePath("Node2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)
@@ -34,7 +35,9 @@ modulate = Color(1, 1, 0.568627, 1)
 scale = Vector2(4, 4)
 texture = ExtResource("2_mpm7b")
 
-[node name="MiningProgress" parent="." instance=ExtResource("3_d7ofk")]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MiningProgress" parent="Node2D" instance=ExtResource("3_d7ofk")]
 offset_left = -50.0
 offset_top = 70.0
 offset_right = 93.0

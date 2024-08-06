@@ -13,7 +13,7 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
+[node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_pqhnl")
 id = 11
@@ -22,7 +22,8 @@ destroyable = true
 destroy_time = 2.0
 mining_tool_needed = "axe"
 drop = SubResource("Resource_kvyra")
-mining_progress_control = NodePath("MiningProgress")
+mining_progress_control = NodePath("Node2D/MiningProgress")
+mining_progress_rot = NodePath("Node2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)
@@ -32,7 +33,9 @@ shape = SubResource("RectangleShape2D_3ri5i")
 scale = Vector2(4, 4)
 texture = ExtResource("2_ugc1a")
 
-[node name="MiningProgress" parent="." instance=ExtResource("5_4qqbv")]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MiningProgress" parent="Node2D" instance=ExtResource("5_4qqbv")]
 offset_left = -50.0
 offset_top = 70.0
 offset_right = 93.0

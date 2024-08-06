@@ -10,6 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 143.0
 offset_bottom = 75.0
+pivot_offset = Vector2(71, 37)
 mouse_filter = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="."]

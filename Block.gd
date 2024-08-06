@@ -16,6 +16,7 @@ var chunkpos:Vector2
 @export var inv_ui:TextureRect
 @export var mining_progress_control:Control
 var mining_progress:ProgressBar = null
+@export var mining_progress_rot:Node2D
 @export var makes_walkable = false
 @export var can_walkable = false
 @export var cant_be_destroyed_when_stood_on = false
@@ -29,7 +30,8 @@ func _process(delta):
 	if inv != null:
 		inv.Updateslots()
 	if mining_progress_control != null:
-		mining_progress.rotation = -rotation
+		if mining_progress_rot != null:
+			mining_progress_rot.rotation = -rotation
 		mining_progress.visible = (destroy_progress > 0)
 		mining_progress.value = destroy_progress
 	if mousehover:
