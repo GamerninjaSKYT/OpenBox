@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_17dpl")
-name = "Raft"
+name = "Bridge"
 image = ExtResource("1_j4kbj")
 id = 10
 maxcount = 100

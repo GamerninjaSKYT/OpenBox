@@ -13,7 +13,7 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="Raft" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
+[node name="Bridge" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control")]
 collision_layer = 2
 input_pickable = true
 script = ExtResource("1_d0y5n")
