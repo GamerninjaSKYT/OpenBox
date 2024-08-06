@@ -478,7 +478,7 @@ offset_right = 1400.0
 offset_bottom = 142.0
 texture = ExtResource("3_yohk6")
 
-[node name="CraftRecipes" type="ScrollContainer" parent="Control/ExtendedInv" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui")]
+[node name="CraftRecipes" type="ScrollContainer" parent="Control/ExtendedInv" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui", "search")]
 layout_mode = 0
 offset_left = -1400.0
 offset_top = -560.0
@@ -489,6 +489,7 @@ recipepackedscene = ExtResource("6_6ycr5")
 ingredientslots = [NodePath("../slot41")]
 resultslot = NodePath("../slot42")
 recipes_ui = NodePath("VBoxContainer")
+search = NodePath("../LineEdit")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ExtendedInv/CraftRecipes"]
 layout_mode = 2
@@ -522,6 +523,14 @@ offset_bottom = -675.0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_u6hmr")
 
+[node name="LineEdit" type="LineEdit" parent="Control/ExtendedInv"]
+layout_mode = 0
+offset_left = -849.0
+offset_top = -739.0
+offset_right = -59.0
+offset_bottom = -594.0
+theme_override_font_sizes/font_size = 80
+
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("slots", "ui", "hotbaritemnamedisplay")]
 script = ExtResource("5_p2agf")
 slots = [NodePath("../Control/slot"), NodePath("../Control/slot2"), NodePath("../Control/slot3"), NodePath("../Control/slot4"), NodePath("../Control/slot5"), NodePath("../Control/slot6"), NodePath("../Control/slot7"), NodePath("../Control/slot8"), NodePath("../Control/slot9"), NodePath("../Control/slot10"), NodePath("../Control/Inv/slot11"), NodePath("../Control/Inv/slot12"), NodePath("../Control/Inv/slot13"), NodePath("../Control/Inv/slot14"), NodePath("../Control/Inv/slot15"), NodePath("../Control/Inv/slot16"), NodePath("../Control/Inv/slot17"), NodePath("../Control/Inv/slot18"), NodePath("../Control/Inv/slot19"), NodePath("../Control/Inv/slot20"), NodePath("../Control/Inv/slot21"), NodePath("../Control/Inv/slot22"), NodePath("../Control/Inv/slot23"), NodePath("../Control/Inv/slot24"), NodePath("../Control/Inv/slot25"), NodePath("../Control/Inv/slot26"), NodePath("../Control/Inv/slot27"), NodePath("../Control/Inv/slot28"), NodePath("../Control/Inv/slot29"), NodePath("../Control/Inv/slot30"), NodePath("../Control/Inv/slot31"), NodePath("../Control/Inv/slot32"), NodePath("../Control/Inv/slot33"), NodePath("../Control/Inv/slot34"), NodePath("../Control/Inv/slot35"), NodePath("../Control/Inv/slot36"), NodePath("../Control/Inv/slot37"), NodePath("../Control/Inv/slot38"), NodePath("../Control/Inv/slot39"), NodePath("../Control/Inv/slot40"), NodePath("../Control/ExtendedInv/slot41"), NodePath("../Control/ExtendedInv/slot42")]
@@ -530,3 +539,5 @@ slotsprite = ExtResource("6_h3x8g")
 selectedsprite = ExtResource("7_qwn2n")
 ui = NodePath("../Control/Inv")
 hotbaritemnamedisplay = NodePath("../Control/ItemName")
+
+[connection signal="text_changed" from="Control/ExtendedInv/LineEdit" to="Control/ExtendedInv/CraftRecipes" method="LoadRecipes"]

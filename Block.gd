@@ -20,6 +20,7 @@ var mining_progress:ProgressBar = null
 @export var makes_walkable = false
 @export var can_walkable = false
 @export var cant_be_destroyed_when_stood_on = false
+@export var can_place_on = false
 
 func _ready():
 	if mining_progress_control != null:

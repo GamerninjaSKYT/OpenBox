@@ -94,11 +94,12 @@ func UpdateBuildZone(item):
 	buildsprite.position = item.build_sprite_offset
 	build_col.scale = item.build_col_size
 	var obstructions = buildzone.get_overlapping_bodies()
-	if item.can_place_on_ids.size() > 0:
-		for o in obstructions:
-			if o is block:
-				if item.can_place_on_ids.has(o.id):
-					obstructions.erase(o)
+	for o in obstructions.duplicate():
+		if o is block:
+			if o.can_place_on and o.id != item.build_id:
+				obstructions.erase(o)
+			elif item.can_place_on_ids.has(o.id):
+				obstructions.erase(o)
 	if obstructions.size() == 0:
 		buildsprite.modulate = buildcan_color
 		return true

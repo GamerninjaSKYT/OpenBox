@@ -8,14 +8,15 @@ extends ScrollContainer
 
 func _ready():
 	LoadRecipes()
-func LoadRecipes():
+func LoadRecipes(search_text = ""):
 	for c in recipes_ui.get_children():
 		c.queue_free()
+		recipes_ui.custom_minimum_size.y = 0
 	var m = get_tree().root.get_child(0).craftman
 	for r in m.recipes:
 		if search != null:
-			if search.text != null and search.text != "":
-				if r.result.item.name.find(search.text) == -1:
+			if search_text != null and search_text != "":
+				if r.result.item.name.findn(search_text) == -1:
 					continue
 		if r.ingredients.size() <= ingredientslots.size():
 			var p = recipepackedscene.instantiate()

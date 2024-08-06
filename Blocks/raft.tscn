@@ -27,12 +27,14 @@ mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 makes_walkable = true
 cant_be_destroyed_when_stood_on = true
+can_place_on = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)
 shape = SubResource("RectangleShape2D_3ri5i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 scale = Vector2(4, 4)
 texture = ExtResource("2_u6ayl")
 

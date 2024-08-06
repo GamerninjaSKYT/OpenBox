@@ -78,7 +78,7 @@ scale = Vector2(0.3, 0.3)
 mouse_filter = 2
 texture = ExtResource("6_5qtob")
 
-[node name="CraftRecipes" type="ScrollContainer" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui")]
+[node name="CraftRecipes" type="ScrollContainer" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui", "search")]
 layout_mode = 0
 offset_top = 229.0
 offset_right = 1023.0
@@ -88,6 +88,7 @@ recipepackedscene = ExtResource("8_c01j5")
 ingredientslots = [NodePath("../slot"), NodePath("../slot2"), NodePath("../slot3"), NodePath("../slot4"), NodePath("../slot5")]
 resultslot = NodePath("../slotR")
 recipes_ui = NodePath("VBoxContainer")
+search = NodePath("../LineEdit")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ExtendedInv/TextureRect2/CraftRecipes"]
 layout_mode = 2
@@ -156,13 +157,23 @@ offset_bottom = 115.0
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("10_88ffv")
 
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/ExtendedInv/TextureRect2"]
+layout_mode = 0
+offset_left = 1360.0
+offset_top = 43.3333
+offset_right = 2150.0
+offset_bottom = 188.333
+theme_override_font_sizes/font_size = 80
+
 [node name="Node2D" type="Node2D" parent="."]
+position = Vector2(64, 0)
 
 [node name="MiningProgress" parent="Node2D" instance=ExtResource("5_f47nm")]
-offset_left = 14.0
+offset_left = -50.0
 offset_top = 70.0
-offset_right = 157.0
+offset_right = 93.0
 offset_bottom = 145.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="text_changed" from="CanvasLayer/ExtendedInv/TextureRect2/LineEdit" to="CanvasLayer/ExtendedInv/TextureRect2/CraftRecipes" method="LoadRecipes"]
