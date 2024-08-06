@@ -5,9 +5,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="Water" type="StaticBody2D" node_paths=PackedStringArray("col", "col_shape")]
+[node name="Water" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "col_shape")]
 script = ExtResource("1_hu6o4")
 id = 1
+main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 col_shape = NodePath("CollisionShape2D")
 can_walkable = true

@@ -14,10 +14,11 @@ count = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(8.61539, 19.0769)
 
-[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control", "mining_progress_rot")]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_nqhkd")
 id = 4
+main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true
 destroy_time = 5.0

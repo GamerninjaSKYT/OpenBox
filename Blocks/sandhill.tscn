@@ -13,10 +13,11 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="sandHill" type="StaticBody2D" node_paths=PackedStringArray("col", "mining_progress_control", "mining_progress_rot")]
+[node name="sandHill" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_y5rb1")
 id = 7
+main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true
 destroy_time = 20.0
