@@ -169,6 +169,10 @@ func LoadChunk(pos):
 					var p = AddBlockToChunk(c,objectlist[b],px,py)
 					if data.has("rots"):
 						p.rotation = data["rots"][i]
+					if data.has("made_walkable"):
+						if p.can_walkable:
+							p.col.set_collision_layer_value(1,!data["made_walkable"][i])
+							p.col.set_collision_layer_value(2,data["made_walkable"][i])
 					#Load inventory
 					if p.inv != null:
 						var item_ids = data["invs_ids"][i]
@@ -209,10 +213,12 @@ func UnloadChunk(c):
 	var drop_ids = []
 	var drop_poses = []
 	var drop_counts = []
+	var made_walkable = []
 	for b in c.blocks:
 		ids.append(b.id)
 		poses.append(b.chunkpos)
 		rots.append(b.rotation)
+		made_walkable.append(b.col.get_collision_layer_value(1) == false)
 		var item_ids = []
 		var item_counts = []
 		if b.inv != null:
@@ -237,6 +243,7 @@ func UnloadChunk(c):
 	data["drop_counts"] = drop_counts
 	data["invs_ids"] = invs_ids
 	data["invs_counts"] = invs_counts
+	data["made_walkable"] = made_walkable
 	file.store_var(data)
 	file.close()
 	loadedchunkpositions.erase(pos_to_chunkpos(c.position)) # removes the chunk from the list of chunks

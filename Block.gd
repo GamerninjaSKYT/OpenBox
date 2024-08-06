@@ -17,6 +17,8 @@ var chunkpos:Vector2
 @export var mining_progress_control:Control
 var mining_progress:ProgressBar = null
 @export var makes_walkable = false
+@export var can_walkable = false
+@export var cant_be_destroyed_when_stood_on = false
 
 func _ready():
 	if mining_progress_control != null:
@@ -37,7 +39,7 @@ func _process(delta):
 		destroy_progress -= delta
 
 func OnMouseHover(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable and !(cant_be_destroyed_when_stood_on and global_position.distance_to(get_tree().root.get_child(0).player.global_position) < 125):
 		var mining_tool = get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot]
 		var correct_tool = (mining_tool_needed == "")
 		if mining_tool != null:
@@ -70,6 +72,8 @@ func Destroy(do_drop = true):
 		for i in inv.items:
 			if i != null:
 				DropItem(i)
+	if makes_walkable:
+		MakeWalkable(false)
 	chunkparent.blocks.erase(self)
 	queue_free()
 
@@ -82,6 +86,37 @@ func DropItem(item):
 	d.chunkparent.drops.append(d)
 	d.UpdateItemDrop()
 
+func MakeWalkable(on = true):
+	var blocks = GetBlocksInRadius(50)
+	print(blocks.size())
+	for b in blocks:
+		if b.can_walkable:
+			b.col.set_collision_layer_value(1,!on)
+			b.col.set_collision_layer_value(2,on)
+
 func UpdateInChunkPos():
 	chunkpos = get_tree().root.get_child(0).blockpos_to_inchunkpos(get_tree().root.get_child(0).pos_to_blockpos(global_position))
 	return chunkpos
+
+func GetBlocksInRadius(radius):
+	var v_shape_rid = PhysicsServer2D.circle_shape_create()
+	PhysicsServer2D.shape_set_data(v_shape_rid, radius)
+	
+	var v_query = PhysicsShapeQueryParameters2D.new()
+	v_query.collide_with_areas = false
+	v_query.collide_with_bodies = true
+	v_query.shape_rid = v_shape_rid
+	
+	var v_transform = Transform2D()
+	v_transform.origin = global_position
+	v_query.transform = v_transform
+	
+	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query)
+	var blocks = []
+	for v in v_result:
+		if v["collider"] is block:
+			blocks.append(v["collider"])
+	if blocks.has(self):
+		blocks.erase(self)
+	return blocks
+	PhysicsServer2D.free_rid(v_shape_rid)

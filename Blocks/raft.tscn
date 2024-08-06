@@ -25,6 +25,7 @@ mining_tool_needed = "axe"
 drop = SubResource("Resource_oem8e")
 mining_progress_control = NodePath("MiningProgress")
 makes_walkable = true
+cant_be_destroyed_when_stood_on = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.5, 6.5)

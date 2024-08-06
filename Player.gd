@@ -59,6 +59,8 @@ func _process(delta):
 				DropItem(inv.items[inv.selected_hotbar_slot])
 			else:
 				DropItem(inv.items[inv.selected_hotbar_slot], inv.items[inv.selected_hotbar_slot].count)
+	if Input.is_action_just_pressed("get_every"):
+		GetEveryItemInGame()
 
 func _physics_process(delta):
 	if !inv_ui.visible:
@@ -120,6 +122,8 @@ func Build():
 	b.global_position = pos*128
 	b.rotation = deg_to_rad(build_rot*90)
 	b.UpdateInChunkPos()
+	if b.makes_walkable:
+		b.MakeWalkable()
 
 func get_speed(): # apply speed modifiers here
 	return base_speed
