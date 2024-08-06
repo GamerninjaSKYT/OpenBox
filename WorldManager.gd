@@ -173,6 +173,7 @@ func LoadChunk(pos):
 						if p.can_walkable:
 							p.col.set_collision_layer_value(1,!data["made_walkable"][i])
 							p.col.set_collision_layer_value(2,data["made_walkable"][i])
+							p.made_walkable = data["made_walkable"][i]
 					#Load inventory
 					if p.inv != null:
 						var item_ids = data["invs_ids"][i]

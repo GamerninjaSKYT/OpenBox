@@ -96,7 +96,9 @@ func UpdateBuildZone(item):
 	var obstructions = buildzone.get_overlapping_bodies()
 	for o in obstructions.duplicate():
 		if o is block:
-			if o.can_place_on and o.id != item.build_id:
+			if o.made_walkable:
+				obstructions.erase(o)
+			elif o.can_place_on and o.id != item.build_id:
 				obstructions.erase(o)
 			elif item.can_place_on_ids.has(o.id):
 				obstructions.erase(o)

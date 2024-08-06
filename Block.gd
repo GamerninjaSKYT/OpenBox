@@ -21,6 +21,7 @@ var mining_progress:ProgressBar = null
 @export var can_walkable = false
 @export var cant_be_destroyed_when_stood_on = false
 @export var can_place_on = false
+var made_walkable = false
 
 func _ready():
 	if mining_progress_control != null:
@@ -95,6 +96,7 @@ func MakeWalkable(on = true):
 		if b.can_walkable:
 			b.col.set_collision_layer_value(1,!on)
 			b.col.set_collision_layer_value(2,on)
+			b.made_walkable = on
 
 func UpdateInChunkPos():
 	chunkpos = get_tree().root.get_child(0).blockpos_to_inchunkpos(get_tree().root.get_child(0).pos_to_blockpos(global_position))
