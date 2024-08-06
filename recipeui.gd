@@ -36,3 +36,8 @@ func _on_craft_button_down():
 			inv.items[craftui.resultslot.id].count = 0
 		inv.items[craftui.resultslot.id].item = rec.result.item
 		inv.items[craftui.resultslot.id].count += rec.result.count
+
+
+func _on_button_2_button_down():
+	for i in range(rec.result.item.maxcount):
+		_on_craft_button_down()

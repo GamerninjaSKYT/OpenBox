@@ -21,7 +21,7 @@ resultname = NodePath("TextureRect/Label")
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.362829, 0.362829, 0.362829, 1)
 layout_mode = 0
-offset_right = 703.0
+offset_right = 979.0
 offset_bottom = 250.0
 texture = ExtResource("1_cflcr")
 
@@ -167,6 +167,16 @@ scale = Vector2(1.5, 1.5)
 theme_override_font_sizes/font_size = 25
 text = "Craft"
 
+[node name="Button2" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 711.0
+offset_top = 140.0
+offset_right = 871.0
+offset_bottom = 200.0
+scale = Vector2(1.5, 1.5)
+theme_override_font_sizes/font_size = 25
+text = "Craft All"
+
 [node name="Label" type="Label" parent="TextureRect"]
 layout_mode = 0
 offset_left = 112.0
@@ -182,3 +192,4 @@ autowrap_mode = 1
 clip_text = true
 
 [connection signal="button_down" from="TextureRect/Button" to="." method="_on_craft_button_down"]
+[connection signal="button_down" from="TextureRect/Button2" to="." method="_on_button_2_button_down"]
