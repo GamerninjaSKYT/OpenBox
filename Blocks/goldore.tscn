@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://de0vep230a67m"]
+[gd_scene load_steps=8 format=3 uid="uid://de0vep230a67m"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_apvds"]
+[ext_resource type="Resource" uid="uid://dexvf8ohesc3j" path="res://Items/gold.tres" id="2_exdy5"]
 [ext_resource type="Texture2D" uid="uid://b0qat3l0wmi7w" path="res://goldore.png" id="2_xooek"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_7pec7"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="3_xbqh4"]
+
+[sub_resource type="Resource" id="Resource_jor5a"]
+script = ExtResource("3_7pec7")
+item = ExtResource("2_exdy5")
+count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
@@ -16,6 +23,7 @@ destroyable = true
 destroy_time = 10.0
 mining_tool_needed = "pickaxe"
 need_tool_to_drop = true
+drop = SubResource("Resource_jor5a")
 mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 

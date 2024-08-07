@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://bfl3lxm51mhht"]
+
+[ext_resource type="Texture2D" uid="uid://drbeuq82uekfw" path="res://iron.png" id="1_thtl7"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_o1kxa"]
+
+[resource]
+script = ExtResource("2_o1kxa")
+name = "Iron"
+image = ExtResource("1_thtl7")
+id = 13
+maxcount = 100
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+mining_tool_type = ""
+mining_multiplier = 1.0
