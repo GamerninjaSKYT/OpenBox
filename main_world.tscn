@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=50 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -25,8 +25,11 @@
 [ext_resource type="Script" path="res://CraftingManager.gd" id="18_46wry"]
 [ext_resource type="PackedScene" uid="uid://c14v6win7l1l3" path="res://Blocks/door.tscn" id="18_ebore"]
 [ext_resource type="Resource" uid="uid://cgkbeiw7uefr5" path="res://Items/wall.tres" id="19_q5i5p"]
+[ext_resource type="PackedScene" uid="uid://behn3roncqpag" path="res://Blocks/ironore.tscn" id="19_wcske"]
 [ext_resource type="Resource" uid="uid://bebntepflu2p1" path="res://Items/stick.tres" id="20_1e6n6"]
+[ext_resource type="PackedScene" uid="uid://de0vep230a67m" path="res://Blocks/goldore.tscn" id="20_hxysq"]
 [ext_resource type="Resource" uid="uid://gue1pydctwbx" path="res://Recipes/wall.tres" id="21_gqv77"]
+[ext_resource type="PackedScene" uid="uid://lp6tmt1yjwek" path="res://Blocks/sandgoldore.tscn" id="21_illf4"]
 [ext_resource type="Resource" uid="uid://cmmltdhqrc5cx" path="res://Items/crafting_bench.tres" id="23_7jkno"]
 [ext_resource type="Resource" uid="uid://de73b1onfggaq" path="res://Recipes/stick.tres" id="23_uebsp"]
 [ext_resource type="Resource" uid="uid://dn45bgq058oqd" path="res://Items/chest.tres" id="25_0kxdx"]
@@ -42,13 +45,14 @@
 [ext_resource type="Resource" uid="uid://ckt02c88mfj5r" path="res://Items/door.tres" id="34_k7ov5"]
 [ext_resource type="Resource" uid="uid://gr5cs3cpbcq3" path="res://Recipes/axe_wooden.tres" id="34_ooigc"]
 [ext_resource type="Resource" uid="uid://cv4un3fea08pu" path="res://Recipes/raft.tres" id="37_f1w75"]
+[ext_resource type="Resource" uid="uid://do4aoswst4ngf" path="res://Items/sand.tres" id="38_2u66r"]
 [ext_resource type="Resource" uid="uid://1owrsenljg1m" path="res://Recipes/pickaxe_stone.tres" id="38_uho0a"]
 [ext_resource type="Resource" uid="uid://br70b5cyj8lui" path="res://Recipes/axe_stone.tres" id="39_wvq4n"]
 [ext_resource type="Resource" uid="uid://cg3lmvqynonm6" path="res://Recipes/door.tres" id="40_4m1ys"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
 script = ExtResource("1_e5byj")
-objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423"), ExtResource("14_egh5u"), ExtResource("15_l4jfx"), ExtResource("16_nexve"), ExtResource("17_3sy2w"), ExtResource("18_ebore")])
+objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423"), ExtResource("14_egh5u"), ExtResource("15_l4jfx"), ExtResource("16_nexve"), ExtResource("17_3sy2w"), ExtResource("18_ebore"), ExtResource("19_wcske"), ExtResource("20_hxysq"), ExtResource("21_illf4")])
 itemman = NodePath("ItemManager")
 craftman = NodePath("CraftingManager")
 player = NodePath("Player")
@@ -67,7 +71,7 @@ rockfloor = ExtResource("6_4c445")
 
 [node name="ItemManager" type="Node" parent="."]
 script = ExtResource("10_ksusm")
-itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh"), ExtResource("28_02yg4"), ExtResource("29_5l6pv"), ExtResource("30_t7x5y"), ExtResource("32_x3p5v"), ExtResource("34_k7ov5")])
+itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh"), ExtResource("28_02yg4"), ExtResource("29_5l6pv"), ExtResource("30_t7x5y"), ExtResource("32_x3p5v"), ExtResource("34_k7ov5"), ExtResource("38_2u66r")])
 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")

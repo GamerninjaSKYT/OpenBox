@@ -21,7 +21,7 @@ var loadedchunkpositions:Array[Vector2]
 @export var rockhill:PackedScene
 @export var rockfloor:PackedScene
 var heightmap = FastNoiseLite.new()
-var treemap = FastNoiseLite.new()
+var decormap = FastNoiseLite.new()
 var tempmap = FastNoiseLite.new()
 var time = 0
 var daytime = 0
@@ -126,7 +126,7 @@ func LoadChunk(pos):
 			for x in range(-8,8,1): # loop through every block position in the chunk
 				for y in range(-8,8,1):
 					var height = heightmap.get_noise_2d((c.position.x+(x*128))/200,(c.position.y+(y*128))/200)
-					var treevalue = treemap.get_noise_2d((c.position.x+(x*128)),(c.position.y+(y*128)))
+					var decorvalue = decormap.get_noise_2d((c.position.x+(x*128)),(c.position.y+(y*128)))
 					var temp = tempmap.get_noise_2d((c.position.x+(x*128))/2000,(c.position.y+(y*128))/2000)
 					var desert_temp_threshold = 0.3
 					var snow_threshold = -0.3
@@ -148,14 +148,23 @@ func LoadChunk(pos):
 					AddBlockToChunk(c,block,x,y)
 					if height > 0.35 and height < 0.45: # rockhill
 						if temp <= desert_temp_threshold:
-							AddBlockToChunk(c,rockhill,x,y)
+							if decorvalue > 0.5:
+								if decorvalue > 0.65:
+									AddBlockToChunk(c,objectlist[18],x,y)#Gold
+								else:
+									AddBlockToChunk(c,objectlist[17],x,y)#Iron
+							else:
+								AddBlockToChunk(c,rockhill,x,y)
 						else:
-							AddBlockToChunk(c,objectlist[7],x,y)
-					elif height > 0.3 and height < 0.35 and treevalue > (0.5 - height/3.75) and temp <= desert_temp_threshold and temp >= snow_threshold: # fallen tree
+							if decorvalue > 0.6:
+								AddBlockToChunk(c, objectlist[19],x,y)
+							else:
+								AddBlockToChunk(c,objectlist[7],x,y)
+					elif height > 0.3 and height < 0.35 and decorvalue > (0.5 - height/3.75) and temp <= desert_temp_threshold and temp >= snow_threshold: # fallen tree
 						AddBlockToChunk(c,objectlist[5],x,y)
-					elif height > 0.15 and height < 0.35 and treevalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
+					elif height > 0.15 and height < 0.35 and decorvalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
 						AddBlockToChunk(c,objectlist[4],x,y)
-					elif height > 0.15 and height < 0.35 and treevalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
+					elif height > 0.15 and height < 0.35 and decorvalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
 						AddBlockToChunk(c,objectlist[12],x,y)
 		else:
 			var file = FileAccess.open("user://chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data",FileAccess.READ)

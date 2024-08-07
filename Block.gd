@@ -56,7 +56,7 @@ func OnMouseHover(delta):
 				if b.main_sprite.z_index > main_sprite.z_index:
 					on_top = false
 		if on_top:
-			Mine(get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot].item)
+			Mine(get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot])
 	elif destroy_progress > 0:
 		destroy_progress -= delta
 	if Input.is_action_just_pressed("MR"):
@@ -79,9 +79,10 @@ func OpenCloseDoor(do_open:bool):
 	else:
 		main_sprite.texture = closed_image
 
-func Mine(mining_tool:inventory_item):
+func Mine(mining_tool):
 	var correct_tool = (mining_tool_needed == "")
 	if mining_tool != null:
+		mining_tool = mining_tool.item
 		if mining_tool.mining_tool_type == mining_tool_needed and mining_tool_needed != "":
 			destroy_progress += get_process_delta_time() * mining_tool.mining_multiplier - get_process_delta_time()
 			correct_tool = true
