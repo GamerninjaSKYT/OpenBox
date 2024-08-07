@@ -147,6 +147,8 @@ func LoadChunk(pos):
 					elif height > 0.35: # rockfloor
 						if temp <= desert_temp_threshold:
 							block = rockfloor
+							if height > 0.45 and decorvalue > 0.5:
+								AddBlockToChunk(c,objectlist[20],x,y)
 						else:
 							block = objectlist[8]
 					AddBlockToChunk(c,block,x,y)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=55 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://de0vep230a67m" path="res://Blocks/goldore.tscn" id="20_hxysq"]
 [ext_resource type="Resource" uid="uid://gue1pydctwbx" path="res://Recipes/wall.tres" id="21_gqv77"]
 [ext_resource type="PackedScene" uid="uid://lp6tmt1yjwek" path="res://Blocks/sandgoldore.tscn" id="21_illf4"]
+[ext_resource type="PackedScene" uid="uid://dpb3nshxahwqu" path="res://Blocks/coalore.tscn" id="22_umxk1"]
 [ext_resource type="Resource" uid="uid://cmmltdhqrc5cx" path="res://Items/crafting_bench.tres" id="23_7jkno"]
 [ext_resource type="Resource" uid="uid://de73b1onfggaq" path="res://Recipes/stick.tres" id="23_uebsp"]
 [ext_resource type="Resource" uid="uid://dn45bgq058oqd" path="res://Items/chest.tres" id="25_0kxdx"]
@@ -51,11 +52,12 @@
 [ext_resource type="Resource" uid="uid://br70b5cyj8lui" path="res://Recipes/axe_stone.tres" id="39_wvq4n"]
 [ext_resource type="Resource" uid="uid://cg3lmvqynonm6" path="res://Recipes/door.tres" id="40_4m1ys"]
 [ext_resource type="Resource" uid="uid://dexvf8ohesc3j" path="res://Items/gold.tres" id="40_fujol"]
+[ext_resource type="Resource" uid="uid://cv1rltrd8lkny" path="res://Items/coal.tres" id="42_gw517"]
 [ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="52_hqaif"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup", "nightdark")]
 script = ExtResource("1_e5byj")
-objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423"), ExtResource("14_egh5u"), ExtResource("15_l4jfx"), ExtResource("16_nexve"), ExtResource("17_3sy2w"), ExtResource("18_ebore"), ExtResource("19_wcske"), ExtResource("20_hxysq"), ExtResource("21_illf4")])
+objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423"), ExtResource("14_egh5u"), ExtResource("15_l4jfx"), ExtResource("16_nexve"), ExtResource("17_3sy2w"), ExtResource("18_ebore"), ExtResource("19_wcske"), ExtResource("20_hxysq"), ExtResource("21_illf4"), ExtResource("22_umxk1")])
 itemman = NodePath("ItemManager")
 craftman = NodePath("CraftingManager")
 player = NodePath("Player")
@@ -75,7 +77,7 @@ nightdark = NodePath("Control/NightDark")
 
 [node name="ItemManager" type="Node" parent="."]
 script = ExtResource("10_ksusm")
-itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh"), ExtResource("28_02yg4"), ExtResource("29_5l6pv"), ExtResource("30_t7x5y"), ExtResource("32_x3p5v"), ExtResource("34_k7ov5"), ExtResource("38_2u66r"), ExtResource("39_j7ccd"), ExtResource("40_fujol")])
+itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh"), ExtResource("28_02yg4"), ExtResource("29_5l6pv"), ExtResource("30_t7x5y"), ExtResource("32_x3p5v"), ExtResource("34_k7ov5"), ExtResource("38_2u66r"), ExtResource("39_j7ccd"), ExtResource("40_fujol"), ExtResource("42_gw517")])
 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")
