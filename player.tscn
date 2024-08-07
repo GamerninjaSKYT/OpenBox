@@ -19,7 +19,7 @@ size = Vector2(12.8, 3.16667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7peci"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text") groups=["Player"]]
 script = ExtResource("1_45kwr")
 image_front = ExtResource("2_lrmkq")
 image_back = ExtResource("3_j60p5")
@@ -34,6 +34,7 @@ build_col = NodePath("BuildZone/CollisionShape2D")
 inv = NodePath("Inventory")
 inv_ui = NodePath("Control/Inv")
 extended_inv = NodePath("Control/ExtendedInv")
+time_text = NodePath("Control/ExtendedInv/Time")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
@@ -530,6 +531,15 @@ offset_top = -739.0
 offset_right = -59.0
 offset_bottom = -594.0
 theme_override_font_sizes/font_size = 80
+
+[node name="Time" type="Label" parent="Control/ExtendedInv"]
+layout_mode = 0
+offset_left = 788.0
+offset_top = 48.0
+offset_right = 989.0
+offset_bottom = 151.0
+theme_override_font_sizes/font_size = 75
+text = "12:00"
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("slots", "ui", "hotbaritemnamedisplay")]
 script = ExtResource("5_p2agf")

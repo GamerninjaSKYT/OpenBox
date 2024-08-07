@@ -97,7 +97,6 @@ func _process(delta):
 	ingame_hour = (daytime/60)
 	is_day = (ingame_hour >= 6 and ingame_hour <= 18)
 	nightdark.modulate.a = max(0,(float(abs(ingame_hour-12))/12)-0.5)
-	print(ingame_hour)
 
 	if loadchunks:
 		chunkinterval_progress += delta

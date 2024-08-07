@@ -19,11 +19,19 @@ var build_rot = 0
 @export var inv_ui:TextureRect
 @export var open_inv:inventory = null
 @export var extended_inv:Control
+@export var time_text:Label
 
 func _ready():
 	inv_ui.visible = false
 
 func _process(delta):
+	var m = get_tree().root.get_child(0)
+	if time_text != null:
+		var minute = floor(fmod(m.daytime,60))
+		var additional_zero = ""
+		if minute < 10:
+			additional_zero = "0"
+		time_text.text = str(floor(m.ingame_hour)) + ":" + additional_zero + str(minute)
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:
 		if inv.items[inv.selected_hotbar_slot].item.build_id >= 0:
