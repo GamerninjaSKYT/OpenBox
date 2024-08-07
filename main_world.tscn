@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=53 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -51,8 +51,9 @@
 [ext_resource type="Resource" uid="uid://br70b5cyj8lui" path="res://Recipes/axe_stone.tres" id="39_wvq4n"]
 [ext_resource type="Resource" uid="uid://cg3lmvqynonm6" path="res://Recipes/door.tres" id="40_4m1ys"]
 [ext_resource type="Resource" uid="uid://dexvf8ohesc3j" path="res://Items/gold.tres" id="40_fujol"]
+[ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="52_hqaif"]
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup", "nightdark")]
 script = ExtResource("1_e5byj")
 objectlist = Array[PackedScene]([ExtResource("3_qbed4"), ExtResource("4_epu7w"), ExtResource("5_sgq64"), ExtResource("6_4c445"), ExtResource("6_valq8"), ExtResource("7_r3538"), ExtResource("8_nwxeq"), ExtResource("9_ygo0p"), ExtResource("10_3tatp"), ExtResource("11_7ixh3"), ExtResource("12_7vshg"), ExtResource("13_w8423"), ExtResource("14_egh5u"), ExtResource("15_l4jfx"), ExtResource("16_nexve"), ExtResource("17_3sy2w"), ExtResource("18_ebore"), ExtResource("19_wcske"), ExtResource("20_hxysq"), ExtResource("21_illf4")])
 itemman = NodePath("ItemManager")
@@ -66,6 +67,7 @@ grass = ExtResource("3_qbed4")
 water = ExtResource("4_epu7w")
 rockhill = ExtResource("5_sgq64")
 rockfloor = ExtResource("6_4c445")
+nightdark = NodePath("Control/NightDark")
 
 [node name="Player" parent="." instance=ExtResource("1_257w6")]
 
@@ -78,3 +80,24 @@ itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")
 recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("23_uebsp"), ExtResource("27_llapu"), ExtResource("37_f1w75"), ExtResource("40_4m1ys"), ExtResource("30_1f4ef"), ExtResource("32_aygyg"), ExtResource("34_ooigc"), ExtResource("38_uho0a"), ExtResource("39_wvq4n")])
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NightDark" type="TextureRect" parent="Control"]
+visible = false
+modulate = Color(0, 0, 0, 0)
+z_index = 200
+layout_mode = 0
+offset_left = -3590.0
+offset_top = -1343.0
+offset_right = 2396.0
+offset_bottom = 2054.0
+mouse_filter = 2
+texture = ExtResource("52_hqaif")

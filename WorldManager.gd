@@ -23,14 +23,17 @@ var loadedchunkpositions:Array[Vector2]
 var heightmap = FastNoiseLite.new()
 var decormap = FastNoiseLite.new()
 var tempmap = FastNoiseLite.new()
+@export_category("Time and Weather")
 var time = 0
 var daytime = 0
 var ingame_hour = 6
 var day_beginning_hour = 6
 var is_day = true
+@export var nightdark:TextureRect
 
 func _ready():
 	get_tree().auto_accept_quit = false
+	nightdark.visible = true
 	if FileAccess.file_exists("user://save.data"):
 		var file = FileAccess.open("user://save.data",FileAccess.READ)
 		var data = file.get_var()
@@ -93,6 +96,8 @@ func _process(delta):
 	daytime = fmod(time + 60*day_beginning_hour, 60*24)
 	ingame_hour = (daytime/60)
 	is_day = (ingame_hour >= 6 and ingame_hour <= 18)
+	nightdark.modulate.a = max(0,(float(abs(ingame_hour-12))/12)-0.5)
+	print(ingame_hour)
 
 	if loadchunks:
 		chunkinterval_progress += delta
