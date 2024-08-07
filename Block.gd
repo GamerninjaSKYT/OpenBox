@@ -23,6 +23,11 @@ var mining_progress:ProgressBar = null
 @export var cant_be_destroyed_when_stood_on = false
 @export var can_place_on = false
 var made_walkable = false
+@export var is_door = false
+@export var cant_close_radius = 100
+var open = false
+@export var open_image:Texture2D
+@export var closed_image:Texture2D
 
 func _ready():
 	if mining_progress_control != null:
@@ -54,10 +59,25 @@ func OnMouseHover(delta):
 			Mine(get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot].item)
 	elif destroy_progress > 0:
 		destroy_progress -= delta
-	if Input.is_action_just_pressed("MR") and inv != null:
+	if Input.is_action_just_pressed("MR"):
 		if get_tree().root.get_child(0).player.open_inv == null:
-			get_tree().root.get_child(0).player.open_inv = inv
-			inv_ui.visible = true
+			Use(true)
+
+func Use(is_player_interaction):
+	if inv != null:
+		get_tree().root.get_child(0).player.open_inv = inv
+		inv_ui.visible = true
+	if is_door and (!is_player_interaction or global_position.distance_to(get_tree().root.get_child(0).player.global_position) > cant_close_radius or !open):
+		OpenCloseDoor(!open)
+
+func OpenCloseDoor(do_open:bool):
+	open = do_open
+	col.set_collision_layer_value(1,!open)
+	col.set_collision_layer_value(2,open)
+	if open:
+		main_sprite.texture = open_image
+	else:
+		main_sprite.texture = closed_image
 
 func Mine(mining_tool:inventory_item):
 	var correct_tool = (mining_tool_needed == "")

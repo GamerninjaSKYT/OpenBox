@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://ckt02c88mfj5r"]
+
+[ext_resource type="Texture2D" uid="uid://clhny6l2ajv52" path="res://door_closed.png" id="1_vkn8q"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_251iy"]
+
+[resource]
+script = ExtResource("2_251iy")
+name = "Door"
+image = ExtResource("1_vkn8q")
+id = 11
+maxcount = 100
+build_id = 16
+build_sprite = ExtResource("1_vkn8q")
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+mining_tool_type = ""
+mining_multiplier = 1.0

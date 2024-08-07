@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://c14v6win7l1l3"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_6sn5g"]
+[ext_resource type="Resource" uid="uid://ckt02c88mfj5r" path="res://Items/door.tres" id="2_a0pi3"]
+[ext_resource type="Texture2D" uid="uid://bfildyajyfeul" path="res://door_open.png" id="2_r75h5"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_4ipf5"]
+[ext_resource type="Texture2D" uid="uid://clhny6l2ajv52" path="res://door_closed.png" id="3_5q7i3"]
+[ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_84mce"]
+
+[sub_resource type="Resource" id="Resource_j7a6w"]
+script = ExtResource("3_4ipf5")
+item = ExtResource("2_a0pi3")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+
+[node name="Door" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "col_shape", "mining_progress_control", "mining_progress_rot")]
+input_pickable = true
+script = ExtResource("1_6sn5g")
+id = 16
+main_sprite = NodePath("Sprite2D")
+col = NodePath(".")
+col_shape = NodePath("CollisionShape2D")
+destroyable = true
+destroy_time = 2.5
+mining_tool_needed = "axe"
+drop = SubResource("Resource_j7a6w")
+mining_progress_control = NodePath("Node2D/MiningProgress")
+mining_progress_rot = NodePath("Node2D")
+is_door = true
+open_image = ExtResource("2_r75h5")
+closed_image = ExtResource("3_5q7i3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("3_5q7i3")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MiningProgress" parent="Node2D" instance=ExtResource("5_84mce")]
+offset_left = -50.0
+offset_top = 70.0
+offset_right = 93.0
+offset_bottom = 145.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

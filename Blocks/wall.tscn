@@ -13,12 +13,13 @@ count = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
-[node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
+[node name="Wall" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "col_shape", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_pqhnl")
 id = 11
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
+col_shape = NodePath("CollisionShape2D")
 destroyable = true
 destroy_time = 2.0
 mining_tool_needed = "axe"
