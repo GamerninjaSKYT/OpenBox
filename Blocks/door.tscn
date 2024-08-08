@@ -28,6 +28,7 @@ drop = SubResource("Resource_j7a6w")
 mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 is_door = true
+cant_close_radius = 60
 open_image = ExtResource("2_r75h5")
 closed_image = ExtResource("3_5q7i3")
 

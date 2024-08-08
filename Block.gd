@@ -64,7 +64,7 @@ func OnMouseHover(delta):
 			Use(true)
 
 func Use(is_player_interaction):
-	if inv != null:
+	if inv != null and is_player_interaction:
 		get_tree().root.get_child(0).player.open_inv = inv
 		inv_ui.visible = true
 	if is_door and (!is_player_interaction or global_position.distance_to(get_tree().root.get_child(0).player.global_position) > cant_close_radius or !open):
