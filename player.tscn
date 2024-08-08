@@ -535,12 +535,13 @@ theme_override_font_sizes/font_size = 80
 
 [node name="Time" type="Label" parent="Control/ExtendedInv"]
 layout_mode = 0
-offset_left = 788.0
-offset_top = 48.0
+offset_left = 490.0
+offset_top = 46.0
 offset_right = 989.0
-offset_bottom = 151.0
+offset_bottom = 149.0
 theme_override_font_sizes/font_size = 75
-text = "12:00"
+text = "Day 100 12:00"
+horizontal_alignment = 1
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("slots", "ui", "hotbaritemnamedisplay")]
 script = ExtResource("5_p2agf")

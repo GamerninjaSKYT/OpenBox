@@ -32,7 +32,7 @@ func _process(delta):
 		var additional_zero = ""
 		if minute < 10:
 			additional_zero = "0"
-		time_text.text = str(floor(m.ingame_hour)) + ":" + additional_zero + str(minute)
+		time_text.text = "Day " + str(m.day) + " " + str(floor(m.ingame_hour)) + ":" + additional_zero + str(minute)
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:
 		if inv.items[inv.selected_hotbar_slot].item.build_id >= 0:

@@ -29,6 +29,7 @@ var daytime = 0
 var ingame_hour = 6
 var day_beginning_hour = 6
 var is_day = true
+var day = 1
 
 func _ready():
 	get_tree().auto_accept_quit = false
@@ -95,6 +96,7 @@ func _process(delta):
 	daytime = fmod(time + 60*day_beginning_hour, 60*24)
 	ingame_hour = (daytime/60)
 	is_day = (ingame_hour >= 6 and ingame_hour <= 18)
+	day = floor((time + 60*day_beginning_hour)/(60*24))+1
 	player.nightdark.modulate.a = (float(abs(ingame_hour-12))/12)-0.5
 	if loadchunks:
 		chunkinterval_progress += delta
