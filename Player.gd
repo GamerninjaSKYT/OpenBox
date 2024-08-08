@@ -37,7 +37,7 @@ func _process(delta):
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:
 		if inv.items[inv.selected_hotbar_slot].item.build_id >= 0:
-			if Input.is_action_just_pressed("rotate"):
+			if Input.is_action_just_pressed("rotate") and open_inv == null:
 				build_rot = fmod(build_rot + 1,4)
 			if (UpdateBuildZone(inv.items[inv.selected_hotbar_slot].item)):
 				if Input.is_action_just_pressed("MR") and open_inv == null and !inv.mouse_on_slot:
@@ -60,7 +60,7 @@ func _process(delta):
 			open_inv = null
 		else:
 			open_inv = inv
-	if Input.is_action_just_pressed("save"):
+	if Input.is_action_just_pressed("save") and open_inv == null:
 		get_tree().root.get_child(0)._save()
 		get_tree().quit()
 	if Input.is_action_just_pressed("drop"):
@@ -69,7 +69,7 @@ func _process(delta):
 				DropItem(inv.items[inv.selected_hotbar_slot])
 			else:
 				DropItem(inv.items[inv.selected_hotbar_slot], inv.items[inv.selected_hotbar_slot].count)
-	if Input.is_action_just_pressed("get_every"):
+	if Input.is_action_just_pressed("get_every") and open_inv == null:
 		GetEveryItemInGame()
 
 func _physics_process(delta):
