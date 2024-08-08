@@ -134,6 +134,7 @@ func LoadChunk(pos):
 					var temp = tempmap.get_noise_2d((c.position.x+(x*128))/2000,(c.position.y+(y*128))/2000)
 					var desert_temp_threshold = 0.3
 					var snow_threshold = -0.3
+					var tree_temp_threshold = 0.275
 					var block = grass # grass
 					if temp > desert_temp_threshold:
 						block = objectlist[6] # sand
@@ -166,12 +167,13 @@ func LoadChunk(pos):
 								AddBlockToChunk(c, objectlist[19],x,y)
 							else:
 								AddBlockToChunk(c,objectlist[7],x,y)
-					elif height > 0.3 and height < 0.35 and decorvalue > (0.5 - height/3.75) and temp <= desert_temp_threshold and temp >= snow_threshold: # fallen tree
-						AddBlockToChunk(c,objectlist[5],x,y)
-					elif height > 0.15 and height < 0.35 and decorvalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
-						AddBlockToChunk(c,objectlist[4],x,y)
-					elif height > 0.15 and height < 0.35 and decorvalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
-						AddBlockToChunk(c,objectlist[12],x,y)
+					elif temp <= tree_temp_threshold:
+						if height > 0.3 and height < 0.35 and decorvalue > (0.5 - height/3.75) and temp <= desert_temp_threshold and temp >= snow_threshold: # fallen tree
+							AddBlockToChunk(c,objectlist[5],x,y)
+						elif height > 0.15 and height < 0.35 and decorvalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
+							AddBlockToChunk(c,objectlist[4],x,y)
+						elif height > 0.15 and height < 0.35 and decorvalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
+							AddBlockToChunk(c,objectlist[12],x,y)
 		else:
 			var file = FileAccess.open("user://chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data",FileAccess.READ)
 			var data = file.get_var()
