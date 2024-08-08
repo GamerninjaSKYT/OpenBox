@@ -47,7 +47,7 @@ func Click(click_index):
 				player.cursor_item = inv.items[id].duplicate()
 				inv.items[id] = null
 	elif click_index == 2:
-		if player.cursor_item != null:
+		if player.cursor_item != null and !cant_put_into:
 			if inv.items[id] == null:
 				inv.items[id] = player.cursor_item.duplicate()
 				inv.items[id].count = 1
