@@ -104,6 +104,8 @@ func UpdateBuildZone(item):
 	buildsprite.position = item.build_sprite_offset
 	build_col.scale = item.build_col_size
 	var obstructions = buildzone.get_overlapping_bodies()
+	if item.placement_ignores_player and obstructions.has(self):
+		obstructions.erase(self)
 	for o in obstructions.duplicate():
 		if o is block:
 			if o.made_walkable:
