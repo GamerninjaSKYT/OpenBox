@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 @export var base_speed = 400  # base speed in pixels/sec
+@export var reach = 300
 var last_chunkpos:Vector2
 @export var image_front:Texture2D
 @export var image_back:Texture2D
@@ -111,7 +112,7 @@ func UpdateBuildZone(item):
 				obstructions.erase(o)
 			elif item.can_place_on_ids.has(o.id):
 				obstructions.erase(o)
-	if obstructions.size() == 0:
+	if obstructions.size() == 0 and buildzone.global_position.distance_to(global_position) <= reach:
 		buildsprite.modulate = buildcan_color
 		return true
 	else:

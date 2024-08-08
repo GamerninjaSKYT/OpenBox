@@ -55,13 +55,16 @@ func OnMouseHover(delta):
 			for b in GetBlocksInRadius(50):
 				if b.main_sprite.z_index > main_sprite.z_index:
 					on_top = false
-		if on_top:
+		if on_top and global_position.distance_to(get_tree().root.get_child(0).player.global_position) <= get_tree().root.get_child(0).player.reach:
 			Mine(get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot])
+		elif  destroy_progress > 0:
+			destroy_progress -= delta
 	elif destroy_progress > 0:
 		destroy_progress -= delta
 	if Input.is_action_just_pressed("MR"):
-		if get_tree().root.get_child(0).player.open_inv == null:
-			Use(true)
+		if global_position.distance_to(get_tree().root.get_child(0).player.global_position) <= get_tree().root.get_child(0).player.reach:
+			if get_tree().root.get_child(0).player.open_inv == null:
+				Use(true)
 
 func Use(is_player_interaction):
 	if inv != null and is_player_interaction:
