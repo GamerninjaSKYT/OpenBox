@@ -29,11 +29,10 @@ var daytime = 0
 var ingame_hour = 6
 var day_beginning_hour = 6
 var is_day = true
-@export var nightdark:TextureRect
 
 func _ready():
 	get_tree().auto_accept_quit = false
-	nightdark.visible = true
+	player.nightdark.visible = true
 	if FileAccess.file_exists("user://save.data"):
 		var file = FileAccess.open("user://save.data",FileAccess.READ)
 		var data = file.get_var()
@@ -96,8 +95,7 @@ func _process(delta):
 	daytime = fmod(time + 60*day_beginning_hour, 60*24)
 	ingame_hour = (daytime/60)
 	is_day = (ingame_hour >= 6 and ingame_hour <= 18)
-	nightdark.modulate.a = max(0,(float(abs(ingame_hour-12))/12)-0.5)
-
+	player.nightdark.modulate.a = (float(abs(ingame_hour-12))/12)-0.5
 	if loadchunks:
 		chunkinterval_progress += delta
 		if chunkinterval_progress >= chunkinterval:

@@ -19,7 +19,7 @@ size = Vector2(12.8, 3.16667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7peci"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark") groups=["Player"]]
 script = ExtResource("1_45kwr")
 image_front = ExtResource("2_lrmkq")
 image_back = ExtResource("3_j60p5")
@@ -35,6 +35,7 @@ inv = NodePath("Inventory")
 inv_ui = NodePath("Control/Inv")
 extended_inv = NodePath("Control/ExtendedInv")
 time_text = NodePath("Control/ExtendedInv/Time")
+nightdark = NodePath("Weather/NightDark")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
@@ -549,5 +550,24 @@ slotsprite = ExtResource("6_h3x8g")
 selectedsprite = ExtResource("7_qwn2n")
 ui = NodePath("../Control/Inv")
 hotbaritemnamedisplay = NodePath("../Control/ItemName")
+
+[node name="Weather" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="NightDark" type="TextureRect" parent="Weather"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+z_index = 50
+layout_mode = 0
+offset_left = -2180.0
+offset_top = -1204.0
+offset_right = 2152.0
+offset_bottom = 1150.0
+mouse_filter = 2
+texture = ExtResource("3_yohk6")
 
 [connection signal="text_changed" from="Control/ExtendedInv/LineEdit" to="Control/ExtendedInv/CraftRecipes" method="LoadRecipes"]

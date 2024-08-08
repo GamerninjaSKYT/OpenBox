@@ -20,6 +20,7 @@ var build_rot = 0
 @export var open_inv:inventory = null
 @export var extended_inv:Control
 @export var time_text:Label
+@export var nightdark:TextureRect
 
 func _ready():
 	inv_ui.visible = false
