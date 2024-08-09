@@ -1,0 +1,11 @@
+-How to add stuff-
+
+Adding an item:
+-create a new inventory_item resource
+-fill out the properties (remember to assign it a unique id)
+-capitalize the first letter of every word in the name of the item
+-add it to the itemlist in the ItemManager and make sure its place in the list matches its id
+
+Adding a block:
+-clone an existing block packedscene
+-fill out the properties (remember to assign it a unique id and reset any item_instances such as the drop property or else editing it will affect the block you cloned)
