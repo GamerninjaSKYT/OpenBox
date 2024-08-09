@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxsfinubjctsc"]
+[gd_scene load_steps=3 format=3 uid="uid://bxsfinubjctsc"]
 
 [ext_resource type="Texture2D" uid="uid://8hbu48hkh45m" path="res://MenuBackgrounds/alpha.png" id="1_dh53k"]
+[ext_resource type="Script" path="res://splash.gd" id="2_vnxnp"]
 
 [node name="MainMenu" type="Node2D"]
 
@@ -33,6 +34,23 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 80
 text = "OpenBox"
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control" node_paths=PackedStringArray("splash")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -222.0
+offset_top = 105.0
+offset_right = 222.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 15
+text = "[Default]"
+horizontal_alignment = 1
+script = ExtResource("2_vnxnp")
+splash = NodePath(".")
+splashes = Array[String](["[Insert random splash here]", "Needs to be about 20% cooler!", "37% bug-free code!"])
 
 [node name="NewGame" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
