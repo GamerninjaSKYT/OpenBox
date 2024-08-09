@@ -22,6 +22,7 @@ var build_rot = 0
 @export var extended_inv:Control
 @export var time_text:Label
 @export var nightdark:TextureRect
+@export var canbuild = true
 
 func _ready():
 	inv_ui.visible = false
@@ -40,7 +41,8 @@ func _process(delta):
 			if Input.is_action_just_pressed("rotate") and open_inv == null:
 				build_rot = fmod(build_rot + 1,4)
 			if (UpdateBuildZone(inv.items[inv.selected_hotbar_slot].item)):
-				if Input.is_action_just_pressed("MR") and open_inv == null and !inv.mouse_on_slot:
+				if Input.is_action_pressed("MR") and open_inv == null and !inv.mouse_on_slot and canbuild:
+					canbuild = false
 					Build()
 		else:
 			buildsprite.visible = false
@@ -134,9 +136,10 @@ func Build():
 	var pos = m.pos_to_blockpos(buildzone.global_position - offset)
 	var c = m.GetChunkFromChunkPos(m.blockpos_to_chunkpos(pos))
 	var b = m.AddBlockToChunk(c,m.objectlist[inv.items[inv.selected_hotbar_slot].item.build_id],0,0)
+	b.built = true
 	b.global_position = pos*128
 	b.rotation = deg_to_rad(build_rot*90)
-	b.UpdateInChunkPos()
+	b.UpdateInChunkPos() 
 	if b.makes_walkable:
 		b.MakeWalkable()
 

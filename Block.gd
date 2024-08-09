@@ -28,6 +28,7 @@ var made_walkable = false
 var open = false
 @export var open_image:Texture2D
 @export var closed_image:Texture2D
+var built = false
 
 func _ready():
 	if mining_progress_control != null:
@@ -35,6 +36,9 @@ func _ready():
 		mining_progress.max_value = destroy_time
 
 func _process(delta):
+	if built:
+		get_tree().root.get_child(0).player.canbuild = true
+		built = false
 	if inv != null:
 		inv.Updateslots()
 	if mining_progress_control != null:
