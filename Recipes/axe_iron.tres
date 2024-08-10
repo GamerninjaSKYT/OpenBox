@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="recipe" load_steps=9 format=3 uid="uid://jb1p0eiw66co"]
+
+[ext_resource type="Script" path="res://recipe.gd" id="1_jdsb4"]
+[ext_resource type="Resource" uid="uid://c5tmnk6eb4ki7" path="res://Items/ironbar.tres" id="1_t1gvw"]
+[ext_resource type="Script" path="res://item_instance.gd" id="2_adsb7"]
+[ext_resource type="Resource" uid="uid://bebntepflu2p1" path="res://Items/stick.tres" id="3_0x0hf"]
+[ext_resource type="Resource" uid="uid://d03c4lthpqp" path="res://Items/axe_iron.tres" id="4_ky8qd"]
+
+[sub_resource type="Resource" id="Resource_u6ws4"]
+script = ExtResource("2_adsb7")
+item = ExtResource("1_t1gvw")
+count = 4
+
+[sub_resource type="Resource" id="Resource_3klhv"]
+script = ExtResource("2_adsb7")
+item = ExtResource("3_0x0hf")
+count = 2
+
+[sub_resource type="Resource" id="Resource_tlnrj"]
+script = ExtResource("2_adsb7")
+item = ExtResource("4_ky8qd")
+count = 1
+
+[resource]
+script = ExtResource("1_jdsb4")
+result = SubResource("Resource_tlnrj")
+ingredients = Array[ExtResource("2_adsb7")]([SubResource("Resource_u6ws4"), SubResource("Resource_3klhv")])

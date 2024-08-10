@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://tu5mibl7m3d6"]
+
+[ext_resource type="Texture2D" uid="uid://c0mkn6yx81ote" path="res://axe_gold.png" id="1_lbhv6"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_hiafb"]
+
+[resource]
+script = ExtResource("2_hiafb")
+name = "Gold Axe"
+image = ExtResource("1_lbhv6")
+id = 22
+maxcount = 1
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+placement_ignores_player = false
+mining_tool_type = "axe"
+mining_multiplier = 4.0
+fuel = 0

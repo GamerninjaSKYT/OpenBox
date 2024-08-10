@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="recipe" load_steps=9 format=3 uid="uid://tnapi3dyh8qo"]
+
+[ext_resource type="Resource" uid="uid://c54osbmh1dki7" path="res://Items/goldbar.tres" id="1_efae8"]
+[ext_resource type="Script" path="res://recipe.gd" id="1_lt0d2"]
+[ext_resource type="Script" path="res://item_instance.gd" id="2_2psqe"]
+[ext_resource type="Resource" uid="uid://bebntepflu2p1" path="res://Items/stick.tres" id="3_4ulf4"]
+[ext_resource type="Resource" uid="uid://dvvohph2jigrw" path="res://Items/pickaxe_gold.tres" id="4_rb3vk"]
+
+[sub_resource type="Resource" id="Resource_lk35v"]
+script = ExtResource("2_2psqe")
+item = ExtResource("1_efae8")
+count = 4
+
+[sub_resource type="Resource" id="Resource_abo6n"]
+script = ExtResource("2_2psqe")
+item = ExtResource("3_4ulf4")
+count = 2
+
+[sub_resource type="Resource" id="Resource_lecqa"]
+script = ExtResource("2_2psqe")
+item = ExtResource("4_rb3vk")
+count = 1
+
+[resource]
+script = ExtResource("1_lt0d2")
+result = SubResource("Resource_lecqa")
+ingredients = Array[ExtResource("2_2psqe")]([SubResource("Resource_lk35v"), SubResource("Resource_abo6n")])

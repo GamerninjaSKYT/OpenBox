@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://d03c4lthpqp"]
+
+[ext_resource type="Texture2D" uid="uid://bqbi4o3q0nlfh" path="res://axe_iron.png" id="1_dxqrb"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_0cs3s"]
+
+[resource]
+script = ExtResource("2_0cs3s")
+name = "Iron Axe"
+image = ExtResource("1_dxqrb")
+id = 21
+maxcount = 1
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+placement_ignores_player = false
+mining_tool_type = "axe"
+mining_multiplier = 3.0
+fuel = 0
