@@ -5,6 +5,7 @@ extends TextureRect
 @export var id = 0
 @export var inv:inventory
 @export var cant_put_into = false
+@export var which_can_hold:Array[int]
 var mouse_over = false
 
 func _process(delta):
@@ -33,12 +34,12 @@ func Click(click_index):
 					if countlefttoadd < 1:
 						player.cursor_item = null
 						return
-				elif !cant_put_into:
+				elif !cant_put_into and (which_can_hold.size() == 0 or which_can_hold.has(player.cursor_item.item.id)):
 					var e = ii.duplicate()
 					var i = item.duplicate()
 					player.cursor_item = e
 					inv.items[id] = i
-			elif !cant_put_into:
+			elif !cant_put_into and (which_can_hold.size() == 0 or which_can_hold.has(player.cursor_item.item.id)):
 				inv.items[id] = item.duplicate()
 				player.cursor_item = null
 				return
@@ -48,16 +49,17 @@ func Click(click_index):
 				inv.items[id] = null
 	elif click_index == 2:
 		if player.cursor_item != null and !cant_put_into:
-			if inv.items[id] == null:
+			if inv.items[id] == null and (which_can_hold.size() == 0 or which_can_hold.has(player.cursor_item.item.id)):
 				inv.items[id] = player.cursor_item.duplicate()
 				inv.items[id].count = 1
 				player.cursor_item.count -= 1
 				return
-			if inv.items[id].item.id == item.item.id:
-				if inv.items[id].count < inv.items[id].item.maxcount:
-					inv.items[id].count += 1
-					player.cursor_item.count -= 1
-					return
+			if item != null and inv.items[id] != null:
+				if inv.items[id].item.id == item.item.id:
+					if inv.items[id].count < inv.items[id].item.maxcount:
+						inv.items[id].count += 1
+						player.cursor_item.count -= 1
+						return
 
 
 func _on_mouse_entered():

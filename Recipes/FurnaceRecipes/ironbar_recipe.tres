@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="recipe_furnace" load_steps=6 format=3 uid="uid://d280a412jmi8h"]
+
+[ext_resource type="Script" path="res://recipe_furnace.gd" id="1_kwm5n"]
+[ext_resource type="Resource" uid="uid://bfl3lxm51mhht" path="res://Items/iron.tres" id="1_lct6f"]
+[ext_resource type="Resource" uid="uid://c5tmnk6eb4ki7" path="res://Items/ironbar.tres" id="2_e1rdk"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_jcnxr"]
+
+[sub_resource type="Resource" id="Resource_tqhta"]
+script = ExtResource("3_jcnxr")
+item = ExtResource("2_e1rdk")
+count = 1
+
+[resource]
+script = ExtResource("1_kwm5n")
+input = ExtResource("1_lct6f")
+result = SubResource("Resource_tqhta")
+fuelneeded = 5

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_o1kxa")
-name = "Iron"
+name = "Raw Iron"
 image = ExtResource("1_thtl7")
 id = 13
 maxcount = 100
@@ -14,5 +14,6 @@ build_offset = Vector2(0, 0)
 build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
 can_place_on_ids = Array[int]([])
+placement_ignores_player = false
 mining_tool_type = ""
 mining_multiplier = 1.0

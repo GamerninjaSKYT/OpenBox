@@ -17,6 +17,8 @@ extends Resource
 @export_category("Mining tool")
 @export var mining_tool_type:String = ""
 @export var mining_multiplier:float = 1
+@export_category("Fuel")
+@export var fuel = 0
 
 func get_image():
 	return image

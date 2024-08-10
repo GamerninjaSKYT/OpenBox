@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="recipe" load_steps=9 format=3 uid="uid://bdbrrgwfr5gnb"]
+
+[ext_resource type="Script" path="res://recipe.gd" id="1_0lv14"]
+[ext_resource type="Resource" uid="uid://cdxriyjs2nacd" path="res://Items/rock.tres" id="1_hsiir"]
+[ext_resource type="Script" path="res://item_instance.gd" id="2_lqkr5"]
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="3_pkoxl"]
+[ext_resource type="Resource" uid="uid://8860x0f0jgm1" path="res://Items/furnace.tres" id="4_dbpj1"]
+
+[sub_resource type="Resource" id="Resource_ipq2p"]
+script = ExtResource("2_lqkr5")
+item = ExtResource("1_hsiir")
+count = 4
+
+[sub_resource type="Resource" id="Resource_fpsl7"]
+script = ExtResource("2_lqkr5")
+item = ExtResource("3_pkoxl")
+count = 4
+
+[sub_resource type="Resource" id="Resource_dh82s"]
+script = ExtResource("2_lqkr5")
+item = ExtResource("4_dbpj1")
+count = 1
+
+[resource]
+script = ExtResource("1_0lv14")
+result = SubResource("Resource_dh82s")
+ingredients = Array[ExtResource("2_lqkr5")]([SubResource("Resource_ipq2p"), SubResource("Resource_fpsl7")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=61 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -55,6 +55,11 @@
 [ext_resource type="Resource" uid="uid://dexvf8ohesc3j" path="res://Items/gold.tres" id="40_fujol"]
 [ext_resource type="Resource" uid="uid://cv1rltrd8lkny" path="res://Items/coal.tres" id="42_gw517"]
 [ext_resource type="Resource" uid="uid://8860x0f0jgm1" path="res://Items/furnace.tres" id="44_sgybi"]
+[ext_resource type="Resource" uid="uid://c5tmnk6eb4ki7" path="res://Items/ironbar.tres" id="45_vey8k"]
+[ext_resource type="Resource" uid="uid://c54osbmh1dki7" path="res://Items/goldbar.tres" id="46_1a1bc"]
+[ext_resource type="Resource" uid="uid://bdbrrgwfr5gnb" path="res://Recipes/furnace.tres" id="58_hhcxw"]
+[ext_resource type="Resource" uid="uid://d280a412jmi8h" path="res://Recipes/FurnaceRecipes/ironbar_recipe.tres" id="59_h472b"]
+[ext_resource type="Resource" uid="uid://8v5bwi521tfy" path="res://Recipes/FurnaceRecipes/goldbar_recipe.tres" id="60_s3wrm"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
 script = ExtResource("1_e5byj")
@@ -77,8 +82,9 @@ rockfloor = ExtResource("6_4c445")
 
 [node name="ItemManager" type="Node" parent="."]
 script = ExtResource("10_ksusm")
-itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh"), ExtResource("28_02yg4"), ExtResource("29_5l6pv"), ExtResource("30_t7x5y"), ExtResource("32_x3p5v"), ExtResource("34_k7ov5"), ExtResource("38_2u66r"), ExtResource("39_j7ccd"), ExtResource("40_fujol"), ExtResource("42_gw517"), ExtResource("44_sgybi")])
+itemlist = Array[Resource("res://inventory_item.gd")]([ExtResource("11_64ny3"), ExtResource("19_q5i5p"), ExtResource("20_1e6n6"), ExtResource("23_7jkno"), ExtResource("25_0kxdx"), ExtResource("26_ytd6b"), ExtResource("27_08ugh"), ExtResource("28_02yg4"), ExtResource("29_5l6pv"), ExtResource("30_t7x5y"), ExtResource("32_x3p5v"), ExtResource("34_k7ov5"), ExtResource("38_2u66r"), ExtResource("39_j7ccd"), ExtResource("40_fujol"), ExtResource("42_gw517"), ExtResource("44_sgybi"), ExtResource("45_vey8k"), ExtResource("46_1a1bc")])
 
 [node name="CraftingManager" type="Node" parent="."]
 script = ExtResource("18_46wry")
-recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("23_uebsp"), ExtResource("27_llapu"), ExtResource("37_f1w75"), ExtResource("40_4m1ys"), ExtResource("30_1f4ef"), ExtResource("32_aygyg"), ExtResource("34_ooigc"), ExtResource("38_uho0a"), ExtResource("39_wvq4n")])
+recipes = Array[Resource("res://recipe.gd")]([ExtResource("21_gqv77"), ExtResource("23_uebsp"), ExtResource("27_llapu"), ExtResource("37_f1w75"), ExtResource("40_4m1ys"), ExtResource("30_1f4ef"), ExtResource("32_aygyg"), ExtResource("34_ooigc"), ExtResource("38_uho0a"), ExtResource("39_wvq4n"), ExtResource("58_hhcxw")])
+recipes_furnace = Array[Resource("res://recipe_furnace.gd")]([ExtResource("59_h472b"), ExtResource("60_s3wrm")])

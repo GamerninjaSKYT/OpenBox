@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://c5tmnk6eb4ki7"]
+
+[ext_resource type="Texture2D" uid="uid://dpohat2le5guj" path="res://ironbar.png" id="1_u226q"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_e2oc8"]
+
+[resource]
+script = ExtResource("2_e2oc8")
+name = "Iron Bar"
+image = ExtResource("1_u226q")
+id = 17
+maxcount = 100
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+placement_ignores_player = false
+mining_tool_type = ""
+mining_multiplier = 1.0

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="recipe_furnace" load_steps=6 format=3 uid="uid://8v5bwi521tfy"]
+
+[ext_resource type="Script" path="res://recipe_furnace.gd" id="1_a42g5"]
+[ext_resource type="Resource" uid="uid://dexvf8ohesc3j" path="res://Items/gold.tres" id="1_k06mx"]
+[ext_resource type="Resource" uid="uid://c54osbmh1dki7" path="res://Items/goldbar.tres" id="2_2u5lp"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_pc8vw"]
+
+[sub_resource type="Resource" id="Resource_rbt37"]
+script = ExtResource("3_pc8vw")
+item = ExtResource("2_2u5lp")
+count = 1
+
+[resource]
+script = ExtResource("1_a42g5")
+input = ExtResource("1_k06mx")
+result = SubResource("Resource_rbt37")
+fuelneeded = 5

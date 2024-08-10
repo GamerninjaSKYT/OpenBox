@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://c54osbmh1dki7"]
+
+[ext_resource type="Texture2D" uid="uid://d3nkpb80wghfw" path="res://goldbar.png" id="1_243df"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_q5hqr"]
+
+[resource]
+script = ExtResource("2_q5hqr")
+name = "Gold Bar"
+image = ExtResource("1_243df")
+id = 18
+maxcount = 100
+build_id = -1
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+placement_ignores_player = false
+mining_tool_type = ""
+mining_multiplier = 1.0
