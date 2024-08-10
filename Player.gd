@@ -103,11 +103,11 @@ func UpdateBuildZone(item):
 	buildsprite.visible = true
 	var offset = item.build_offset
 	if build_rot == 1:
-		offset = Vector2(item.build_offset.y, item.build_offset.x)
+		offset = Vector2(-item.build_offset.y, item.build_offset.x)
 	if build_rot == 2:
 		offset = Vector2(-item.build_offset.x, -item.build_offset.y)
 	if build_rot == 3:
-		offset = Vector2(-item.build_offset.y, -item.build_offset.x)
+		offset = Vector2(item.build_offset.y, -item.build_offset.x)
 	buildzone.global_position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) + offset
 	buildzone.rotation = deg_to_rad(build_rot*90)
 	buildsprite.texture = item.get_build_sprite()
@@ -136,11 +136,11 @@ func Build():
 	var m = get_tree().root.get_child(0)
 	var offset = inv.items[inv.selected_hotbar_slot].item.build_offset
 	if build_rot == 1:
-		offset = Vector2(inv.items[inv.selected_hotbar_slot].item.build_offset.y, inv.items[inv.selected_hotbar_slot].item.build_offset.x)
+		offset = Vector2(-inv.items[inv.selected_hotbar_slot].item.build_offset.y, inv.items[inv.selected_hotbar_slot].item.build_offset.x)
 	if build_rot == 2:
 		offset = Vector2(-inv.items[inv.selected_hotbar_slot].item.build_offset.x, -inv.items[inv.selected_hotbar_slot].item.build_offset.y)
 	if build_rot == 3:
-		offset = Vector2(-inv.items[inv.selected_hotbar_slot].item.build_offset.y, -inv.items[inv.selected_hotbar_slot].item.build_offset.x)
+		offset = Vector2(inv.items[inv.selected_hotbar_slot].item.build_offset.y, -inv.items[inv.selected_hotbar_slot].item.build_offset.x)
 	var pos = m.pos_to_blockpos(buildzone.global_position - offset)
 	var c = m.GetChunkFromChunkPos(m.blockpos_to_chunkpos(pos))
 	var b = m.AddBlockToChunk(c,m.objectlist[inv.items[inv.selected_hotbar_slot].item.build_id],0,0)
