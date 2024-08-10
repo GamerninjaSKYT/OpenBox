@@ -58,10 +58,14 @@ func _process(delta):
 	extended_inv.visible = (open_inv == inv)
 	if Input.is_action_just_pressed("inv"):
 		if open_inv != null:
-			open_inv.ui.visible = false
-			open_inv = null
+			CloseInv()
 		else:
-			open_inv = inv
+			open_inv = inv #opens the player inventory
+	if Input.is_action_just_pressed("ui_cancel"):
+		if open_inv != null:
+			CloseInv()
+		else:
+			pass #esc menu
 	if Input.is_action_just_pressed("save") and open_inv == null:
 		get_tree().root.get_child(0)._save()
 		get_tree().quit()
@@ -90,6 +94,10 @@ func move():
 	elif Input.is_action_pressed("up"):
 		sprite.texture = image_back
 	move_and_slide()
+
+func CloseInv():
+	open_inv.ui.visible = false
+	open_inv = null
 
 func UpdateBuildZone(item):
 	buildsprite.visible = true
