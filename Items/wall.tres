@@ -13,3 +13,4 @@ build_id = 11
 build_sprite = ExtResource("2_jvkor")
 build_offset = Vector2(0, 0)
 build_col_size = Vector2(6.25, 6.25)
+can_rotate = true

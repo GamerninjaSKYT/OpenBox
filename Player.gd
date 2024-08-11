@@ -38,8 +38,11 @@ func _process(delta):
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:
 		if inv.items[inv.selected_hotbar_slot].item.build_id >= 0:
-			if Input.is_action_just_pressed("rotate") and open_inv == null:
-				build_rot = fmod(build_rot + 1,4)
+			if inv.items[inv.selected_hotbar_slot].item.can_rotate:
+				if Input.is_action_just_pressed("rotate") and open_inv == null:
+					build_rot = fmod(build_rot + 1,4)
+			else:
+				build_rot = 0
 			if (UpdateBuildZone(inv.items[inv.selected_hotbar_slot].item)):
 				if Input.is_action_pressed("MR") and open_inv == null and !inv.mouse_on_slot and canbuild:
 					canbuild = false

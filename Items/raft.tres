@@ -16,6 +16,7 @@ build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
 can_place_on_ids = Array[int]([1])
 placement_ignores_player = true
+can_rotate = true
 mining_tool_type = ""
 mining_multiplier = 1.0
 fuel = 0.0
