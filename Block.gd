@@ -29,6 +29,7 @@ var open = false
 @export var open_image:Texture2D
 @export var closed_image:Texture2D
 var built = false
+@export var is_bed = false
 
 func _ready():
 	if mining_progress_control != null:
@@ -76,6 +77,10 @@ func Use(is_player_interaction):
 		inv_ui.visible = true
 	if is_door and (!is_player_interaction or global_position.distance_to(get_tree().root.get_child(0).player.global_position) > cant_close_radius or !open):
 		OpenCloseDoor(!open)
+	if is_bed and is_player_interaction:
+		var m = get_tree().root.get_child(0)
+		if !m.is_day:
+			m.time += 24*60 - fmod(m.time, 60*24) + m.day_beginning_hour
 
 func OpenCloseDoor(do_open:bool):
 	open = do_open

@@ -92,7 +92,7 @@ offset_right = 1293.33
 offset_bottom = 693.333
 id = 1
 inv = NodePath("../..")
-which_can_hold = Array[int]([15])
+which_can_hold = Array[int]([15, 0])
 
 [node name="slot3" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_jvwp1")]
 layout_mode = 0

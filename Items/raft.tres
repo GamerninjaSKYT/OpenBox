@@ -18,4 +18,4 @@ can_place_on_ids = Array[int]([1])
 placement_ignores_player = true
 mining_tool_type = ""
 mining_multiplier = 1.0
-fuel = 0
+fuel = 0.0

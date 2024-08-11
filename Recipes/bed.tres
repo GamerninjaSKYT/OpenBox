@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="recipe" load_steps=9 format=3 uid="uid://dgd6dxl28c7m0"]
+
+[ext_resource type="Script" path="res://recipe.gd" id="1_6ou4s"]
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="1_frhdj"]
+[ext_resource type="Script" path="res://item_instance.gd" id="2_qj578"]
+[ext_resource type="Resource" uid="uid://cdxriyjs2nacd" path="res://Items/rock.tres" id="3_yfbs6"]
+[ext_resource type="Resource" uid="uid://bb1crdhcrcbli" path="res://Items/bed.tres" id="4_kcr67"]
+
+[sub_resource type="Resource" id="Resource_7ymhm"]
+script = ExtResource("2_qj578")
+item = ExtResource("1_frhdj")
+count = 5
+
+[sub_resource type="Resource" id="Resource_g80f2"]
+script = ExtResource("2_qj578")
+item = ExtResource("3_yfbs6")
+count = 4
+
+[sub_resource type="Resource" id="Resource_4kxwo"]
+script = ExtResource("2_qj578")
+item = ExtResource("4_kcr67")
+count = 1
+
+[resource]
+script = ExtResource("1_6ou4s")
+result = SubResource("Resource_4kxwo")
+ingredients = Array[ExtResource("2_qj578")]([SubResource("Resource_7ymhm"), SubResource("Resource_g80f2")])

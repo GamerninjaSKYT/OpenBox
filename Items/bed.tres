@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://bb1crdhcrcbli"]
+
+[ext_resource type="Texture2D" uid="uid://b1j0rgf0b1na0" path="res://bed.png" id="1_imgs1"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="1_u58kw"]
+
+[resource]
+script = ExtResource("1_u58kw")
+name = "Bed"
+image = ExtResource("1_imgs1")
+id = 23
+maxcount = 100
+build_id = 22
+build_sprite = ExtResource("1_imgs1")
+build_offset = Vector2(0, 64)
+build_col_size = Vector2(6.25, 12.5)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+placement_ignores_player = false
+mining_tool_type = ""
+mining_multiplier = 1.0
+fuel = 0
