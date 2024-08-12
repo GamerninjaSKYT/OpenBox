@@ -56,5 +56,6 @@ func _on_smelt_button_down():
 
 
 func _on_smelt_all_button_down():
-	for i in range(inv.items[input.id].count):
-		_on_smelt_button_down()
+	if inv.items[input.id] != null:
+		for i in range(inv.items[input.id].count):
+			_on_smelt_button_down()
