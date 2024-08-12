@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_jaduf")
 name = "Wood"
+description = "Crafting material and furnace fuel"
 image = ExtResource("1_7xgwd")
 id = 0
 maxcount = 100
@@ -15,6 +16,7 @@ build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
 can_place_on_ids = Array[int]([])
 placement_ignores_player = false
+can_rotate = true
 mining_tool_type = ""
 mining_multiplier = 1.0
 fuel = 0.5

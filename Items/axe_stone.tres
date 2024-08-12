@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_53nlv")
 name = "Stone Axe"
+description = "Used to get wood"
 image = ExtResource("1_epvyf")
 id = 9
 maxcount = 1
@@ -14,5 +15,8 @@ build_offset = Vector2(0, 0)
 build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
 can_place_on_ids = Array[int]([])
+placement_ignores_player = false
+can_rotate = true
 mining_tool_type = "axe"
 mining_multiplier = 2.0
+fuel = 0.0

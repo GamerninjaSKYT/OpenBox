@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://csivhmue28l3k"]
+[gd_scene load_steps=17 format=3 uid="uid://csivhmue28l3k"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_45kwr"]
 [ext_resource type="Texture2D" uid="uid://beetiyyai248f" path="res://Ali.png" id="2_lrmkq"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dcaxypdui6gmv" path="res://recipe.tscn" id="6_6ycr5"]
 [ext_resource type="Texture2D" uid="uid://cw8spxkiv51sr" path="res://slot.png" id="6_h3x8g"]
 [ext_resource type="Texture2D" uid="uid://duaabsefefqmb" path="res://slot_selected.png" id="7_qwn2n"]
+[ext_resource type="Texture2D" uid="uid://dlducynonbt5w" path="res://ice.png" id="14_mfgu7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sodp"]
 size = Vector2(12.8, 3.16667)
@@ -32,9 +33,9 @@ buildcan_color = Color(1, 1, 1, 0.509804)
 buildcant_color = Color(1, 0, 0, 0.627451)
 build_col = NodePath("BuildZone/CollisionShape2D")
 inv = NodePath("Inventory")
-inv_ui = NodePath("Control/Inv")
-extended_inv = NodePath("Control/ExtendedInv")
-time_text = NodePath("Control/ExtendedInv/Time")
+inv_ui = NodePath("CanvasLayer/Control/Inv")
+extended_inv = NodePath("CanvasLayer/Control/ExtendedInv")
+time_text = NodePath("CanvasLayer/Control/ExtendedInv/Time")
 nightdark = NodePath("Weather/NightDark")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -64,493 +65,14 @@ texture = ExtResource("3_yohk6")
 scale = Vector2(6.25, 6.25)
 shape = SubResource("RectangleShape2D_7peci")
 
-[node name="Control" type="Control" parent="."]
-z_index = 100
-layout_mode = 3
-anchors_preset = 0
-
-[node name="slot" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = -1000.0
-offset_top = 867.0
-offset_right = -800.0
-offset_bottom = 1067.0
-inv = NodePath("../../Inventory")
-
-[node name="slot2" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = -800.0
-offset_top = 867.0
-offset_right = -600.0
-offset_bottom = 1067.0
-id = 1
-inv = NodePath("../../Inventory")
-
-[node name="slot3" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = -600.0
-offset_top = 867.0
-offset_right = -400.0
-offset_bottom = 1067.0
-id = 2
-inv = NodePath("../../Inventory")
-
-[node name="slot4" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = -400.0
-offset_top = 867.0
-offset_right = -200.0
-offset_bottom = 1067.0
-id = 3
-inv = NodePath("../../Inventory")
-
-[node name="slot5" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = -200.0
-offset_top = 867.0
-offset_right = 0.0
-offset_bottom = 1067.0
-id = 4
-inv = NodePath("../../Inventory")
-
-[node name="slot6" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 867.0
-offset_right = 200.0
-offset_bottom = 1067.0
-id = 5
-inv = NodePath("../../Inventory")
-
-[node name="slot7" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 867.0
-offset_right = 400.0
-offset_bottom = 1067.0
-id = 6
-inv = NodePath("../../Inventory")
-
-[node name="slot8" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 867.0
-offset_right = 600.0
-offset_bottom = 1067.0
-id = 7
-inv = NodePath("../../Inventory")
-
-[node name="slot9" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 867.0
-offset_right = 800.0
-offset_bottom = 1067.0
-id = 8
-inv = NodePath("../../Inventory")
-
-[node name="slot10" parent="Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 867.0
-offset_right = 1000.0
-offset_bottom = 1067.0
-id = 9
-inv = NodePath("../../Inventory")
-
-[node name="ItemName" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -984.0
-offset_top = 780.0
-offset_right = 2958.0
-offset_bottom = 917.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 100
-text = "Item"
-horizontal_alignment = 1
-autowrap_mode = 1
-clip_text = true
-
-[node name="Inv" type="TextureRect" parent="Control"]
-visible = false
-self_modulate = Color(0.497473, 0.497474, 0.497474, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1400.0
-offset_top = 114.0
-offset_right = 1400.0
-offset_bottom = 800.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_yohk6")
-
-[node name="slot11" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 457.0
-offset_right = 600.0
-offset_bottom = 657.0
-id = 10
-inv = NodePath("../../../Inventory")
-
-[node name="slot12" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 457.0
-offset_right = 800.0
-offset_bottom = 657.0
-id = 11
-inv = NodePath("../../../Inventory")
-
-[node name="slot13" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 457.0
-offset_right = 1000.0
-offset_bottom = 657.0
-id = 12
-inv = NodePath("../../../Inventory")
-
-[node name="slot14" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1000.0
-offset_top = 457.0
-offset_right = 1200.0
-offset_bottom = 657.0
-id = 13
-inv = NodePath("../../../Inventory")
-
-[node name="slot15" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1200.0
-offset_top = 457.0
-offset_right = 1400.0
-offset_bottom = 657.0
-id = 14
-inv = NodePath("../../../Inventory")
-
-[node name="slot16" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1400.0
-offset_top = 457.0
-offset_right = 1600.0
-offset_bottom = 657.0
-id = 15
-inv = NodePath("../../../Inventory")
-
-[node name="slot17" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1600.0
-offset_top = 457.0
-offset_right = 1800.0
-offset_bottom = 657.0
-id = 16
-inv = NodePath("../../../Inventory")
-
-[node name="slot18" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1800.0
-offset_top = 457.0
-offset_right = 2000.0
-offset_bottom = 657.0
-id = 17
-inv = NodePath("../../../Inventory")
-
-[node name="slot19" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 2000.0
-offset_top = 457.0
-offset_right = 2200.0
-offset_bottom = 657.0
-id = 18
-inv = NodePath("../../../Inventory")
-
-[node name="slot20" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 2200.0
-offset_top = 457.0
-offset_right = 2400.0
-offset_bottom = 657.0
-id = 19
-inv = NodePath("../../../Inventory")
-
-[node name="slot21" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 257.0
-offset_right = 600.0
-offset_bottom = 457.0
-id = 20
-inv = NodePath("../../../Inventory")
-
-[node name="slot22" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 257.0
-offset_right = 800.0
-offset_bottom = 457.0
-id = 21
-inv = NodePath("../../../Inventory")
-
-[node name="slot23" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 257.0
-offset_right = 1000.0
-offset_bottom = 457.0
-id = 22
-inv = NodePath("../../../Inventory")
-
-[node name="slot24" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1000.0
-offset_top = 257.0
-offset_right = 1200.0
-offset_bottom = 457.0
-id = 23
-inv = NodePath("../../../Inventory")
-
-[node name="slot25" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1200.0
-offset_top = 257.0
-offset_right = 1400.0
-offset_bottom = 457.0
-id = 24
-inv = NodePath("../../../Inventory")
-
-[node name="slot26" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1400.0
-offset_top = 257.0
-offset_right = 1600.0
-offset_bottom = 457.0
-id = 25
-inv = NodePath("../../../Inventory")
-
-[node name="slot27" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1600.0
-offset_top = 257.0
-offset_right = 1800.0
-offset_bottom = 457.0
-id = 26
-inv = NodePath("../../../Inventory")
-
-[node name="slot28" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1800.0
-offset_top = 257.0
-offset_right = 2000.0
-offset_bottom = 457.0
-id = 27
-inv = NodePath("../../../Inventory")
-
-[node name="slot29" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 2000.0
-offset_top = 257.0
-offset_right = 2200.0
-offset_bottom = 457.0
-id = 28
-inv = NodePath("../../../Inventory")
-
-[node name="slot30" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 2200.0
-offset_top = 257.0
-offset_right = 2400.0
-offset_bottom = 457.0
-id = 29
-inv = NodePath("../../../Inventory")
-
-[node name="slot31" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 57.0
-offset_right = 600.0
-offset_bottom = 257.0
-id = 30
-inv = NodePath("../../../Inventory")
-
-[node name="slot32" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 600.0
-offset_top = 57.0
-offset_right = 800.0
-offset_bottom = 257.0
-id = 31
-inv = NodePath("../../../Inventory")
-
-[node name="slot33" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 800.0
-offset_top = 57.0
-offset_right = 1000.0
-offset_bottom = 257.0
-id = 32
-inv = NodePath("../../../Inventory")
-
-[node name="slot34" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1000.0
-offset_top = 57.0
-offset_right = 1200.0
-offset_bottom = 257.0
-id = 33
-inv = NodePath("../../../Inventory")
-
-[node name="slot35" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1200.0
-offset_top = 57.0
-offset_right = 1400.0
-offset_bottom = 257.0
-id = 34
-inv = NodePath("../../../Inventory")
-
-[node name="slot36" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1400.0
-offset_top = 57.0
-offset_right = 1600.0
-offset_bottom = 257.0
-id = 35
-inv = NodePath("../../../Inventory")
-
-[node name="slot37" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1600.0
-offset_top = 57.0
-offset_right = 1800.0
-offset_bottom = 257.0
-id = 36
-inv = NodePath("../../../Inventory")
-
-[node name="slot38" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 1800.0
-offset_top = 57.0
-offset_right = 2000.0
-offset_bottom = 257.0
-id = 37
-inv = NodePath("../../../Inventory")
-
-[node name="slot39" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 2000.0
-offset_top = 57.0
-offset_right = 2200.0
-offset_bottom = 257.0
-id = 38
-inv = NodePath("../../../Inventory")
-
-[node name="slot40" parent="Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = 2200.0
-offset_top = 57.0
-offset_right = 2400.0
-offset_bottom = 257.0
-id = 39
-inv = NodePath("../../../Inventory")
-
-[node name="ExtendedInv" type="Control" parent="Control"]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect2" type="TextureRect" parent="Control/ExtendedInv"]
-self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
-layout_mode = 0
-offset_left = -1400.0
-offset_top = -789.0
-offset_right = 1400.0
-offset_bottom = 142.0
-texture = ExtResource("3_yohk6")
-
-[node name="CraftRecipes" type="ScrollContainer" parent="Control/ExtendedInv" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui", "search")]
-layout_mode = 0
-offset_left = -1400.0
-offset_top = -560.0
-offset_right = -377.0
-offset_bottom = 96.0
-script = ExtResource("5_f7hiq")
-recipepackedscene = ExtResource("6_6ycr5")
-ingredientslots = [NodePath("../slot41")]
-resultslot = NodePath("../slot42")
-recipes_ui = NodePath("VBoxContainer")
-search = NodePath("../LineEdit")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ExtendedInv/CraftRecipes"]
-layout_mode = 2
-theme_override_constants/separation = 270
-
-[node name="slot41" parent="Control/ExtendedInv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = -1380.0
-offset_top = -770.0
-offset_right = -1180.0
-offset_bottom = -570.0
-id = 40
-inv = NodePath("../../../Inventory")
-
-[node name="slot42" parent="Control/ExtendedInv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
-layout_mode = 0
-offset_left = -1076.0
-offset_top = -770.0
-offset_right = -876.0
-offset_bottom = -570.0
-id = 41
-inv = NodePath("../../../Inventory")
-cant_put_into = true
-
-[node name="TextureRect" type="TextureRect" parent="Control/ExtendedInv"]
-layout_mode = 0
-offset_left = -1176.0
-offset_top = -715.0
-offset_right = -1136.0
-offset_bottom = -675.0
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("5_u6hmr")
-
-[node name="LineEdit" type="LineEdit" parent="Control/ExtendedInv"]
-layout_mode = 0
-offset_left = -849.0
-offset_top = -739.0
-offset_right = -59.0
-offset_bottom = -594.0
-theme_override_font_sizes/font_size = 80
-
-[node name="Time" type="Label" parent="Control/ExtendedInv"]
-layout_mode = 0
-offset_left = 490.0
-offset_top = 46.0
-offset_right = 989.0
-offset_bottom = 149.0
-theme_override_font_sizes/font_size = 75
-text = "Day 100 12:00"
-horizontal_alignment = 1
-
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("slots", "ui", "hotbaritemnamedisplay")]
 script = ExtResource("5_p2agf")
-slots = [NodePath("../Control/slot"), NodePath("../Control/slot2"), NodePath("../Control/slot3"), NodePath("../Control/slot4"), NodePath("../Control/slot5"), NodePath("../Control/slot6"), NodePath("../Control/slot7"), NodePath("../Control/slot8"), NodePath("../Control/slot9"), NodePath("../Control/slot10"), NodePath("../Control/Inv/slot11"), NodePath("../Control/Inv/slot12"), NodePath("../Control/Inv/slot13"), NodePath("../Control/Inv/slot14"), NodePath("../Control/Inv/slot15"), NodePath("../Control/Inv/slot16"), NodePath("../Control/Inv/slot17"), NodePath("../Control/Inv/slot18"), NodePath("../Control/Inv/slot19"), NodePath("../Control/Inv/slot20"), NodePath("../Control/Inv/slot21"), NodePath("../Control/Inv/slot22"), NodePath("../Control/Inv/slot23"), NodePath("../Control/Inv/slot24"), NodePath("../Control/Inv/slot25"), NodePath("../Control/Inv/slot26"), NodePath("../Control/Inv/slot27"), NodePath("../Control/Inv/slot28"), NodePath("../Control/Inv/slot29"), NodePath("../Control/Inv/slot30"), NodePath("../Control/Inv/slot31"), NodePath("../Control/Inv/slot32"), NodePath("../Control/Inv/slot33"), NodePath("../Control/Inv/slot34"), NodePath("../Control/Inv/slot35"), NodePath("../Control/Inv/slot36"), NodePath("../Control/Inv/slot37"), NodePath("../Control/Inv/slot38"), NodePath("../Control/Inv/slot39"), NodePath("../Control/Inv/slot40"), NodePath("../Control/ExtendedInv/slot41"), NodePath("../Control/ExtendedInv/slot42")]
+slots = [NodePath("../CanvasLayer/Control/slot"), NodePath("../CanvasLayer/Control/slot2"), NodePath("../CanvasLayer/Control/slot3"), NodePath("../CanvasLayer/Control/slot4"), NodePath("../CanvasLayer/Control/slot5"), NodePath("../CanvasLayer/Control/slot6"), NodePath("../CanvasLayer/Control/slot7"), NodePath("../CanvasLayer/Control/slot8"), NodePath("../CanvasLayer/Control/slot9"), NodePath("../CanvasLayer/Control/slot10"), NodePath("../CanvasLayer/Control/Inv/slot11"), NodePath("../CanvasLayer/Control/Inv/slot12"), NodePath("../CanvasLayer/Control/Inv/slot13"), NodePath("../CanvasLayer/Control/Inv/slot14"), NodePath("../CanvasLayer/Control/Inv/slot15"), NodePath("../CanvasLayer/Control/Inv/slot16"), NodePath("../CanvasLayer/Control/Inv/slot17"), NodePath("../CanvasLayer/Control/Inv/slot18"), NodePath("../CanvasLayer/Control/Inv/slot19"), NodePath("../CanvasLayer/Control/Inv/slot20"), NodePath("../CanvasLayer/Control/Inv/slot21"), NodePath("../CanvasLayer/Control/Inv/slot22"), NodePath("../CanvasLayer/Control/Inv/slot23"), NodePath("../CanvasLayer/Control/Inv/slot24"), NodePath("../CanvasLayer/Control/Inv/slot25"), NodePath("../CanvasLayer/Control/Inv/slot26"), NodePath("../CanvasLayer/Control/Inv/slot27"), NodePath("../CanvasLayer/Control/Inv/slot28"), NodePath("../CanvasLayer/Control/Inv/slot29"), NodePath("../CanvasLayer/Control/Inv/slot30"), NodePath("../CanvasLayer/Control/Inv/slot31"), NodePath("../CanvasLayer/Control/Inv/slot32"), NodePath("../CanvasLayer/Control/Inv/slot33"), NodePath("../CanvasLayer/Control/Inv/slot34"), NodePath("../CanvasLayer/Control/Inv/slot35"), NodePath("../CanvasLayer/Control/Inv/slot36"), NodePath("../CanvasLayer/Control/Inv/slot37"), NodePath("../CanvasLayer/Control/Inv/slot38"), NodePath("../CanvasLayer/Control/Inv/slot39"), NodePath("../CanvasLayer/Control/Inv/slot40"), NodePath("../CanvasLayer/Control/ExtendedInv/slot41"), NodePath("../CanvasLayer/Control/ExtendedInv/slot42")]
 hotbarsize = 10
 slotsprite = ExtResource("6_h3x8g")
 selectedsprite = ExtResource("7_qwn2n")
-ui = NodePath("../Control/Inv")
-hotbaritemnamedisplay = NodePath("../Control/ItemName")
+ui = NodePath("../CanvasLayer/Control/Inv")
+hotbaritemnamedisplay = NodePath("../CanvasLayer/Control/ItemName")
 
 [node name="Weather" type="Control" parent="."]
 layout_mode = 3
@@ -571,4 +93,500 @@ offset_bottom = 1150.0
 mouse_filter = 2
 texture = ExtResource("3_yohk6")
 
-[connection signal="text_changed" from="Control/ExtendedInv/LineEdit" to="Control/ExtendedInv/CraftRecipes" method="LoadRecipes"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_left = 576.0
+offset_top = 325.0
+offset_right = 576.0
+offset_bottom = 325.0
+scale = Vector2(0.3, 0.3)
+
+[node name="slot" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -1000.0
+offset_top = 867.0
+offset_right = -800.0
+offset_bottom = 1067.0
+inv = NodePath("../../../Inventory")
+
+[node name="slot2" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -800.0
+offset_top = 867.0
+offset_right = -600.0
+offset_bottom = 1067.0
+id = 1
+inv = NodePath("../../../Inventory")
+
+[node name="slot3" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -600.0
+offset_top = 867.0
+offset_right = -400.0
+offset_bottom = 1067.0
+id = 2
+inv = NodePath("../../../Inventory")
+
+[node name="slot4" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -400.0
+offset_top = 867.0
+offset_right = -200.0
+offset_bottom = 1067.0
+id = 3
+inv = NodePath("../../../Inventory")
+
+[node name="slot5" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -200.0
+offset_top = 867.0
+offset_right = 0.0
+offset_bottom = 1067.0
+id = 4
+inv = NodePath("../../../Inventory")
+
+[node name="slot6" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 867.0
+offset_right = 200.0
+offset_bottom = 1067.0
+id = 5
+inv = NodePath("../../../Inventory")
+
+[node name="slot7" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 867.0
+offset_right = 400.0
+offset_bottom = 1067.0
+id = 6
+inv = NodePath("../../../Inventory")
+
+[node name="slot8" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 867.0
+offset_right = 600.0
+offset_bottom = 1067.0
+id = 7
+inv = NodePath("../../../Inventory")
+
+[node name="slot9" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 867.0
+offset_right = 800.0
+offset_bottom = 1067.0
+id = 8
+inv = NodePath("../../../Inventory")
+
+[node name="slot10" parent="CanvasLayer/Control" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 867.0
+offset_right = 1000.0
+offset_bottom = 1067.0
+id = 9
+inv = NodePath("../../../Inventory")
+
+[node name="ItemName" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -984.0
+offset_top = 780.0
+offset_right = 2958.0
+offset_bottom = 917.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 100
+text = "Item"
+horizontal_alignment = 1
+autowrap_mode = 1
+clip_text = true
+
+[node name="Inv" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+self_modulate = Color(0.497473, 0.497474, 0.497474, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1400.0
+offset_top = 114.0
+offset_right = 1400.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_yohk6")
+
+[node name="slot11" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 457.0
+offset_right = 600.0
+offset_bottom = 657.0
+id = 10
+inv = NodePath("../../../../Inventory")
+
+[node name="slot12" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 457.0
+offset_right = 800.0
+offset_bottom = 657.0
+id = 11
+inv = NodePath("../../../../Inventory")
+
+[node name="slot13" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 457.0
+offset_right = 1000.0
+offset_bottom = 657.0
+id = 12
+inv = NodePath("../../../../Inventory")
+
+[node name="slot14" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 457.0
+offset_right = 1200.0
+offset_bottom = 657.0
+id = 13
+inv = NodePath("../../../../Inventory")
+
+[node name="slot15" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 457.0
+offset_right = 1400.0
+offset_bottom = 657.0
+id = 14
+inv = NodePath("../../../../Inventory")
+
+[node name="slot16" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1400.0
+offset_top = 457.0
+offset_right = 1600.0
+offset_bottom = 657.0
+id = 15
+inv = NodePath("../../../../Inventory")
+
+[node name="slot17" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 457.0
+offset_right = 1800.0
+offset_bottom = 657.0
+id = 16
+inv = NodePath("../../../../Inventory")
+
+[node name="slot18" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1800.0
+offset_top = 457.0
+offset_right = 2000.0
+offset_bottom = 657.0
+id = 17
+inv = NodePath("../../../../Inventory")
+
+[node name="slot19" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 2000.0
+offset_top = 457.0
+offset_right = 2200.0
+offset_bottom = 657.0
+id = 18
+inv = NodePath("../../../../Inventory")
+
+[node name="slot20" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 2200.0
+offset_top = 457.0
+offset_right = 2400.0
+offset_bottom = 657.0
+id = 19
+inv = NodePath("../../../../Inventory")
+
+[node name="slot21" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 257.0
+offset_right = 600.0
+offset_bottom = 457.0
+id = 20
+inv = NodePath("../../../../Inventory")
+
+[node name="slot22" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 257.0
+offset_right = 800.0
+offset_bottom = 457.0
+id = 21
+inv = NodePath("../../../../Inventory")
+
+[node name="slot23" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 257.0
+offset_right = 1000.0
+offset_bottom = 457.0
+id = 22
+inv = NodePath("../../../../Inventory")
+
+[node name="slot24" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 257.0
+offset_right = 1200.0
+offset_bottom = 457.0
+id = 23
+inv = NodePath("../../../../Inventory")
+
+[node name="slot25" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 257.0
+offset_right = 1400.0
+offset_bottom = 457.0
+id = 24
+inv = NodePath("../../../../Inventory")
+
+[node name="slot26" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1400.0
+offset_top = 257.0
+offset_right = 1600.0
+offset_bottom = 457.0
+id = 25
+inv = NodePath("../../../../Inventory")
+
+[node name="slot27" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 257.0
+offset_right = 1800.0
+offset_bottom = 457.0
+id = 26
+inv = NodePath("../../../../Inventory")
+
+[node name="slot28" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1800.0
+offset_top = 257.0
+offset_right = 2000.0
+offset_bottom = 457.0
+id = 27
+inv = NodePath("../../../../Inventory")
+
+[node name="slot29" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 2000.0
+offset_top = 257.0
+offset_right = 2200.0
+offset_bottom = 457.0
+id = 28
+inv = NodePath("../../../../Inventory")
+
+[node name="slot30" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 2200.0
+offset_top = 257.0
+offset_right = 2400.0
+offset_bottom = 457.0
+id = 29
+inv = NodePath("../../../../Inventory")
+
+[node name="slot31" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 57.0
+offset_right = 600.0
+offset_bottom = 257.0
+id = 30
+inv = NodePath("../../../../Inventory")
+
+[node name="slot32" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 600.0
+offset_top = 57.0
+offset_right = 800.0
+offset_bottom = 257.0
+id = 31
+inv = NodePath("../../../../Inventory")
+
+[node name="slot33" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 57.0
+offset_right = 1000.0
+offset_bottom = 257.0
+id = 32
+inv = NodePath("../../../../Inventory")
+
+[node name="slot34" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 57.0
+offset_right = 1200.0
+offset_bottom = 257.0
+id = 33
+inv = NodePath("../../../../Inventory")
+
+[node name="slot35" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 57.0
+offset_right = 1400.0
+offset_bottom = 257.0
+id = 34
+inv = NodePath("../../../../Inventory")
+
+[node name="slot36" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1400.0
+offset_top = 57.0
+offset_right = 1600.0
+offset_bottom = 257.0
+id = 35
+inv = NodePath("../../../../Inventory")
+
+[node name="slot37" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1600.0
+offset_top = 57.0
+offset_right = 1800.0
+offset_bottom = 257.0
+id = 36
+inv = NodePath("../../../../Inventory")
+
+[node name="slot38" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 1800.0
+offset_top = 57.0
+offset_right = 2000.0
+offset_bottom = 257.0
+id = 37
+inv = NodePath("../../../../Inventory")
+
+[node name="slot39" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 2000.0
+offset_top = 57.0
+offset_right = 2200.0
+offset_bottom = 257.0
+id = 38
+inv = NodePath("../../../../Inventory")
+
+[node name="slot40" parent="CanvasLayer/Control/Inv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = 2200.0
+offset_top = 57.0
+offset_right = 2400.0
+offset_bottom = 257.0
+id = 39
+inv = NodePath("../../../../Inventory")
+
+[node name="ExtendedInv" type="Control" parent="CanvasLayer/Control"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/ExtendedInv"]
+self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 0
+offset_left = -1400.0
+offset_top = -789.0
+offset_right = 1400.0
+offset_bottom = 142.0
+texture = ExtResource("3_yohk6")
+
+[node name="CraftRecipes" type="ScrollContainer" parent="CanvasLayer/Control/ExtendedInv" node_paths=PackedStringArray("ingredientslots", "resultslot", "recipes_ui", "search")]
+layout_mode = 0
+offset_left = -1400.0
+offset_top = -560.0
+offset_right = -377.0
+offset_bottom = 96.0
+script = ExtResource("5_f7hiq")
+recipepackedscene = ExtResource("6_6ycr5")
+ingredientslots = [NodePath("../slot41")]
+resultslot = NodePath("../slot42")
+recipes_ui = NodePath("VBoxContainer")
+search = NodePath("../LineEdit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/ExtendedInv/CraftRecipes"]
+layout_mode = 2
+theme_override_constants/separation = 270
+
+[node name="slot41" parent="CanvasLayer/Control/ExtendedInv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -1380.0
+offset_top = -770.0
+offset_right = -1180.0
+offset_bottom = -570.0
+id = 40
+inv = NodePath("../../../../Inventory")
+
+[node name="slot42" parent="CanvasLayer/Control/ExtendedInv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
+layout_mode = 0
+offset_left = -1076.0
+offset_top = -770.0
+offset_right = -876.0
+offset_bottom = -570.0
+id = 41
+inv = NodePath("../../../../Inventory")
+cant_put_into = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/ExtendedInv"]
+layout_mode = 0
+offset_left = -1176.0
+offset_top = -715.0
+offset_right = -1136.0
+offset_bottom = -675.0
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_u6hmr")
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer/Control/ExtendedInv"]
+layout_mode = 0
+offset_left = -849.0
+offset_top = -739.0
+offset_right = -59.0
+offset_bottom = -594.0
+theme_override_font_sizes/font_size = 80
+
+[node name="Time" type="Label" parent="CanvasLayer/Control/ExtendedInv"]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 46.0
+offset_right = 989.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 75
+text = "Day 100 12:00"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_left = -1918.0
+offset_top = -1079.0
+offset_right = 1920.0
+offset_bottom = 1079.0
+texture = ExtResource("14_mfgu7")
+
+[connection signal="text_changed" from="CanvasLayer/Control/ExtendedInv/LineEdit" to="CanvasLayer/Control/ExtendedInv/CraftRecipes" method="LoadRecipes"]

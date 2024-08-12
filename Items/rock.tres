@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_31jp3")
 name = "Rock"
+description = "Crafting material"
 image = ExtResource("1_pippo")
 id = 7
 maxcount = 100
@@ -13,5 +14,9 @@ build_id = -1
 build_offset = Vector2(0, 0)
 build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[int]([])
+placement_ignores_player = false
+can_rotate = true
 mining_tool_type = ""
 mining_multiplier = 1.0
+fuel = 0.0

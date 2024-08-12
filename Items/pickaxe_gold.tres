@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_cutwx")
 name = "Gold Pickaxe"
+description = "Shiny pickaxe"
 image = ExtResource("1_secjr")
 id = 20
 maxcount = 1
@@ -15,6 +16,7 @@ build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
 can_place_on_ids = Array[int]([])
 placement_ignores_player = false
+can_rotate = true
 mining_tool_type = "pickaxe"
 mining_multiplier = 4.0
-fuel = 0
+fuel = 0.0

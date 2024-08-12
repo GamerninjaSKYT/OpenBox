@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_17dpl")
 name = "Bridge"
+description = "Can be used as a path over water or as a nice floor"
 image = ExtResource("1_j4kbj")
 id = 10
 maxcount = 100

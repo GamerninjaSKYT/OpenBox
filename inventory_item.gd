@@ -3,6 +3,7 @@ extends Resource
 
 @export_category("General")
 @export var name:String = ""
+@export var description:String = ""
 @export var image:Texture2D
 @export var id = 0 #each item has to have a unigue id
 @export var maxcount = 100 #item stack size

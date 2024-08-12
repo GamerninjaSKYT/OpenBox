@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_u58kw")
 name = "Bed"
+description = "Can be used to skip the night"
 image = ExtResource("1_imgs1")
 id = 23
 maxcount = 100
@@ -18,4 +19,4 @@ can_place_on_ids = Array[int]([])
 placement_ignores_player = false
 mining_tool_type = ""
 mining_multiplier = 1.0
-fuel = 0
+fuel = 0.0

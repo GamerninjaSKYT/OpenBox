@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_251iy")
 name = "Door"
+description = "Can be opened and closed"
 image = ExtResource("1_vkn8q")
 id = 11
 maxcount = 100

@@ -7,8 +7,15 @@ extends TextureRect
 @export var cant_put_into = false
 @export var which_can_hold:Array[int]
 var mouse_over = false
+@export var preview:TextureRect
+@export var preview_name:Label
+@export var preview_desc:Label
 
 func _process(delta):
+	preview.visible = mouse_over and inv.items[id] != null
+	if preview.visible:
+		preview_name.text = inv.items[id].item.name
+		preview_desc.text = inv.items[id].item.description
 	if mouse_over:
 		inv.mouse_on_slot = true
 		if Input.is_action_just_pressed("ML"):
