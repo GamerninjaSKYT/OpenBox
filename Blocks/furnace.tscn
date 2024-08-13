@@ -17,7 +17,7 @@ size = Vector2(19.6923, 19.7693)
 [node name="Furnace" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "inv", "inv_ui", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_vnk21")
-id = 21
+id = "furnace"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true
@@ -82,7 +82,7 @@ offset_top = 193.333
 offset_right = 1293.33
 offset_bottom = 393.333
 inv = NodePath("../..")
-which_can_hold = Array[int]([13, 14])
+which_can_hold = Array[String](["iron_raw", "gold_raw"])
 
 [node name="slot2" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_jvwp1")]
 layout_mode = 0
@@ -92,7 +92,7 @@ offset_right = 1293.33
 offset_bottom = 693.333
 id = 1
 inv = NodePath("../..")
-which_can_hold = Array[int]([15, 0])
+which_can_hold = Array[String](["coal", "wood"])
 
 [node name="slot3" parent="CanvasLayer/ExtendedInv/TextureRect2" node_paths=PackedStringArray("inv") instance=ExtResource("9_jvwp1")]
 layout_mode = 0

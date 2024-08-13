@@ -37,7 +37,7 @@ func _process(delta):
 		time_text.text = "Day " + str(m.day) + " " + str(floor(m.ingame_hour)) + ":" + additional_zero + str(minute)
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:
-		if inv.items[inv.selected_hotbar_slot].item.build_id >= 0:
+		if inv.items[inv.selected_hotbar_slot].item.build_id != "":
 			if inv.items[inv.selected_hotbar_slot].item.can_rotate:
 				if Input.is_action_just_pressed("rotate") and open_inv == null:
 					build_rot = fmod(build_rot + 1,4)
@@ -172,7 +172,7 @@ func DropItem(item, amount = 1):
 
 func GetEveryItemInGame():
 	var items = get_tree().root.get_child(0).itemman.itemlist
-	for i in items:
+	for i in items.values():
 		var ii = item_instance.new()
 		ii.item = i
 		ii.count = i.maxcount

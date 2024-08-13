@@ -5,6 +5,7 @@
 
 [node name="GrassBlock" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col")]
 script = ExtResource("1_3hh88")
+id = "grass"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 

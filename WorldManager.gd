@@ -1,7 +1,7 @@
 class_name WorldManager
 extends Node2D
 
-@export var objectlist:Array[PackedScene]
+@export var objectlist:Dictionary
 @export var itemman:item_manager
 @export var craftman:craftmanager
 @export var player:Player
@@ -50,7 +50,7 @@ func _ready():
 				for s in player.inv.items:
 					var i = item_instance.new()
 					if data["player_item_ids"].size() >= e + 1:
-						if data["player_item_ids"][e] >= 0:
+						if data["player_item_ids"][e] != "":
 							i.item = itemman.itemlist[data["player_item_ids"][e]]
 							i.count = data["player_item_counts"][e]
 							player.inv.items[e] = i
@@ -71,7 +71,7 @@ func _save():
 	data["time"] = time
 	data["player_pos"] = player.position
 	for s in player.inv.items:
-		var i = -1
+		var i = ""
 		var c = 0
 		if s != null:
 			i = s.item.id
@@ -138,43 +138,43 @@ func LoadChunk(pos):
 					var tree_temp_threshold = 0.275
 					var block = grass # grass
 					if temp > desert_temp_threshold:
-						block = objectlist[6] # sand
+						block = objectlist["sand_ground"] # sand
 					if temp < snow_threshold:
-						block = objectlist[10]
+						block = objectlist["snow"]
 					if height < 0: # water
 						if temp >= snow_threshold:
 							block = water
 						else:
-							block = objectlist[9]
+							block = objectlist["ice_floor"]
 					elif height > 0.35: # rockfloor
 						if temp <= desert_temp_threshold:
 							block = rockfloor
 							if height > 0.45 and decorvalue > 0.5:
-								AddBlockToChunk(c,objectlist[20],x,y)
+								AddBlockToChunk(c,objectlist["coal"],x,y)
 						else:
-							block = objectlist[8]
+							block = objectlist["sand_floor"]
 					AddBlockToChunk(c,block,x,y)
 					if height > 0.35 and height < 0.45: # rockhill
 						if temp <= desert_temp_threshold:
 							if decorvalue > 0.5:
 								if decorvalue > 0.65:
-									AddBlockToChunk(c,objectlist[18],x,y)#Gold
+									AddBlockToChunk(c,objectlist["gold"],x,y)#Gold
 								else:
-									AddBlockToChunk(c,objectlist[17],x,y)#Iron
+									AddBlockToChunk(c,objectlist["iron"],x,y)#Iron
 							else:
 								AddBlockToChunk(c,rockhill,x,y)
 						else:
 							if decorvalue > 0.6:
-								AddBlockToChunk(c, objectlist[19],x,y)
+								AddBlockToChunk(c, objectlist["gold_sand"],x,y)
 							else:
-								AddBlockToChunk(c,objectlist[7],x,y)
+								AddBlockToChunk(c,objectlist["sand"],x,y)
 					elif temp <= tree_temp_threshold:
 						if height > 0.3 and height < 0.35 and decorvalue > (0.5 - height/3.75) and temp <= desert_temp_threshold and temp >= snow_threshold: # fallen tree
-							AddBlockToChunk(c,objectlist[5],x,y)
+							AddBlockToChunk(c,objectlist["tree_fallen"],x,y)
 						elif height > 0.15 and height < 0.35 and decorvalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
-							AddBlockToChunk(c,objectlist[4],x,y)
+							AddBlockToChunk(c,objectlist["tree"],x,y)
 						elif height > 0.15 and height < 0.35 and decorvalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
-							AddBlockToChunk(c,objectlist[12],x,y)
+							AddBlockToChunk(c,objectlist["snowtree"],x,y)
 		else:
 			var file = FileAccess.open("user://chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data",FileAccess.READ)
 			var data = file.get_var()

@@ -16,7 +16,7 @@ count = 1
 [node name="GoldOre" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_apvds")
-id = 18
+id = "gold"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true

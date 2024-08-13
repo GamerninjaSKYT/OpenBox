@@ -22,7 +22,7 @@ size = Vector2(18.4615, 11.8462)
 [node name="Chest" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "inv", "inv_ui", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_j4gpd")
-id = 14
+id = "chest"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true

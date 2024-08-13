@@ -1,6 +1,6 @@
 class_name block
 extends StaticBody2D
-@export var id = 0
+@export var id:String
 @export var main_sprite:Sprite2D
 @export var col:CollisionObject2D
 @export var col_shape:CollisionShape2D

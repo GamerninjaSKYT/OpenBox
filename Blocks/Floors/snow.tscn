@@ -5,7 +5,7 @@
 
 [node name="snow" type="StaticBody2D" node_paths=PackedStringArray("col")]
 script = ExtResource("1_0212x")
-id = 10
+id = "snow"
 col = NodePath(".")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

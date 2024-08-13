@@ -5,7 +5,7 @@ extends TextureRect
 @export var id = 0
 @export var inv:inventory
 @export var cant_put_into = false
-@export var which_can_hold:Array[int]
+@export var which_can_hold:Array[String]
 var mouse_over = false
 @export var preview:TextureRect
 @export var preview_name:Label

@@ -16,7 +16,7 @@ count = 1
 [node name="sandHill" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_y5rb1")
-id = 7
+id = "sand"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true

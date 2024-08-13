@@ -17,7 +17,7 @@ size = Vector2(18.6154, 20.48)
 [node name="Bed" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_esuik")
-id = 22
+id = "bed"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true

@@ -17,7 +17,7 @@ size = Vector2(11.0769, 19.0769)
 [node name="Fallen Tree" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_p07iw")
-id = 5
+id = "tree_fallen"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true

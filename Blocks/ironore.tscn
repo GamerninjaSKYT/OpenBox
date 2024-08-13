@@ -16,7 +16,7 @@ count = 1
 [node name="IronOre" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
 input_pickable = true
 script = ExtResource("1_64l6x")
-id = 17
+id = "iron"
 main_sprite = NodePath("Sprite2D")
 col = NodePath(".")
 destroyable = true
