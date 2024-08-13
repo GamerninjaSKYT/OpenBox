@@ -1,14 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxsfinubjctsc"]
+[gd_scene load_steps=7 format=3 uid="uid://bxsfinubjctsc"]
 
 [ext_resource type="Texture2D" uid="uid://8hbu48hkh45m" path="res://MenuBackgrounds/alpha.png" id="1_dh53k"]
 [ext_resource type="Script" path="res://MenuManager.gd" id="1_qlwfi"]
+[ext_resource type="PackedScene" uid="uid://xbxxoc3djlr4" path="res://main_world.tscn" id="2_dib8i"]
 [ext_resource type="Script" path="res://splash.gd" id="2_vnxnp"]
+[ext_resource type="PackedScene" uid="uid://cnlfe5s0njg0b" path="res://worldui.tscn" id="3_wyw1i"]
 [ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="4_yo3pi"]
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("newgame_ui", "seed_ui")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("newgame_ui", "loadgame_ui", "seed_ui", "name_ui", "worlds_ui")]
 script = ExtResource("1_qlwfi")
 newgame_ui = NodePath("CanvasLayer/Control/NewGameUI")
+loadgame_ui = NodePath("CanvasLayer/Control/LoadGameUI")
 seed_ui = NodePath("CanvasLayer/Control/NewGameUI/SpinBox")
+name_ui = NodePath("CanvasLayer/Control/NewGameUI/LineEdit")
+mainworld = ExtResource("2_dib8i")
+worldui = ExtResource("3_wyw1i")
+worlds_ui = NodePath("CanvasLayer/Control/LoadGameUI/ScrollContainer/VBoxContainer")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -74,7 +81,7 @@ text = "New Game"
 layout_mode = 0
 offset_left = 50.0
 offset_top = 320.0
-offset_right = 493.0
+offset_right = 494.0
 offset_bottom = 438.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 80
@@ -84,7 +91,7 @@ text = "Load Game"
 layout_mode = 0
 offset_left = 50.0
 offset_top = 390.0
-offset_right = 493.0
+offset_right = 494.0
 offset_bottom = 508.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 80
@@ -118,6 +125,7 @@ placeholder_text = "World name"
 max_length = 25
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/NewGameUI"]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 100.0
@@ -126,5 +134,70 @@ offset_bottom = 131.0
 max_value = 2.14748e+09
 prefix = "World seed : "
 
+[node name="Play" type="Button" parent="CanvasLayer/Control/NewGameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.5
+offset_top = 200.0
+offset_right = 221.5
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(221, 59)
+theme_override_font_sizes/font_size = 80
+text = "Play"
+
+[node name="LoadGameUI" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+self_modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_yo3pi")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/LoadGameUI"]
+layout_mode = 2
+offset_right = 500.0
+offset_bottom = 510.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/LoadGameUI/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 135
+
+[node name="OpenFolder" type="Button" parent="CanvasLayer/Control/LoadGameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -222.0
+offset_top = 225.0
+offset_right = 222.0
+offset_bottom = 343.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(222, 0)
+theme_override_font_sizes/font_size = 50
+text = "Open Folder"
+
 [connection signal="button_down" from="CanvasLayer/Control/NewGame" to="." method="OpenCloseNewGame"]
+[connection signal="button_down" from="CanvasLayer/Control/LoadGame" to="." method="OpenCloseLoadGame"]
 [connection signal="button_down" from="CanvasLayer/Control/Exit" to="." method="Exit"]
+[connection signal="button_down" from="CanvasLayer/Control/NewGameUI/Play" to="." method="Play"]
+[connection signal="button_down" from="CanvasLayer/Control/LoadGameUI/OpenFolder" to="." method="_on_open_folder_button_down"]

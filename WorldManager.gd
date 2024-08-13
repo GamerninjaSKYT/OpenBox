@@ -1,6 +1,9 @@
 class_name WorldManager
 extends Node2D
 
+var savepath = "user://saves/"
+var worldpath = "world"
+
 @export var objectlist:Dictionary
 @export var itemman:item_manager
 @export var craftman:craftmanager
@@ -33,10 +36,15 @@ var is_day = true
 var day = 1
 
 func _ready():
+	if FileAccess.file_exists("user://load.data"):
+		var f = FileAccess.open("user://load.data",FileAccess.READ)
+		worldpath = f.get_var()
+		f.close()
+	DirAccess.make_dir_recursive_absolute(savepath + worldpath)
 	get_tree().auto_accept_quit = false
 	player.nightdark.visible = true
-	if FileAccess.file_exists("user://save.data"):
-		var file = FileAccess.open("user://save.data",FileAccess.READ)
+	if FileAccess.file_exists(savepath + worldpath + "/save.data"):
+		var file = FileAccess.open(savepath + worldpath + "/save.data",FileAccess.READ)
 		var data = file.get_var()
 		if data != null:
 			if data.has("day_beginning_hour"):
@@ -63,7 +71,7 @@ func _ready():
 		file.close()
 
 func _save():
-	var file = FileAccess.open("user://save.data",FileAccess.WRITE)
+	var file = FileAccess.open(savepath + worldpath + "/save.data",FileAccess.WRITE)
 	var data = {}
 	var item_ids = []
 	var item_counts = []
@@ -127,7 +135,7 @@ func LoadChunk(pos):
 		c.position = chunkpos_to_pos(pos) # set the position of the chunk
 		loadedchunkpositions.append(pos_to_chunkpos(c.position)) # add it into the list of loaded chunks
 		# GENERATE NEW - WORLD GENERATION CODE
-		if !FileAccess.file_exists("user://chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data"):
+		if !FileAccess.file_exists(savepath + worldpath + "/chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data"):
 			for x in range(-8,8,1): # loop through every block position in the chunk
 				for y in range(-8,8,1):
 					var height = heightmap.get_noise_2d((c.position.x+(x*128))/200,(c.position.y+(y*128))/200)
@@ -176,7 +184,7 @@ func LoadChunk(pos):
 						elif height > 0.15 and height < 0.35 and decorvalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
 							AddBlockToChunk(c,objectlist["snowtree"],x,y)
 		else:
-			var file = FileAccess.open("user://chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data",FileAccess.READ)
+			var file = FileAccess.open(savepath + worldpath + "/chunk(" + str(pos_to_chunkpos(c.position).x) + ", " + str(pos_to_chunkpos(c.position).y) + ").data",FileAccess.READ)
 			var data = file.get_var()
 			if data != null:
 				var i = 0
@@ -225,7 +233,7 @@ func LoadChunk(pos):
 			file.close()
 
 func UnloadChunk(c):
-	var file = FileAccess.open("user://chunk" + str(pos_to_chunkpos(c.position)) + ".data",FileAccess.WRITE)
+	var file = FileAccess.open(savepath + worldpath + "/chunk" + str(pos_to_chunkpos(c.position)) + ".data",FileAccess.WRITE)
 	var data = {}
 	var ids = []
 	var poses = []

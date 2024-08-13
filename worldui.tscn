@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnlfe5s0njg0b"]
+
+[ext_resource type="Script" path="res://worldui.gd" id="1_15is6"]
+[ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="2_3bjav"]
+
+[node name="WorldUI" type="Control" node_paths=PackedStringArray("name_ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_15is6")
+name_ui = NodePath("TextureRect/Label")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.362829, 0.362829, 0.362829, 1)
+layout_mode = 0
+offset_right = 979.0
+offset_bottom = 250.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3bjav")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 978.0
+offset_bottom = 69.0
+theme_override_font_sizes/font_size = 50
+text = "World of worldssssssssssssssssssaaaaaaaa"
+clip_text = true
+
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 144.0
+offset_right = 331.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 50
+text = "Play"
+
+[connection signal="button_down" from="TextureRect/Button" to="." method="Play"]
