@@ -56,7 +56,7 @@ func _ready():
 							player.inv.items[e] = i
 					e += 1
 			if data.has("cursor_id"):
-				if data["cursor_id"] >= 0:
+				if data["cursor_id"] != "":
 					player.cursor_item = item_instance.new()
 					player.cursor_item.item = itemman.itemlist[data["cursor_id"]]
 					player.cursor_item.count = data["cursor_count"]
@@ -80,7 +80,7 @@ func _save():
 		item_counts.append(c)
 	data["player_item_ids"] = item_ids
 	data["player_item_counts"] = item_counts
-	var i = -1
+	var i = ""
 	var ic = 0
 	if player.cursor_item != null:
 		i = player.cursor_item.item.id
