@@ -172,7 +172,7 @@ func LoadChunk(pos):
 							else:
 								AddBlockToChunk(c,rockhill,x,y)
 						else:
-							if decorvalue > 0.6:
+							if decorvalue > 0.55:
 								AddBlockToChunk(c, objectlist["gold_sand"],x,y)
 							else:
 								AddBlockToChunk(c,objectlist["sand"],x,y)
