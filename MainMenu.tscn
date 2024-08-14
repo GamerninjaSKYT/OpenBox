@@ -125,7 +125,6 @@ placeholder_text = "World name"
 max_length = 25
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/NewGameUI"]
-visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 100.0

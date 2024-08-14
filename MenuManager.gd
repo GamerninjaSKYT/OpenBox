@@ -40,10 +40,15 @@ func Play():
 	if !name_ui.text.is_empty():
 		if name_ui.text.is_valid_filename():
 			if !DirAccess.dir_exists_absolute(saves_path + "/" + name_ui.text):
-				Load(name_ui.text)
-func Load(world):
+				Load(name_ui.text, true)
+func Load(world, new):
 	var file = FileAccess.open("user://load.data",FileAccess.WRITE)
-	file.store_var(world)
+	var data = {}
+	data["name"] = world
+	data["seed"] = seed_ui.value
+	if !new:
+		data["seed"] = 0
+	file.store_var(data)
 	file.close()
 	get_tree().change_scene_to_packed(mainworld)
 

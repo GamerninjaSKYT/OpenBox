@@ -34,11 +34,14 @@ var day_beginning_hour = 6
 var night_beginning_hour = 18
 var is_day = true
 var day = 1
+var seed_int = 0
 
 func _ready():
 	if FileAccess.file_exists("user://load.data"):
 		var f = FileAccess.open("user://load.data",FileAccess.READ)
-		worldpath = f.get_var()
+		var data = f.get_var()
+		seed_int = data["seed"]
+		worldpath = data["name"]
 		f.close()
 	DirAccess.make_dir_recursive_absolute(savepath + worldpath)
 	get_tree().auto_accept_quit = false
@@ -47,6 +50,8 @@ func _ready():
 		var file = FileAccess.open(savepath + worldpath + "/save.data",FileAccess.READ)
 		var data = file.get_var()
 		if data != null:
+			if data.has("seed"):
+				seed_int = data["seed"]
 			if data.has("day_beginning_hour"):
 				day_beginning_hour = data["day_beginning_hour"]
 			if data.has("time"):
@@ -69,6 +74,9 @@ func _ready():
 					player.cursor_item.item = itemman.itemlist[data["cursor_id"]]
 					player.cursor_item.count = data["cursor_count"]
 		file.close()
+	heightmap.seed = seed_int
+	decormap.seed = seed_int
+	tempmap.seed = seed_int
 
 func _save():
 	var file = FileAccess.open(savepath + worldpath + "/save.data",FileAccess.WRITE)
@@ -78,6 +86,7 @@ func _save():
 	data["day_beginning_hour"] = day_beginning_hour
 	data["time"] = time
 	data["player_pos"] = player.position
+	data["seed"] = seed_int
 	for s in player.inv.items:
 		var i = ""
 		var c = 0

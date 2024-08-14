@@ -6,4 +6,4 @@ extends Control
 @export var man:MenuManager
 
 func Play():
-	man.Load(world)
+	man.Load(world, false)
