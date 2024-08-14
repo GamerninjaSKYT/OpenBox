@@ -149,7 +149,7 @@ func LoadChunk(pos):
 						block = objectlist["sand_ground"] # sand
 					if temp < snow_threshold:
 						block = objectlist["snow"]
-					if height < 0: # water
+					if height < -0.1: # water
 						if temp >= snow_threshold:
 							block = water
 						else:
