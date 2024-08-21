@@ -143,6 +143,16 @@ func UpdateInChunkPos():
 	chunkpos = get_tree().root.get_child(0).blockpos_to_inchunkpos(get_tree().root.get_child(0).pos_to_blockpos(global_position))
 	return chunkpos
 
+func ReparentChunk():
+	chunkparent.blocks.erase(self)
+	UpdateInChunkPos()
+	var c = get_tree().root.get_child(0).GetChunkFromChunkPos(get_tree().root.get_child(0).pos_to_chunkpos(global_position))
+	if c == chunkparent:
+		print("a")
+	reparent(c)
+	c.blocks.append(self)
+	chunkparent = c
+
 func GetBlocksInRadius(radius):
 	var blocks = get_tree().root.get_child(0).GetBlocksInRadiusOnPos(radius, global_position)
 	if blocks.has(self):
