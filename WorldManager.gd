@@ -5,6 +5,7 @@ var savepath = "user://saves/"
 var worldpath = "world"
 
 @export var objectlist:Dictionary
+@export var creaturelist:Dictionary
 @export var itemman:item_manager
 @export var craftman:craftmanager
 @export var player:Player
@@ -316,6 +317,15 @@ func AddBlockToChunk(chunk,block,x,y): # adds a block into a specific position i
 	b.chunkparent = chunk
 	b.chunkpos = Vector2(x,y)
 	return b
+
+func AddCreatureToPos(creature,pos):
+	var c = creature.instantiate()
+	var chunk = GetChunkFromChunkPos(pos_to_chunkpos(pos))
+	chunk.add_child(c)
+	c.global_position = pos
+	chunk.creatures.append(c)
+	c.chunkparent = chunk
+	return c
 
 func GetChunkFromChunkPos(chunkpos):
 	if loadedchunkpositions.has(chunkpos):

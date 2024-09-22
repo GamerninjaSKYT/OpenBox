@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=73 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -71,6 +71,7 @@
 [ext_resource type="Resource" uid="uid://tnapi3dyh8qo" path="res://Recipes/pickaxe_gold.tres" id="65_lk8qx"]
 [ext_resource type="Resource" uid="uid://c3baiq27i6fyy" path="res://Recipes/axe_gold.tres" id="66_ysc7n"]
 [ext_resource type="Resource" uid="uid://dgd6dxl28c7m0" path="res://Recipes/bed.tres" id="69_60j75"]
+[ext_resource type="PackedScene" uid="uid://2be1dwwum8gy" path="res://Creatures/caveling.tscn" id="72_qftyo"]
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("itemman", "craftman", "player", "chunkgroup")]
 script = ExtResource("1_e5byj")
@@ -98,6 +99,9 @@ objectlist = {
 "tree_fallen": ExtResource("3_ipp3h"),
 "wall": ExtResource("15_eynvj"),
 "water": ExtResource("4_epu7w")
+}
+creaturelist = {
+"caveling": ExtResource("72_qftyo")
 }
 itemman = NodePath("ItemManager")
 craftman = NodePath("CraftingManager")

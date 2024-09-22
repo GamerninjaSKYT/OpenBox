@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://2be1dwwum8gy"]
+
+[ext_resource type="Script" path="res://creature.gd" id="1_7w4hn"]
+[ext_resource type="Texture2D" uid="uid://ce8owbe5fqvtx" path="res://caveling.png" id="1_dn0kr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qk5gc"]
+size = Vector2(24, 12)
+
+[node name="Caveling" type="CharacterBody2D"]
+position = Vector2(100, -9)
+collision_layer = 2
+script = ExtResource("1_7w4hn")
+id = "caveling"
+follows_player = true
+follow_range = 1000.0
+speed = 250
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_dn0kr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 33)
+shape = SubResource("RectangleShape2D_qk5gc")

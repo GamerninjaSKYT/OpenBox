@@ -21,6 +21,7 @@ size = Vector2(12.8, 3.16667)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7peci"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark") groups=["Player"]]
+collision_layer = 2
 script = ExtResource("1_45kwr")
 image_front = ExtResource("2_lrmkq")
 image_back = ExtResource("3_j60p5")

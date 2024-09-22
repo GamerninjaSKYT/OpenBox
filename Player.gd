@@ -70,7 +70,7 @@ func _process(delta):
 		else:
 			pass #esc menu
 	if Input.is_action_just_pressed("save") and open_inv == null:
-		get_tree().root.get_child(0)._save()
+		m._save()
 		get_tree().quit()
 	if Input.is_action_just_pressed("drop"):
 		if inv.items[inv.selected_hotbar_slot] != null and open_inv == null:
@@ -80,6 +80,8 @@ func _process(delta):
 				DropItem(inv.items[inv.selected_hotbar_slot], inv.items[inv.selected_hotbar_slot].count)
 	if Input.is_action_just_pressed("get_every") and open_inv == null:
 		GetEveryItemInGame()
+	if Input.is_action_just_pressed("b") and open_inv == null:
+		m.AddCreatureToPos(m.creaturelist["caveling"],global_position)
 
 func _physics_process(delta):
 	if !inv_ui.visible:
@@ -150,7 +152,7 @@ func Build():
 	b.built = true
 	b.global_position = pos*128
 	b.rotation = deg_to_rad(build_rot*90)
-	b.UpdateInChunkPos() 
+	b.UpdateInChunkPos()
 	if b.makes_walkable:
 		b.MakeWalkable()
 
