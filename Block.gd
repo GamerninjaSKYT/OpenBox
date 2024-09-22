@@ -141,10 +141,6 @@ func MakeWalkable(on = true):
 
 func UpdateInChunkPos():
 	chunkpos = get_tree().root.get_child(0).blockpos_to_inchunkpos(get_tree().root.get_child(0).pos_to_blockpos(global_position))
-	if chunkpos.x == 8:
-		chunkpos.x = -8
-	if chunkpos.y == 8:
-		chunkpos.y = -8
 	return chunkpos
 
 func ReparentChunk():
