@@ -74,6 +74,8 @@ func _ready():
 					player.cursor_item = item_instance.new()
 					player.cursor_item.item = itemman.itemlist[data["cursor_id"]]
 					player.cursor_item.count = data["cursor_count"]
+			if data.has("spawnpoint"):
+				player.spawnpoint = data["spawnpoint"]
 		file.close()
 	heightmap.seed = seed_int
 	decormap.seed = seed_int
@@ -84,6 +86,7 @@ func _save():
 	var data = {}
 	var item_ids = []
 	var item_counts = []
+	data["spawnpoint"] = player.spawnpoint
 	data["day_beginning_hour"] = day_beginning_hour
 	data["time"] = time
 	data["player_pos"] = player.position
@@ -213,6 +216,8 @@ func LoadChunk(pos):
 					if data.has("opens"):
 						if p.is_door:
 							p.OpenCloseDoor(data["opens"][i])
+					if data.has("respawns"):
+						p.set_respawn = data["respawns"][i]
 					#Load inventory
 					if p.inv != null:
 						var item_ids = data["invs_ids"][i]
@@ -255,12 +260,14 @@ func UnloadChunk(c):
 	var drop_counts = []
 	var made_walkable = []
 	var opens = []
+	var respawns = []
 	for b in c.blocks:
 		ids.append(b.id)
 		poses.append(b.chunkpos)
 		rots.append(b.rotation)
 		made_walkable.append(b.col.get_collision_layer_value(1) == false)
 		opens.append(b.open)
+		respawns.append(b.set_respawn)
 		var item_ids = []
 		var item_counts = []
 		if b.inv != null:
@@ -287,6 +294,7 @@ func UnloadChunk(c):
 	data["invs_counts"] = invs_counts
 	data["made_walkable"] = made_walkable
 	data["opens"] = opens
+	data["respawns"] = respawns
 	file.store_var(data)
 	file.close()
 	loadedchunkpositions.erase(pos_to_chunkpos(c.position)) # removes the chunk from the list of chunks

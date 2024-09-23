@@ -30,6 +30,8 @@ var open = false
 @export var closed_image:Texture2D
 var built = false
 @export var is_bed = false
+var set_respawn = Vector2.ZERO
+@export var respawn_point:Node2D
 
 func _ready():
 	if mining_progress_control != null:
@@ -79,8 +81,18 @@ func Use(is_player_interaction):
 		OpenCloseDoor(!open)
 	if is_bed and is_player_interaction:
 		var m = get_tree().root.get_child(0)
-		if !m.is_day:
-			m.time += 24*60 - fmod(m.time, 60*24) + m.day_beginning_hour
+		if m.player.spawnpoint != set_respawn or set_respawn == Vector2.ZERO:
+			m.player.spawnpoint = respawn_point.global_position
+			set_respawn = m.player.spawnpoint
+			m.player.Notif("Respawn point set")
+		else:
+			if !m.is_day:
+				m.time += 24*60 - fmod(m.time, 60*24) + m.day_beginning_hour
+				m.player.Notif("Night skipped")
+			else:
+				set_respawn = Vector2.ZERO
+				m.player.spawnpoint = Vector2.ZERO
+				m.player.Notif("Respawn point removed")
 
 func OpenCloseDoor(do_open:bool):
 	open = do_open
@@ -119,6 +131,10 @@ func Destroy(do_drop = true):
 				DropItem(i)
 	if makes_walkable:
 		MakeWalkable(false)
+	if set_respawn != Vector2.ZERO:
+		if set_respawn == get_tree().root.get_child(0).player.spawnpoint:
+			get_tree().root.get_child(0).player.spawnpoint = Vector2.ZERO
+			get_tree().root.get_child(0).player.Notif("Respawn point destroyed")
 	chunkparent.blocks.erase(self)
 	queue_free()
 

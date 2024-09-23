@@ -23,12 +23,28 @@ var build_rot = 0
 @export var time_text:Label
 @export var nightdark:TextureRect
 @export var canbuild = true
+@export var hp = 100
+@export var maxhp = 100
+@export var hpbar:ProgressBar
+var spawnpoint:Vector2 = Vector2.ZERO
+@export var notif_ui:TextureRect
+@export var notif_text:Label
+var notif_time = 0
 
 func _ready():
 	inv_ui.visible = false
 
 func _process(delta):
 	var m = get_tree().root.get_child(0)
+	if notif_time > 0:
+		notif_time -= delta
+	notif_ui.visible = (notif_time > 0)
+	hpbar.value = hp
+	hpbar.max_value = maxhp
+	if hp > maxhp:
+		hp = maxhp
+	if hp <= 0:
+		Die()
 	if time_text != null:
 		var minute = floor(fmod(m.daytime,60))
 		var additional_zero = ""
@@ -103,6 +119,13 @@ func move():
 func CloseInv():
 	open_inv.ui.visible = false
 	open_inv = null
+
+func Die():
+	for i in inv.items:
+		if i != null:
+			DropItem(i, i.count)
+	global_position = spawnpoint
+	hp = maxhp
 
 func UpdateBuildZone(item):
 	buildsprite.visible = true
@@ -179,3 +202,7 @@ func GetEveryItemInGame():
 		ii.item = i
 		ii.count = i.maxcount
 		DropItem(ii, ii.count)
+
+func Notif(text = "", time = 2.0):
+	notif_text.text = text
+	notif_time = time

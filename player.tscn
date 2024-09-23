@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://csivhmue28l3k"]
+[gd_scene load_steps=19 format=3 uid="uid://csivhmue28l3k"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_45kwr"]
 [ext_resource type="Texture2D" uid="uid://beetiyyai248f" path="res://Ali.png" id="2_lrmkq"]
@@ -20,7 +20,12 @@ size = Vector2(12.8, 3.16667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7peci"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark") groups=["Player"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2krk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctw6k"]
+bg_color = Color(0.815075, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark", "hpbar", "notif_ui", "notif_text") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_45kwr")
 image_front = ExtResource("2_lrmkq")
@@ -38,6 +43,9 @@ inv_ui = NodePath("CanvasLayer/Control/Inv")
 extended_inv = NodePath("CanvasLayer/Control/ExtendedInv")
 time_text = NodePath("CanvasLayer/Control/ExtendedInv/Time")
 nightdark = NodePath("Weather/NightDark")
+hpbar = NodePath("CanvasLayer/Control/HealthBar")
+notif_ui = NodePath("CanvasLayer/Control/Notif")
+notif_text = NodePath("CanvasLayer/Control/Notif/Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
@@ -589,5 +597,54 @@ offset_top = -1079.0
 offset_right = 1920.0
 offset_bottom = 1079.0
 texture = ExtResource("14_mfgu7")
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -1887.0
+offset_top = 1003.0
+offset_right = -1057.0
+offset_bottom = 1066.0
+theme_override_styles/background = SubResource("StyleBoxFlat_d2krk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ctw6k")
+value = 75.0
+show_percentage = false
+
+[node name="Notif" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+self_modulate = Color(0.603922, 0.603922, 0.603922, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -750.0
+offset_right = 90.0
+offset_bottom = -710.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10, 10)
+pivot_offset = Vector2(90, 20)
+texture = ExtResource("3_yohk6")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Notif"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -20.0
+offset_right = 90.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "Default aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [connection signal="text_changed" from="CanvasLayer/Control/ExtendedInv/LineEdit" to="CanvasLayer/Control/ExtendedInv/CraftRecipes" method="LoadRecipes"]

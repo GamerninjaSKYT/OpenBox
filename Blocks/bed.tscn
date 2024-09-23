@@ -14,7 +14,7 @@ count = 1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(18.6154, 20.48)
 
-[node name="Bed" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
+[node name="Bed" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot", "respawn_point")]
 input_pickable = true
 script = ExtResource("1_esuik")
 id = "bed"
@@ -27,6 +27,7 @@ drop = SubResource("Resource_hmun6")
 mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 is_bed = true
+respawn_point = NodePath("Respawn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 64)
@@ -46,6 +47,9 @@ offset_left = -50.0
 offset_top = 70.0
 offset_right = 93.0
 offset_bottom = 145.0
+
+[node name="Respawn" type="Node2D" parent="."]
+position = Vector2(0, 256)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
