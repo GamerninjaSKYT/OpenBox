@@ -19,4 +19,4 @@ placement_ignores_player = false
 can_rotate = true
 mining_tool_type = ""
 mining_multiplier = 1.0
-fuel = 0.5
+fuel = 0.75

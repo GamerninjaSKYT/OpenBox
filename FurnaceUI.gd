@@ -15,7 +15,7 @@ func _process(delta):
 	if inv.ui.visible:
 		if inv.items[fuel.id] != null:
 			var f = inv.items[fuel.id].item.fuel * inv.items[fuel.id].count
-			if f > 1:
+			if f != 1:
 				fuelamount.text = str(f) + " fuel points"
 			else:
 				fuelamount.text = "1 fuel point"
@@ -25,7 +25,7 @@ func _process(delta):
 			for r in m.recipes_furnace:
 				if r.input.id == inv.items[input.id].item.id:
 					var n = r.fuelneeded * inv.items[input.id].count
-					if n > 1:
+					if n != 1:
 						neededamount.text = str(n) + " fuel points needed"
 					else:
 						neededamount.text = "1 fuel point needed"

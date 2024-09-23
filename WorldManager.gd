@@ -220,7 +220,7 @@ func LoadChunk(pos):
 						var item_i = 0
 						for ii in p.inv.items:
 							if item_ids.size() > item_i:
-								if item_ids[item_i] != -1:
+								if item_ids[item_i] != "-1":
 									var item = item_instance.new()
 									item.item = itemman.itemlist[item_ids[item_i]]
 									item.count = item_counts[item_i]
@@ -266,7 +266,7 @@ func UnloadChunk(c):
 		if b.inv != null:
 			for i in b.inv.items:
 				if i == null:
-					item_ids.append(-1)
+					item_ids.append("-1")
 					item_counts.append(0)
 				else:
 					item_ids.append(i.item.id)
