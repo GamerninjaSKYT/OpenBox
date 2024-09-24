@@ -160,6 +160,7 @@ func UpdateInChunkPos():
 	return chunkpos
 
 func ReparentChunk():
+	get_tree().root.get_child(0).LoadChunk(get_tree().root.get_child(0).pos_to_chunkpos(global_position))
 	chunkparent.blocks.erase(self)
 	UpdateInChunkPos()
 	var c = get_tree().root.get_child(0).GetChunkFromChunkPos(get_tree().root.get_child(0).pos_to_chunkpos(global_position))

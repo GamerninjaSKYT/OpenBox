@@ -248,6 +248,11 @@ func LoadChunk(pos):
 						drop.chunkparent.drops.append(drop)
 						drop.UpdateItemDrop()
 						e += 1
+				if data.has("c_ids"):
+					var ci = 0
+					for cc in data["c_ids"]:
+						var creatur = AddCreatureToPos(creaturelist[cc],data["c_poses"][ci])
+						ci += 1
 			file.close()
 
 func UnloadChunk(c):
@@ -264,6 +269,8 @@ func UnloadChunk(c):
 	var made_walkable = []
 	var opens = []
 	var respawns = []
+	var c_ids = []
+	var c_poses = []
 	for b in c.blocks:
 		ids.append(b.id)
 		poses.append(b.chunkpos)
@@ -287,6 +294,9 @@ func UnloadChunk(c):
 		drop_ids.append(d.item.item.id)
 		drop_counts.append(d.item.count)
 		drop_poses.append(d.global_position)
+	for cr in c.creatures:
+		c_ids.append(cr.id)
+		c_poses.append(cr.global_position)
 	data["ids"] = ids
 	data["poses"] = poses
 	data["rots"] = rots
@@ -298,6 +308,8 @@ func UnloadChunk(c):
 	data["made_walkable"] = made_walkable
 	data["opens"] = opens
 	data["respawns"] = respawns
+	data["c_ids"] = c_ids
+	data["c_poses"] = c_poses
 	file.store_var(data)
 	file.close()
 	loadedchunkpositions.erase(pos_to_chunkpos(c.position)) # removes the chunk from the list of chunks

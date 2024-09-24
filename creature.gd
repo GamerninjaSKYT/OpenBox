@@ -43,6 +43,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func ReparentChunk():
+	get_tree().root.get_child(0).LoadChunk(get_tree().root.get_child(0).pos_to_chunkpos(global_position))
 	chunkparent.creatures.erase(self)
 	var c = get_tree().root.get_child(0).GetChunkFromChunkPos(get_tree().root.get_child(0).pos_to_chunkpos(global_position))
 	reparent(c)
