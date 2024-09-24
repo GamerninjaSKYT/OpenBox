@@ -13,10 +13,17 @@ var damage_time = 0
 @export var speed = 400
 var player = null
 var chunkparent:chunk
+var lastchunk = Vector2.ZERO
 
 func _ready():
 	if follows_player:
 		player = get_tree().root.get_child(0).player
+func _process(delta):
+	var m = get_tree().root.get_child(0)
+	if lastchunk != m.pos_to_chunkpos(global_position):
+		lastchunk = m.pos_to_chunkpos(global_position)
+		ReparentChunk()
+		print("a")
 func _physics_process(delta):
 	velocity = Vector2.ZERO
 	if damage > 0:
@@ -36,8 +43,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func ReparentChunk():
-	chunkparent.blocks.erase(self)
+	chunkparent.creatures.erase(self)
 	var c = get_tree().root.get_child(0).GetChunkFromChunkPos(get_tree().root.get_child(0).pos_to_chunkpos(global_position))
 	reparent(c)
-	c.blocks.append(self)
+	c.creatures.append(self)
 	chunkparent = c

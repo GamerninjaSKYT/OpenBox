@@ -333,6 +333,7 @@ func AddCreatureToPos(creature,pos):
 	c.global_position = pos
 	chunk.creatures.append(c)
 	c.chunkparent = chunk
+	c.lastchunk = pos_to_chunkpos(pos)
 	return c
 
 func GetChunkFromChunkPos(chunkpos):
