@@ -76,6 +76,8 @@ func _ready():
 					player.cursor_item.count = data["cursor_count"]
 			if data.has("spawnpoint"):
 				player.spawnpoint = data["spawnpoint"]
+			if data.has("hp"):
+				player.hp = data["hp"]
 		file.close()
 	heightmap.seed = seed_int
 	decormap.seed = seed_int
@@ -86,6 +88,7 @@ func _save():
 	var data = {}
 	var item_ids = []
 	var item_counts = []
+	data["hp"] = player.hp
 	data["spawnpoint"] = player.spawnpoint
 	data["day_beginning_hour"] = day_beginning_hour
 	data["time"] = time
