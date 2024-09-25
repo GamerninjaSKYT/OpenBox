@@ -18,6 +18,7 @@ var lastchunk = Vector2.ZERO
 @export var maxhp = 10
 var m:WorldManager
 @export var spriteanim:AnimationPlayer
+@export var despawns = true #set to false for animals
 
 func _ready():
 	m = get_tree().root.get_child(0)

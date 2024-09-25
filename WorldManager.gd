@@ -114,7 +114,7 @@ func _save():
 	file.store_var(data)
 	file.close()
 	for c in get_tree().get_nodes_in_group("Chunk"):
-			UnloadChunk(c)
+			UnloadChunk(c, false)
 
 func _process(delta):
 	time += delta
@@ -135,7 +135,7 @@ func ChunkloadCycle():
 		startuploaddone = true
 		for c in get_tree().get_nodes_in_group("Chunk"):
 			if c.position.distance_to(player.position) > load_distance:
-				UnloadChunk(c)
+				UnloadChunk(c, true)
 		for x in range(-2,3,1):
 			for y in range(-2,3,1):
 				LoadChunkRelativeToPlayer(x,y)
@@ -257,7 +257,7 @@ func LoadChunk(pos):
 						ci += 1
 			file.close()
 
-func UnloadChunk(c):
+func UnloadChunk(c, unloaded_by_distance):
 	var file = FileAccess.open(savepath + worldpath + "/chunk" + str(pos_to_chunkpos(c.position)) + ".data",FileAccess.WRITE)
 	var data = {}
 	var ids = []
@@ -298,9 +298,10 @@ func UnloadChunk(c):
 		drop_counts.append(d.item.count)
 		drop_poses.append(d.global_position)
 	for cr in c.creatures:
-		c_ids.append(cr.id)
-		c_poses.append(cr.global_position)
-		c_hps.append(cr.hp)
+		if !(unloaded_by_distance and cr.despawns): #dont save creatures that despawn
+			c_ids.append(cr.id)
+			c_poses.append(cr.global_position)
+			c_hps.append(cr.hp)
 	data["ids"] = ids
 	data["poses"] = poses
 	data["rots"] = rots
