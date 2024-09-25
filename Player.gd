@@ -23,8 +23,8 @@ var build_rot = 0
 @export var time_text:Label
 @export var nightdark:TextureRect
 @export var canbuild = true
-@export var hp = 100
-@export var maxhp = 100
+@export var hp:float = 100
+@export var maxhp:float = 100
 @export var hpbar:ProgressBar
 var spawnpoint:Vector2 = Vector2.ZERO
 @export var notif_ui:TextureRect

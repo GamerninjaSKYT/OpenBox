@@ -14,8 +14,8 @@ var damage_time = 0
 var player = null
 var chunkparent:chunk
 var lastchunk = Vector2.ZERO
-@export var hp = 10
-@export var maxhp = 10
+@export var hp:float = 10
+@export var maxhp:float = 10
 var m:WorldManager
 @export var spriteanim:AnimationPlayer
 @export var despawns = true #set to false for animals
