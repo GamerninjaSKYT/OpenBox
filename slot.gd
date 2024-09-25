@@ -10,12 +10,15 @@ var mouse_over = false
 @export var preview:TextureRect
 @export var preview_name:Label
 @export var preview_desc:Label
+@export var preview_dmg:Label
 
 func _process(delta):
 	preview.visible = mouse_over and inv.items[id] != null
 	if preview.visible:
 		preview_name.text = inv.items[id].item.name
 		preview_desc.text = inv.items[id].item.description
+		preview_dmg.visible = (inv.items[id].item.damage > 0)
+		preview_dmg.text = "Damage : " + str(inv.items[id].item.damage)
 	if mouse_over:
 		inv.mouse_on_slot = true
 		if Input.is_action_just_pressed("ML"):
