@@ -114,6 +114,8 @@ func Mine(mining_tool):
 			correct_tool = false
 	destroy_progress += get_process_delta_time()
 	if destroy_progress >= destroy_time:
+		if !correct_tool and need_tool_to_drop:
+			get_tree().root.get_child(0).player.Notif("You seem to need better tools")
 		Destroy(!(need_tool_to_drop and !correct_tool))
 
 func _on_mouse_entered():
