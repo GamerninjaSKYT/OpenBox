@@ -126,6 +126,7 @@ func Die():
 			DropItem(i, i.count)
 	global_position = spawnpoint
 	hp = maxhp
+	get_tree().root.get_child(0).ChunkloadCycle()
 
 func UpdateBuildZone(item):
 	buildsprite.visible = true
