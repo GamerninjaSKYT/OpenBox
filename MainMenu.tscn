@@ -65,7 +65,7 @@ text = "[Default]"
 horizontal_alignment = 1
 script = ExtResource("2_vnxnp")
 splash = NodePath(".")
-splashes = Array[String](["[Insert random splash here]", "Needs to be about 20% cooler!", "37% bug-free code!", "This splash was added on a Sunday", "toki pona li lon"])
+splashes = Array[String](["[Insert random splash here]", "Needs to be about 20% cooler!", "37% bug-free code!", "This splash was added on a Sunday", "toki pona li lon", "●●|●●●●●|●●|● ", "[DATA EXPUNGED]"])
 
 [node name="NewGame" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 0
