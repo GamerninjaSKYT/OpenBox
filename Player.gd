@@ -30,12 +30,21 @@ var spawnpoint:Vector2 = Vector2.ZERO
 @export var notif_ui:TextureRect
 @export var notif_text:Label
 var notif_time = 0
+var damage_delay = 0
+@export var delay_bar:ProgressBar
+@export var spriteanim:AnimationPlayer
 
 func _ready():
 	inv_ui.visible = false
 
 func _process(delta):
 	var m = get_tree().root.get_child(0)
+	if damage_delay > 0:
+		damage_delay -= delta
+		delay_bar.visible = true
+		delay_bar.value = damage_delay
+	else:
+		delay_bar.visible = false
 	if notif_time > 0:
 		notif_time -= delta
 	notif_ui.visible = (notif_time > 0)
@@ -53,6 +62,10 @@ func _process(delta):
 		time_text.text = "Day " + str(m.day) + " " + str(floor(m.ingame_hour)) + ":" + additional_zero + str(minute)
 	inv.Updateslots()
 	if inv.items[inv.selected_hotbar_slot] != null:
+		if Input.is_action_just_pressed("MR") and open_inv == null and !inv.mouse_on_slot:
+			UseItem(inv.items[inv.selected_hotbar_slot])
+		if Input.is_action_just_pressed("ML") and open_inv == null and !inv.mouse_on_slot:
+			UseItem(inv.items[inv.selected_hotbar_slot], false)
 		if inv.items[inv.selected_hotbar_slot].item.build_id != "":
 			if inv.items[inv.selected_hotbar_slot].item.can_rotate:
 				if Input.is_action_just_pressed("rotate") and open_inv == null:
@@ -119,6 +132,10 @@ func move():
 func CloseInv():
 	open_inv.ui.visible = false
 	open_inv = null
+
+func Damage(damage):
+	hp -= damage
+	spriteanim.play("hit")
 
 func Die():
 	for i in inv.items:
@@ -195,6 +212,14 @@ func DropItem(item, amount = 1):
 	d.chunkparent.drops.append(d)
 	d.UpdateItemDrop()
 	item.count -= amount
+
+func UseItem(item:item_instance, right_click = true):
+	if item.item.damage > 0 and damage_delay <= 0 and !right_click:
+		damage_delay = item.item.reload
+		delay_bar.max_value = item.item.reload
+		var targets = get_tree().root.get_child(0).GetCreaturesInRadiusOnPos(reach,global_position)
+		for t in targets:
+			t.Damage(item.item.damage)
 
 func GetEveryItemInGame():
 	var items = get_tree().root.get_child(0).itemman.itemlist

@@ -14,24 +14,31 @@ var damage_time = 0
 var player = null
 var chunkparent:chunk
 var lastchunk = Vector2.ZERO
+@export var hp = 10
+@export var maxhp = 10
+var m:WorldManager
+@export var spriteanim:AnimationPlayer
 
 func _ready():
+	m = get_tree().root.get_child(0)
 	if follows_player:
 		player = get_tree().root.get_child(0).player
 func _process(delta):
-	var m = get_tree().root.get_child(0)
 	if lastchunk != m.pos_to_chunkpos(global_position):
 		lastchunk = m.pos_to_chunkpos(global_position)
 		ReparentChunk()
-		print("a")
-func _physics_process(delta):
-	velocity = Vector2.ZERO
+	if hp > maxhp:
+		hp = maxhp
+	if hp <= 0:
+		Destroy()
 	if damage > 0:
 		if global_position.distance_to(player.global_position) <= damage_range:
 			if damage_time <= 0:
 				damage_time = damage_interval
-				player.hp -= damage
+				player.Damage(damage)
 		damage_time -= delta
+func _physics_process(delta):
+	velocity = Vector2.ZERO
 	if follows_player:
 		if global_position.distance_to(player.global_position) <= follow_range:
 			following_target = true
@@ -49,3 +56,11 @@ func ReparentChunk():
 	reparent(c)
 	c.creatures.append(self)
 	chunkparent = c
+
+func Damage(damage):
+	hp -= damage
+	spriteanim.play("hit")
+
+func Destroy():
+	chunkparent.creatures.erase(self)
+	queue_free()

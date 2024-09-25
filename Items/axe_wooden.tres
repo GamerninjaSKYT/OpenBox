@@ -20,3 +20,5 @@ can_rotate = true
 mining_tool_type = "axe"
 mining_multiplier = 1.25
 fuel = 0.0
+damage = 1
+reload = 1.0

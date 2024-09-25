@@ -1,12 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://2be1dwwum8gy"]
+[gd_scene load_steps=7 format=3 uid="uid://2be1dwwum8gy"]
 
 [ext_resource type="Script" path="res://creature.gd" id="1_7w4hn"]
 [ext_resource type="Texture2D" uid="uid://ce8owbe5fqvtx" path="res://caveling.png" id="1_dn0kr"]
 
+[sub_resource type="Animation" id="Animation_kdwti"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_8a3lu"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cnmf1"]
+_data = {
+"RESET": SubResource("Animation_kdwti"),
+"hit": SubResource("Animation_8a3lu")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk5gc"]
 size = Vector2(24, 12)
 
-[node name="Caveling" type="CharacterBody2D"]
+[node name="Caveling" type="CharacterBody2D" node_paths=PackedStringArray("spriteanim")]
 position = Vector2(100, -9)
 collision_layer = 2
 script = ExtResource("1_7w4hn")
@@ -14,10 +51,16 @@ id = "caveling"
 follows_player = true
 damage = 5
 speed = 250
+spriteanim = NodePath("Sprite2D/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("1_dn0kr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_cnmf1")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 33)

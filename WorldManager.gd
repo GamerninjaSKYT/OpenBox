@@ -126,10 +126,10 @@ func _process(delta):
 	if loadchunks:
 		chunkinterval_progress += delta
 		if chunkinterval_progress >= chunkinterval:
-			chunkinterval_progress = 0
 			ChunkloadCycle()
 
 func ChunkloadCycle():
+	chunkinterval_progress = 0
 	if player.last_chunkpos != pos_to_chunkpos(player.position) or !startuploaddone:
 		player.last_chunkpos = pos_to_chunkpos(player.position)
 		startuploaddone = true
@@ -252,6 +252,8 @@ func LoadChunk(pos):
 					var ci = 0
 					for cc in data["c_ids"]:
 						var creatur = AddCreatureToPos(creaturelist[cc],data["c_poses"][ci])
+						if data.has("c_hps"):
+							creatur.hp = data["c_hps"][ci]
 						ci += 1
 			file.close()
 
@@ -271,6 +273,7 @@ func UnloadChunk(c):
 	var respawns = []
 	var c_ids = []
 	var c_poses = []
+	var c_hps = []
 	for b in c.blocks:
 		ids.append(b.id)
 		poses.append(b.chunkpos)
@@ -297,6 +300,7 @@ func UnloadChunk(c):
 	for cr in c.creatures:
 		c_ids.append(cr.id)
 		c_poses.append(cr.global_position)
+		c_hps.append(cr.hp)
 	data["ids"] = ids
 	data["poses"] = poses
 	data["rots"] = rots
@@ -310,6 +314,7 @@ func UnloadChunk(c):
 	data["respawns"] = respawns
 	data["c_ids"] = c_ids
 	data["c_poses"] = c_poses
+	data["c_hps"] = c_hps
 	file.store_var(data)
 	file.close()
 	loadedchunkpositions.erase(pos_to_chunkpos(c.position)) # removes the chunk from the list of chunks
@@ -382,4 +387,24 @@ func GetBlocksInRadiusOnPos(radius, pos):
 		if v["collider"] is block:
 			blocks.append(v["collider"])
 	return blocks
+	PhysicsServer2D.free_rid(v_shape_rid)
+func GetCreaturesInRadiusOnPos(radius, pos):
+	var v_shape_rid = PhysicsServer2D.circle_shape_create()
+	PhysicsServer2D.shape_set_data(v_shape_rid, radius)
+	
+	var v_query = PhysicsShapeQueryParameters2D.new()
+	v_query.collide_with_areas = false
+	v_query.collide_with_bodies = true
+	v_query.shape_rid = v_shape_rid
+	
+	var v_transform = Transform2D()
+	v_transform.origin = pos
+	v_query.transform = v_transform
+	
+	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query)
+	var creatures = []
+	for v in v_result:
+		if v["collider"] is creature:
+			creatures.append(v["collider"])
+	return creatures
 	PhysicsServer2D.free_rid(v_shape_rid)
