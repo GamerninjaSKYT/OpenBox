@@ -11,6 +11,7 @@ var mouse_over = false
 @export var preview_name:Label
 @export var preview_desc:Label
 @export var preview_dmg:Label
+@export var not_additem_target = false
 
 func _process(delta):
 	preview.visible = mouse_over and inv.items[id] != null
