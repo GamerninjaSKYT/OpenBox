@@ -22,7 +22,7 @@ extends Resource
 @export_category("Fuel")
 @export var fuel:float = 0
 @export_category("Weapon")
-@export var damage:int = 0
+@export var damage:float = 0
 @export var reload:float = 1
 
 func get_image():

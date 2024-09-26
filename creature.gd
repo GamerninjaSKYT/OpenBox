@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var end_follow_range:float = 1500
 var following_target = false
 @export var damage_range = 100
-@export var damage = 1
+@export var damage:float = 1
 @export var damage_interval = 1
 var damage_time = 0
 @export var speed = 400
