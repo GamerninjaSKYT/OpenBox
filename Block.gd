@@ -67,7 +67,7 @@ func _process(delta):
 		destroy_progress -= delta
 
 func OnMouseHover(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable and !(cant_be_destroyed_when_stood_on and global_position.distance_to(get_tree().root.get_child(0).player.global_position) < 125):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and destroyable and !(cant_be_destroyed_when_stood_on and global_position.distance_to(get_tree().root.get_child(0).player.global_position) < 125) and get_tree().root.get_child(0).GetCreaturesInRadiusOnPos(125, global_position).size() == 0:
 		var on_top = true
 		if can_place_on:
 			for b in GetBlocksInRadius(50):
