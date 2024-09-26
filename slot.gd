@@ -4,14 +4,14 @@ extends TextureRect
 @export var image:TextureRect
 @export var id = 0
 @export var inv:inventory
-@export var cant_put_into = false
+@export var cant_put_into = false #Mouse input cant put an item here
 @export var which_can_hold:Array[String]
 var mouse_over = false
 @export var preview:TextureRect
 @export var preview_name:Label
 @export var preview_desc:Label
 @export var preview_dmg:Label
-@export var not_additem_target = false
+@export var not_additem_target = false #Things like picking up an item wont affect this slot
 
 func _process(delta):
 	preview.visible = mouse_over and inv.items[id] != null

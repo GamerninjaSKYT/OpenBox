@@ -32,6 +32,11 @@ var built = false
 @export var is_bed = false
 var set_respawn = Vector2.ZERO
 @export var respawn_point:Node2D
+@export var growtime:float = 0
+var grow:float = 0
+@export var nongrown:Texture2D
+@export var grown:Texture2D
+@export var grow_drop:item_instance = null
 
 func _ready():
 	if mining_progress_control != null:
@@ -44,6 +49,12 @@ func _process(delta):
 		built = false
 	if inv != null:
 		inv.Updateslots()
+	if growtime > 0:
+		if grow < growtime:
+			grow += delta
+			main_sprite.texture = nongrown
+		else:
+			main_sprite.texture = grown
 	if mining_progress_control != null:
 		if mining_progress_rot != null:
 			mining_progress_rot.rotation = -rotation
@@ -93,7 +104,9 @@ func Use(is_player_interaction):
 				set_respawn = Vector2.ZERO
 				m.player.spawnpoint = Vector2.ZERO
 				m.player.Notif("Respawn point removed")
-
+	if grow_drop != null and grow >= growtime and is_player_interaction:
+		if get_tree().root.get_child(0).player.inv.AddItem(grow_drop.duplicate()) < grow_drop.count:
+			grow = 0
 func OpenCloseDoor(do_open:bool):
 	open = do_open
 	col.set_collision_layer_value(1,!open)
@@ -127,6 +140,8 @@ func _on_mouse_exited():
 func Destroy(do_drop = true):
 	if drop != null and do_drop:
 		DropItem(drop)
+	if grow_drop != null and grow >= growtime:
+		DropItem(grow_drop)
 	if inv != null:
 		for i in inv.items:
 			if i != null:

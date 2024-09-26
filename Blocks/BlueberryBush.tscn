@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://dienuwh8u5etl"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_514i1"]
+[ext_resource type="Resource" uid="uid://draok10e7bc6g" path="res://Items/blueberry_bush.tres" id="2_cg8dk"]
+[ext_resource type="Texture2D" uid="uid://ctx7pqul28o7m" path="res://blueberrybush_notgrown.png" id="2_qk4np"]
+[ext_resource type="Texture2D" uid="uid://2lyqlr05ey37" path="res://blueberrybush.png" id="3_domyq"]
+[ext_resource type="Resource" uid="uid://5diamtguylpb" path="res://Items/blueberry.tres" id="4_bmn2e"]
+[ext_resource type="Script" path="res://item_instance.gd" id="5_4bitx"]
+[ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_doanl"]
+
+[sub_resource type="Resource" id="Resource_srohv"]
+script = ExtResource("5_4bitx")
+item = ExtResource("2_cg8dk")
+count = 1
+
+[sub_resource type="Resource" id="Resource_mcxni"]
+script = ExtResource("5_4bitx")
+item = ExtResource("4_bmn2e")
+count = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+size = Vector2(14.6154, 14.9231)
+
+[node name="BlueberryBush" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
+input_pickable = true
+script = ExtResource("1_514i1")
+id = "blueberry_bush"
+main_sprite = NodePath("Sprite2D")
+col = NodePath(".")
+destroyable = true
+destroy_time = 5.0
+mining_tool_needed = "axe"
+drop = SubResource("Resource_srohv")
+mining_progress_control = NodePath("Node2D/MiningProgress")
+mining_progress_rot = NodePath("Node2D")
+growtime = 720.0
+nongrown = ExtResource("2_qk4np")
+grown = ExtResource("3_domyq")
+grow_drop = SubResource("Resource_mcxni")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.500001, 16.5)
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_qk4np")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MiningProgress" parent="Node2D" instance=ExtResource("5_doanl")]
+offset_left = -50.0
+offset_top = 70.0
+offset_right = 93.0
+offset_bottom = 145.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

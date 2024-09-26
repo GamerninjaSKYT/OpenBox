@@ -78,6 +78,8 @@ func _ready():
 				player.spawnpoint = data["spawnpoint"]
 			if data.has("hp"):
 				player.hp = data["hp"]
+			if data.has("hunger"):
+				player.hunger = data["hunger"]
 		file.close()
 	heightmap.seed = seed_int
 	decormap.seed = seed_int
@@ -89,6 +91,7 @@ func _save():
 	var item_ids = []
 	var item_counts = []
 	data["hp"] = player.hp
+	data["hunger"] = player.hunger
 	data["spawnpoint"] = player.spawnpoint
 	data["day_beginning_hour"] = day_beginning_hour
 	data["time"] = time
@@ -195,8 +198,12 @@ func LoadChunk(pos):
 					elif temp <= tree_temp_threshold:
 						if height > 0.3 and height < 0.35 and decorvalue > (0.5 - height/3.75) and temp <= desert_temp_threshold and temp >= snow_threshold: # fallen tree
 							AddBlockToChunk(c,objectlist["tree_fallen"],x,y)
-						elif height > 0.15 and height < 0.35 and decorvalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
-							AddBlockToChunk(c,objectlist["tree"],x,y)
+						elif height < 0.35 and decorvalue > 0 and temp <= desert_temp_threshold and temp >= snow_threshold: # tree
+							if height > 0.15:
+								AddBlockToChunk(c,objectlist["tree"],x,y)
+							elif height > 0 and decorvalue > 0.4:
+								var bb = AddBlockToChunk(c,objectlist["blueberry_bush"],x,y)
+								bb.grow = randf()*bb.growtime
 						elif height > 0.15 and height < 0.35 and decorvalue > -0.2 and temp <= desert_temp_threshold and temp < snow_threshold:
 							AddBlockToChunk(c,objectlist["snowtree"],x,y)
 		else:
@@ -221,6 +228,8 @@ func LoadChunk(pos):
 							p.OpenCloseDoor(data["opens"][i])
 					if data.has("respawns"):
 						p.set_respawn = data["respawns"][i]
+					if data.has("grows"):
+						p.grow = data["grows"][i]
 					#Load inventory
 					if p.inv != null:
 						var item_ids = data["invs_ids"][i]
@@ -271,6 +280,7 @@ func UnloadChunk(c, unloaded_by_distance):
 	var made_walkable = []
 	var opens = []
 	var respawns = []
+	var grows = []
 	var c_ids = []
 	var c_poses = []
 	var c_hps = []
@@ -281,6 +291,7 @@ func UnloadChunk(c, unloaded_by_distance):
 		made_walkable.append(b.col.get_collision_layer_value(1) == false)
 		opens.append(b.open)
 		respawns.append(b.set_respawn)
+		grows.append(b.grow)
 		var item_ids = []
 		var item_counts = []
 		if b.inv != null:
@@ -313,6 +324,7 @@ func UnloadChunk(c, unloaded_by_distance):
 	data["made_walkable"] = made_walkable
 	data["opens"] = opens
 	data["respawns"] = respawns
+	data["grows"] = grows
 	data["c_ids"] = c_ids
 	data["c_poses"] = c_poses
 	data["c_hps"] = c_hps

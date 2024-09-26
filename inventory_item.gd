@@ -24,6 +24,8 @@ extends Resource
 @export_category("Weapon")
 @export var damage:float = 0
 @export var reload:float = 1
+@export_category("Food")
+@export var food:float = 0
 
 func get_image():
 	return image

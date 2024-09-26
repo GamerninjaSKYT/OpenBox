@@ -26,6 +26,11 @@ var build_rot = 0
 @export var hp:float = 100
 @export var maxhp:float = 100
 @export var hpbar:ProgressBar
+@export var hunger:float = 1000
+@export var maxhunger:float = 1000
+@export var hunger_heal_threshold:float = 750
+@export var hungerbar:ProgressBar
+@export var healinghunger:TextureRect
 var spawnpoint:Vector2 = Vector2.ZERO
 @export var notif_ui:TextureRect
 @export var notif_text:Label
@@ -50,10 +55,21 @@ func _process(delta):
 	notif_ui.visible = (notif_time > 0)
 	hpbar.value = hp
 	hpbar.max_value = maxhp
+	healinghunger.visible = (hunger >= hunger_heal_threshold)
+	if hunger >= hunger_heal_threshold and hp < maxhp:
+		hp += delta
 	if hp > maxhp:
 		hp = maxhp
 	if hp <= 0:
 		Die()
+	if hunger > maxhunger:
+		hunger = maxhunger
+	if hp < 0:
+		hunger = 0
+	else:
+		hunger -= delta
+	hungerbar.value = hunger
+	hungerbar.max_value = maxhunger
 	if time_text != null:
 		var minute = floor(fmod(m.daytime,60))
 		var additional_zero = ""
@@ -143,6 +159,7 @@ func Die():
 			DropItem(i, i.count)
 	global_position = spawnpoint
 	hp = maxhp
+	hunger = maxhunger/10
 	get_tree().root.get_child(0).ChunkloadCycle()
 
 func UpdateBuildZone(item):
@@ -214,12 +231,17 @@ func DropItem(item, amount = 1):
 	item.count -= amount
 
 func UseItem(item:item_instance, right_click = true):
-	if item.item.damage > 0 and damage_delay <= 0 and !right_click:
-		damage_delay = item.item.reload
-		delay_bar.max_value = item.item.reload
-		var targets = get_tree().root.get_child(0).GetCreaturesInRadiusOnPos(reach,global_position)
-		for t in targets:
-			t.Damage(item.item.damage)
+	if !Input.is_action_pressed("shift"):
+		if item.item.damage > 0 and damage_delay <= 0 and !right_click:
+			damage_delay = item.item.reload
+			delay_bar.max_value = item.item.reload
+			var targets = get_tree().root.get_child(0).GetCreaturesInRadiusOnPos(reach,global_position)
+			print(targets)
+			for t in targets:
+				t.Damage(item.item.damage)
+		if item.item.food > 0 and right_click:
+			hunger += item.item.food
+			item.count -= 1
 
 func GetEveryItemInGame():
 	var items = get_tree().root.get_child(0).itemman.itemlist

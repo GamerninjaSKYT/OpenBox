@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=76 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://dv5jqf8gjvg6j" path="res://Blocks/chest.tscn" id="23_jilpo"]
 [ext_resource type="Resource" uid="uid://de73b1onfggaq" path="res://Recipes/stick.tres" id="23_uebsp"]
 [ext_resource type="PackedScene" uid="uid://nvthm61sge7c" path="res://Blocks/bed.tscn" id="24_wudtt"]
+[ext_resource type="PackedScene" uid="uid://dienuwh8u5etl" path="res://Blocks/BlueberryBush.tscn" id="25_sknn4"]
 [ext_resource type="Resource" uid="uid://baaqn85ictlul" path="res://Recipes/craftingbench.tres" id="27_llapu"]
 [ext_resource type="Resource" uid="uid://bb0c471lignuq" path="res://Recipes/chest.tres" id="30_1f4ef"]
 [ext_resource type="Resource" uid="uid://88nd0ex3cj78" path="res://Recipes/pickaxe_wooden.tres" id="32_aygyg"]
@@ -63,6 +64,8 @@
 [ext_resource type="Resource" uid="uid://tu5mibl7m3d6" path="res://Items/axe_gold.tres" id="50_cpyih"]
 [ext_resource type="Resource" uid="uid://bb1crdhcrcbli" path="res://Items/bed.tres" id="51_vsq6y"]
 [ext_resource type="Resource" uid="uid://cgkbeiw7uefr5" path="res://Items/wall.tres" id="52_3jgvx"]
+[ext_resource type="Resource" uid="uid://5diamtguylpb" path="res://Items/blueberry.tres" id="54_6ltwi"]
+[ext_resource type="Resource" uid="uid://draok10e7bc6g" path="res://Items/blueberry_bush.tres" id="56_vuilx"]
 [ext_resource type="Resource" uid="uid://bdbrrgwfr5gnb" path="res://Recipes/furnace.tres" id="58_hhcxw"]
 [ext_resource type="Resource" uid="uid://d280a412jmi8h" path="res://Recipes/FurnaceRecipes/ironbar_recipe.tres" id="59_h472b"]
 [ext_resource type="Resource" uid="uid://8v5bwi521tfy" path="res://Recipes/FurnaceRecipes/goldbar_recipe.tres" id="60_s3wrm"]
@@ -77,6 +80,7 @@
 script = ExtResource("1_e5byj")
 objectlist = {
 "bed": ExtResource("24_wudtt"),
+"blueberry_bush": ExtResource("25_sknn4"),
 "chest": ExtResource("23_jilpo"),
 "coal": ExtResource("10_vp3bp"),
 "crafting": ExtResource("16_uudbv"),
@@ -127,6 +131,8 @@ itemlist = {
 "axe_stone": ExtResource("45_o8ewg"),
 "axe_wood": ExtResource("47_t4cri"),
 "bed": ExtResource("51_vsq6y"),
+"blueberry": ExtResource("54_6ltwi"),
+"blueberry_bush": ExtResource("56_vuilx"),
 "chest": ExtResource("49_cjk6o"),
 "coal": ExtResource("39_dcr7n"),
 "crafting": ExtResource("40_lo12v"),

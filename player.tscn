@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://csivhmue28l3k"]
+[gd_scene load_steps=26 format=3 uid="uid://csivhmue28l3k"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_45kwr"]
 [ext_resource type="Texture2D" uid="uid://beetiyyai248f" path="res://Ali.png" id="2_lrmkq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cw8spxkiv51sr" path="res://slot.png" id="6_h3x8g"]
 [ext_resource type="Texture2D" uid="uid://duaabsefefqmb" path="res://slot_selected.png" id="7_qwn2n"]
 [ext_resource type="Texture2D" uid="uid://dlducynonbt5w" path="res://ice.png" id="14_mfgu7"]
+[ext_resource type="Texture2D" uid="uid://2sgiyk1v8sgh" path="res://healing.png" id="15_77815"]
 
 [sub_resource type="Animation" id="Animation_y0lts"]
 length = 0.001
@@ -68,7 +69,10 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctw6k"]
 bg_color = Color(0.815075, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark", "hpbar", "notif_ui", "notif_text", "delay_bar", "spriteanim") groups=["Player"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t4uv"]
+bg_color = Color(0.840221, 0.393718, 0.0984953, 1)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark", "hpbar", "hungerbar", "healinghunger", "notif_ui", "notif_text", "delay_bar", "spriteanim") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_45kwr")
 image_front = ExtResource("2_lrmkq")
@@ -87,6 +91,8 @@ extended_inv = NodePath("CanvasLayer/Control/ExtendedInv")
 time_text = NodePath("CanvasLayer/Control/ExtendedInv/Time")
 nightdark = NodePath("Weather/NightDark")
 hpbar = NodePath("CanvasLayer/Control/HealthBar")
+hungerbar = NodePath("CanvasLayer/Control/HungerBar")
+healinghunger = NodePath("CanvasLayer/Control/HungerBar/HealingHunger")
 notif_ui = NodePath("CanvasLayer/Control/Notif")
 notif_text = NodePath("CanvasLayer/Control/Notif/Label")
 delay_bar = NodePath("CanvasLayer/Control/Reload")
@@ -673,12 +679,34 @@ texture = ExtResource("14_mfgu7")
 layout_mode = 0
 offset_left = -1887.0
 offset_top = 1003.0
-offset_right = -1057.0
+offset_right = -1160.0
 offset_bottom = 1066.0
 theme_override_styles/background = SubResource("StyleBoxFlat_d2krk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ctw6k")
 value = 75.0
 show_percentage = false
+
+[node name="HungerBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -1887.0
+offset_top = 903.0
+offset_right = -1160.0
+offset_bottom = 966.0
+theme_override_styles/background = SubResource("StyleBoxFlat_d2krk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8t4uv")
+max_value = 1000.0
+value = 750.0
+show_percentage = false
+
+[node name="HealingHunger" type="TextureRect" parent="CanvasLayer/Control/HungerBar"]
+visible = false
+layout_mode = 0
+offset_left = 760.0
+offset_top = 25.0
+offset_right = 800.0
+offset_bottom = 65.0
+scale = Vector2(3, 3)
+texture = ExtResource("15_77815")
 
 [node name="Notif" type="TextureRect" parent="CanvasLayer/Control"]
 visible = false

@@ -20,3 +20,6 @@ can_rotate = true
 mining_tool_type = ""
 mining_multiplier = 1.0
 fuel = 5.0
+damage = 0
+reload = 1.0
+food = 0.0
