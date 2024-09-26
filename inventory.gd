@@ -85,7 +85,7 @@ func AddItem(item:item_instance):
 	var countlefttoadd = item.count
 	for s in slots:
 		var ii = items[i]
-		if ii != null:
+		if ii != null and !s.not_additem_target and !s.cant_put_into:
 			if ii.item.id == item.item.id and ii.count != ii.item.maxcount:
 				items[i].count += item.count
 				countlefttoadd = 0
@@ -96,13 +96,14 @@ func AddItem(item:item_instance):
 					item.count = countlefttoadd
 				if countlefttoadd < 1:
 					item = null
-					return
+					return 0
 		i += 1
 	if countlefttoadd > 0:
 		i = 0
 		for s in slots:
-			if items[i] == null:
+			if items[i] == null and !s.not_additem_target and !s.cant_put_into:
 				items[i] = item.duplicate()
 				item.count = 0
-				return
+				return 0
 			i += 1
+	return countlefttoadd
