@@ -63,7 +63,7 @@ func _process(delta):
 	if mousehover:
 		if get_tree().root.get_child(0).player.open_inv == null:
 			OnMouseHover(delta)
-	elif destroy_progress > 0 and destroyable:
+	if destroy_progress > 0 and destroyable:
 		destroy_progress -= delta
 
 func OnMouseHover(delta):
@@ -75,10 +75,6 @@ func OnMouseHover(delta):
 					on_top = false
 		if on_top and global_position.distance_to(get_tree().root.get_child(0).player.global_position) <= get_tree().root.get_child(0).player.reach:
 			Mine(get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot])
-		elif  destroy_progress > 0:
-			destroy_progress -= delta
-	elif destroy_progress > 0:
-		destroy_progress -= delta
 	if Input.is_action_just_pressed("MR"):
 		if global_position.distance_to(get_tree().root.get_child(0).player.global_position) <= get_tree().root.get_child(0).player.reach:
 			if get_tree().root.get_child(0).player.open_inv == null:
@@ -125,7 +121,7 @@ func Mine(mining_tool):
 			correct_tool = true
 		elif mining_tool_needed != "":
 			correct_tool = false
-	destroy_progress += get_process_delta_time()
+	destroy_progress += get_process_delta_time()*2
 	if destroy_progress >= destroy_time:
 		if !correct_tool and need_tool_to_drop:
 			get_tree().root.get_child(0).player.Notif("You seem to need better tools")
