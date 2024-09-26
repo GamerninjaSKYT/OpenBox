@@ -54,6 +54,7 @@ speed = 250
 spriteanim = NodePath("Sprite2D/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 11
 scale = Vector2(3, 3)
 texture = ExtResource("1_dn0kr")
 
