@@ -620,6 +620,7 @@ offset_right = -1180.0
 offset_bottom = -570.0
 id = 40
 inv = NodePath("../../../../Inventory")
+not_additem_target = true
 
 [node name="slot42" parent="CanvasLayer/Control/ExtendedInv" node_paths=PackedStringArray("inv") instance=ExtResource("4_guat4")]
 layout_mode = 0
@@ -630,6 +631,7 @@ offset_bottom = -570.0
 id = 41
 inv = NodePath("../../../../Inventory")
 cant_put_into = true
+not_additem_target = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/ExtendedInv"]
 layout_mode = 0
