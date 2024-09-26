@@ -394,7 +394,7 @@ func GetBlocksInRadiusOnPos(radius, pos):
 	v_transform.origin = pos
 	v_query.transform = v_transform
 	
-	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query)
+	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query, 1000)
 	var blocks = []
 	for v in v_result:
 		if v["collider"] is block:
@@ -414,7 +414,7 @@ func GetCreaturesInRadiusOnPos(radius, pos):
 	v_transform.origin = pos
 	v_query.transform = v_transform
 	
-	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query)
+	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query, 1000)
 	var creatures = []
 	for v in v_result:
 		if v["collider"] is creature:

@@ -49,7 +49,7 @@ collision_layer = 2
 script = ExtResource("1_7w4hn")
 id = "caveling"
 follows_player = true
-damage = 5
+damage = 5.0
 speed = 250
 spriteanim = NodePath("Sprite2D/AnimationPlayer")
 
