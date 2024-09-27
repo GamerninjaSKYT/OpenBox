@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdfvmxd55w21u"]
+[gd_scene load_steps=4 format=3 uid="uid://bdfvmxd55w21u"]
 
 [ext_resource type="Texture2D" uid="uid://cvsmqlfb87hgp" path="res://rockhill.png" id="1_650w0"]
 [ext_resource type="Script" path="res://Block.gd" id="1_iw4ys"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq0mj"]
+
 [node name="RockFloor" type="StaticBody2D" node_paths=PackedStringArray("col")]
+collision_layer = 8
 script = ExtResource("1_iw4ys")
 id = "rock_floor"
 col = NodePath(".")
@@ -13,3 +16,7 @@ modulate = Color(0.741385, 0.741385, 0.741385, 1)
 z_index = -10
 scale = Vector2(4, 4)
 texture = ExtResource("1_650w0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_hq0mj")

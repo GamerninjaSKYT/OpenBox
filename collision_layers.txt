@@ -1,0 +1,4 @@
+1 = solid blocks
+2 = entities + player
+3 = player
+4 = floor blocks
