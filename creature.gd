@@ -11,6 +11,11 @@ var following_target = false
 @export var damage_interval = 1
 var damage_time = 0
 @export var speed = 400
+@export var sprite:Sprite2D
+@export var sprite_front:Texture2D
+@export var sprite_back:Texture2D
+@export var sprite_left:Texture2D
+@export var sprite_right:Texture2D
 var player = null
 var chunkparent:chunk
 var lastchunk = Vector2.ZERO
@@ -48,6 +53,14 @@ func _physics_process(delta):
 		if following_target:
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * speed
+	if velocity.x > abs(velocity.y):
+		sprite.texture = sprite_right
+	elif abs(velocity.x) < -velocity.y:
+		sprite.texture = sprite_back
+	elif -velocity.x > abs(velocity.y):
+		sprite.texture = sprite_left
+	else:
+		sprite.texture = sprite_front
 	move_and_slide()
 
 func ReparentChunk():

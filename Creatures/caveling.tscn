@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://2be1dwwum8gy"]
+[gd_scene load_steps=10 format=3 uid="uid://2be1dwwum8gy"]
 
 [ext_resource type="Script" path="res://creature.gd" id="1_7w4hn"]
 [ext_resource type="Texture2D" uid="uid://ce8owbe5fqvtx" path="res://caveling.png" id="1_dn0kr"]
+[ext_resource type="Texture2D" uid="uid://dbv78ohypheja" path="res://caveling_back.png" id="3_qi315"]
+[ext_resource type="Texture2D" uid="uid://b5bebwfqgrc0a" path="res://caveling_side.png" id="4_k7six"]
+[ext_resource type="Texture2D" uid="uid://byhd4agltvrrp" path="res://caveling_side2.png" id="5_1k521"]
 
 [sub_resource type="Animation" id="Animation_kdwti"]
 length = 0.001
@@ -43,7 +46,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk5gc"]
 size = Vector2(24, 12)
 
-[node name="Caveling" type="CharacterBody2D" node_paths=PackedStringArray("spriteanim")]
+[node name="Caveling" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spriteanim")]
 position = Vector2(100, -9)
 collision_layer = 2
 script = ExtResource("1_7w4hn")
@@ -51,6 +54,11 @@ id = "caveling"
 follows_player = true
 damage = 5.0
 speed = 250
+sprite = NodePath("Sprite2D")
+sprite_front = ExtResource("1_dn0kr")
+sprite_back = ExtResource("3_qi315")
+sprite_left = ExtResource("4_k7six")
+sprite_right = ExtResource("5_1k521")
 spriteanim = NodePath("Sprite2D/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
