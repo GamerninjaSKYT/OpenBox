@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+var m:WorldManager
 @export var col:CollisionShape2D
 @export var base_speed = 400  # base speed in pixels/sec
 @export var reach = 300
@@ -44,7 +45,7 @@ func _ready():
 	inv_ui.visible = false
 
 func _process(delta):
-	var m = get_tree().root.get_child(0)
+	m = get_tree().root.get_child(0)
 	if damage_delay > 0:
 		damage_delay -= delta
 		delay_bar.visible = true
@@ -173,12 +174,12 @@ func UpdateBuildZone(item):
 		offset = Vector2(-item.build_offset.x, -item.build_offset.y)
 	if build_rot == 3:
 		offset = Vector2(item.build_offset.y, -item.build_offset.x)
-	buildzone.global_position = get_tree().root.get_child(0).position_snapped(get_global_mouse_position() + Vector2(64,64)) + offset
+	buildzone.global_position = m.position_snapped(get_global_mouse_position() + Vector2(64,64)) + offset
 	buildzone.rotation = deg_to_rad(build_rot*90)
 	buildsprite.texture = item.get_build_sprite()
 	buildsprite.position = item.build_sprite_offset
 	build_col.scale = item.build_col_size
-	var obstructions = buildzone.get_overlapping_bodies()
+	var obstructions = m.GetAllInRadiusOnPos(50,buildzone.global_position,buildzone.collision_mask)
 	if item.placement_ignores_player and obstructions.has(self):
 		obstructions.erase(self)
 	for o in obstructions.duplicate():
@@ -198,7 +199,6 @@ func UpdateBuildZone(item):
 
 func Build():
 	inv.items[inv.selected_hotbar_slot].count -= 1
-	var m = get_tree().root.get_child(0)
 	var offset = inv.items[inv.selected_hotbar_slot].item.build_offset
 	if build_rot == 1:
 		offset = Vector2(-inv.items[inv.selected_hotbar_slot].item.build_offset.y, inv.items[inv.selected_hotbar_slot].item.build_offset.x)

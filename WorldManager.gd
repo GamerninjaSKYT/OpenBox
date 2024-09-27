@@ -421,3 +421,24 @@ func GetCreaturesInRadiusOnPos(radius, pos):
 			creatures.append(v["collider"])
 	return creatures
 	PhysicsServer2D.free_rid(v_shape_rid)
+func GetAllInRadiusOnPos(radius, pos, col_mask = null):
+	var v_shape_rid = PhysicsServer2D.circle_shape_create()
+	PhysicsServer2D.shape_set_data(v_shape_rid, radius)
+	
+	var v_query = PhysicsShapeQueryParameters2D.new()
+	v_query.collide_with_areas = false
+	v_query.collide_with_bodies = true
+	v_query.shape_rid = v_shape_rid
+	if col_mask != null:
+		v_query.collision_mask = col_mask
+	
+	var v_transform = Transform2D()
+	v_transform.origin = pos
+	v_query.transform = v_transform
+	
+	var v_result = get_world_2d().direct_space_state.intersect_shape(v_query, 1000)
+	var results = []
+	for v in v_result:
+		results.append(v["collider"])
+	return results
+	PhysicsServer2D.free_rid(v_shape_rid)
