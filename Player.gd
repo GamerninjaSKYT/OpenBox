@@ -64,8 +64,9 @@ func _process(delta):
 		Die()
 	if hunger > maxhunger:
 		hunger = maxhunger
-	if hp < 0:
+	if hunger <= 0:
 		hunger = 0
+		Damage(delta*4)
 	else:
 		hunger -= delta
 	hungerbar.value = hunger
