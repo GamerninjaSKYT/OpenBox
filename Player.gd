@@ -184,7 +184,7 @@ func UpdateBuildZone(item):
 		if o is block:
 			if o.made_walkable:
 				obstructions.erase(o)
-			elif o.can_place_on and o.id != item.build_id:
+			elif o.can_place_on and o.id != item.build_id and !item.ignores_can_place_on:
 				obstructions.erase(o)
 			elif item.can_place_on_ids.has(o.id):
 				obstructions.erase(o)

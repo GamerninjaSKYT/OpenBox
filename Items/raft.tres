@@ -16,6 +16,7 @@ build_offset = Vector2(0, 0)
 build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
 can_place_on_ids = Array[String](["water"])
+ignores_can_place_on = false
 placement_ignores_player = true
 can_rotate = true
 mining_tool_type = ""

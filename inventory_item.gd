@@ -14,6 +14,7 @@ extends Resource
 @export var build_col_size = Vector2(6.25,6.25)
 @export var build_sprite_offset = Vector2.ZERO
 @export var can_place_on_ids:Array[String]
+@export var ignores_can_place_on = false
 @export var placement_ignores_player = false
 @export var can_rotate = true
 @export_category("Mining tool")
