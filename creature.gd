@@ -4,8 +4,8 @@ extends CharacterBody2D
 @export var id:String
 @export var follows_player = false
 @export var follow_range:float = 1000
-@export var end_follow_range:float = 1500
-var following_target = false
+@export_flags_2d_physics var sight_collision_mask
+var last_target_pos = Vector2.ZERO
 @export var damage_range = 100
 @export var damage:float = 1
 @export var damage_interval = 1
@@ -47,12 +47,17 @@ func _physics_process(delta):
 	velocity = Vector2.ZERO
 	if follows_player:
 		if global_position.distance_to(player.global_position) <= follow_range:
-			following_target = true
-		if global_position.distance_to(player.global_position) >= end_follow_range:
-			following_target = false
-		if following_target:
-			var direction = global_position.direction_to(player.global_position)
+			var space_state = get_world_2d().direct_space_state
+			var query = PhysicsRayQueryParameters2D.create(global_position, player.col.global_position, sight_collision_mask)
+			var result = space_state.intersect_ray(query)
+			if result:
+				if result["collider"] == player:
+					last_target_pos = player.global_position
+		if last_target_pos != Vector2.ZERO:
+			var direction = global_position.direction_to(last_target_pos)
 			velocity = direction * speed
+			if global_position.distance_to(last_target_pos) < 5:
+				last_target_pos = Vector2.ZERO
 	if velocity.x > abs(velocity.y):
 		sprite.texture = sprite_right
 	elif abs(velocity.x) < -velocity.y:

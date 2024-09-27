@@ -72,9 +72,10 @@ bg_color = Color(0.815075, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t4uv"]
 bg_color = Color(0.840221, 0.393718, 0.0984953, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark", "hpbar", "hungerbar", "healinghunger", "notif_ui", "notif_text", "delay_bar", "spriteanim") groups=["Player"]]
-collision_layer = 2
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("col", "sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark", "hpbar", "hungerbar", "healinghunger", "notif_ui", "notif_text", "delay_bar", "spriteanim") groups=["Player"]]
+collision_layer = 6
 script = ExtResource("1_45kwr")
+col = NodePath("CollisionShape2D")
 image_front = ExtResource("2_lrmkq")
 image_back = ExtResource("3_j60p5")
 image_side_left = ExtResource("4_xcd1m")

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxsfinubjctsc"]
 
-[ext_resource type="Texture2D" uid="uid://8hbu48hkh45m" path="res://MenuBackgrounds/alpha.png" id="1_dh53k"]
 [ext_resource type="Script" path="res://MenuManager.gd" id="1_qlwfi"]
 [ext_resource type="PackedScene" uid="uid://xbxxoc3djlr4" path="res://main_world.tscn" id="2_dib8i"]
 [ext_resource type="Script" path="res://splash.gd" id="2_vnxnp"]
 [ext_resource type="PackedScene" uid="uid://cnlfe5s0njg0b" path="res://worldui.tscn" id="3_wyw1i"]
+[ext_resource type="Texture2D" uid="uid://c2l4lnkwx2pbb" path="res://MenuBackgrounds/snow.png" id="4_s12bb"]
 [ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="4_yo3pi"]
 
 [node name="MainMenu" type="Node2D" node_paths=PackedStringArray("newgame_ui", "loadgame_ui", "seed_ui", "name_ui", "worlds_ui")]
@@ -32,7 +32,7 @@ layout_mode = 0
 offset_right = 1792.0
 offset_bottom = 1003.0
 scale = Vector2(0.647, 0.647)
-texture = ExtResource("1_dh53k")
+texture = ExtResource("4_s12bb")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1

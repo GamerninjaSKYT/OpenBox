@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+@export var col:CollisionShape2D
 @export var base_speed = 400  # base speed in pixels/sec
 @export var reach = 300
 var last_chunkpos:Vector2
@@ -237,7 +238,6 @@ func UseItem(item:item_instance, right_click = true):
 			damage_delay = item.item.reload
 			delay_bar.max_value = item.item.reload
 			var targets = get_tree().root.get_child(0).GetCreaturesInRadiusOnPos(reach,global_position)
-			print(targets)
 			for t in targets:
 				t.Damage(item.item.damage)
 		if item.item.food > 0 and right_click:
