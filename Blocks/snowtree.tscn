@@ -1,15 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmda407cfkqxy"]
+[gd_scene load_steps=10 format=3 uid="uid://cmda407cfkqxy"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_quhex"]
 [ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="2_q6pyv"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_7byut"]
 [ext_resource type="Texture2D" uid="uid://chb13cmxwp1cf" path="res://snowtree.png" id="4_7qpic"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_75521"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_atnpm"]
 
-[sub_resource type="Resource" id="Resource_nuu8p"]
+[sub_resource type="Resource" id="Resource_j7jlr"]
 script = ExtResource("3_7byut")
 item = ExtResource("2_q6pyv")
 count = 1
+
+[sub_resource type="Resource" id="Resource_qi113"]
+script = ExtResource("4_75521")
+item = SubResource("Resource_j7jlr")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(8.61539, 19.0769)
@@ -24,7 +32,7 @@ destroyable = true
 destroy_time = 5.0
 mining_tool_needed = "axe"
 need_tool_to_drop = true
-drop = SubResource("Resource_nuu8p")
+drop = Array[ExtResource("4_75521")]([SubResource("Resource_qi113")])
 mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 

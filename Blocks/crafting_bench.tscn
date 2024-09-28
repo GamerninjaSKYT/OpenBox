@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cbtxv47biv1cp"]
+[gd_scene load_steps=18 format=3 uid="uid://cbtxv47biv1cp"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_3ule8"]
 [ext_resource type="Resource" uid="uid://cmmltdhqrc5cx" path="res://Items/crafting_bench.tres" id="2_v2hvp"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_2yia7"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_20q1g"]
 [ext_resource type="Texture2D" uid="uid://lqcj4tecqgkp" path="res://crafting_bench.png" id="4_vgbl7"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_f47nm"]
 [ext_resource type="Script" path="res://inventory.gd" id="6_0xruj"]
@@ -14,10 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://mjoowts3smo6" path="res://slot.tscn" id="9_eyh65"]
 [ext_resource type="Texture2D" uid="uid://tywc06sc0bj5" path="res://arrow.png" id="10_88ffv"]
 
-[sub_resource type="Resource" id="Resource_6fuo1"]
+[sub_resource type="Resource" id="Resource_6clh7"]
 script = ExtResource("3_2yia7")
 item = ExtResource("2_v2hvp")
 count = 1
+
+[sub_resource type="Resource" id="Resource_44tdo"]
+script = ExtResource("4_20q1g")
+item = SubResource("Resource_6clh7")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(19.76, 19.2308)
@@ -31,7 +39,7 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 2.0
 mining_tool_needed = "axe"
-drop = SubResource("Resource_6fuo1")
+drop = Array[ExtResource("4_20q1g")]([SubResource("Resource_44tdo")])
 inv = NodePath("CanvasLayer/ExtendedInv")
 inv_ui = NodePath("CanvasLayer/ExtendedInv/TextureRect2")
 mining_progress_control = NodePath("Node2D/MiningProgress")

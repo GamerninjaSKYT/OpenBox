@@ -12,7 +12,7 @@ var destroy_progress = 0
 var mousehover = false
 var chunkparent:chunk
 var chunkpos:Vector2
-@export var drop:item_instance = null
+@export var drop:Array[randomdrop]
 @export var inv:inventory = null
 @export var inv_ui:TextureRect
 @export var mining_progress_control:Control
@@ -136,7 +136,9 @@ func _on_mouse_exited():
 	
 func Destroy(do_drop = true):
 	if drop != null and do_drop:
-		DropItem(drop)
+		for d in drop:
+			d.randomize()
+			DropItem(d.item)
 	if grow_drop != null and grow >= growtime:
 		DropItem(grow_drop)
 	if inv != null:

@@ -1,17 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://dienuwh8u5etl"]
+[gd_scene load_steps=13 format=3 uid="uid://dienuwh8u5etl"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_514i1"]
 [ext_resource type="Resource" uid="uid://draok10e7bc6g" path="res://Items/blueberry_bush.tres" id="2_cg8dk"]
 [ext_resource type="Texture2D" uid="uid://ctx7pqul28o7m" path="res://blueberrybush_notgrown.png" id="2_qk4np"]
 [ext_resource type="Texture2D" uid="uid://2lyqlr05ey37" path="res://blueberrybush.png" id="3_domyq"]
 [ext_resource type="Resource" uid="uid://5diamtguylpb" path="res://Items/blueberry.tres" id="4_bmn2e"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_vhivu"]
 [ext_resource type="Script" path="res://item_instance.gd" id="5_4bitx"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_doanl"]
 
-[sub_resource type="Resource" id="Resource_srohv"]
+[sub_resource type="Resource" id="Resource_gqi85"]
 script = ExtResource("5_4bitx")
 item = ExtResource("2_cg8dk")
 count = 1
+
+[sub_resource type="Resource" id="Resource_hjku2"]
+script = ExtResource("4_vhivu")
+item = SubResource("Resource_gqi85")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
 
 [sub_resource type="Resource" id="Resource_mcxni"]
 script = ExtResource("5_4bitx")
@@ -30,7 +38,7 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 2.0
 mining_tool_needed = "axe"
-drop = SubResource("Resource_srohv")
+drop = Array[ExtResource("4_vhivu")]([SubResource("Resource_hjku2")])
 mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 growtime = 1080.0

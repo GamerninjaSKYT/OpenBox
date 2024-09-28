@@ -1,15 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfx55ep3awdyi"]
+[gd_scene load_steps=10 format=3 uid="uid://cfx55ep3awdyi"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_y5rb1"]
 [ext_resource type="Resource" uid="uid://do4aoswst4ngf" path="res://Items/sand.tres" id="2_ja3xk"]
 [ext_resource type="Texture2D" uid="uid://dtwu5nfc2y0em" path="res://sandrock_floor.png" id="2_mpm7b"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="3_d7ofk"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_ufjvk"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_erm6f"]
 
-[sub_resource type="Resource" id="Resource_er7mp"]
+[sub_resource type="Resource" id="Resource_km0nt"]
 script = ExtResource("3_ufjvk")
 item = ExtResource("2_ja3xk")
 count = 1
+
+[sub_resource type="Resource" id="Resource_7d8es"]
+script = ExtResource("4_erm6f")
+item = SubResource("Resource_km0nt")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 
@@ -23,7 +31,7 @@ destroyable = true
 destroy_time = 20.0
 mining_tool_needed = "pickaxe"
 need_tool_to_drop = true
-drop = SubResource("Resource_er7mp")
+drop = Array[ExtResource("4_erm6f")]([SubResource("Resource_7d8es")])
 mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 

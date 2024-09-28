@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dv5jqf8gjvg6j"]
+[gd_scene load_steps=15 format=3 uid="uid://dv5jqf8gjvg6j"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_j4gpd"]
 [ext_resource type="Resource" uid="uid://dn45bgq058oqd" path="res://Items/chest.tres" id="2_hvr56"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_ea0wi"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_4xoal"]
 [ext_resource type="Texture2D" uid="uid://66c4jeiedi1i" path="res://chest.png" id="4_irot0"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_hkg4s"]
 [ext_resource type="Script" path="res://inventory.gd" id="6_rjxmi"]
@@ -11,10 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://dothftievaasc" path="res://sguare.png" id="9_ykgl6"]
 [ext_resource type="PackedScene" uid="uid://mjoowts3smo6" path="res://slot.tscn" id="12_nbmmd"]
 
-[sub_resource type="Resource" id="Resource_wsxh3"]
+[sub_resource type="Resource" id="Resource_5ghmu"]
 script = ExtResource("3_ea0wi")
 item = ExtResource("2_hvr56")
 count = 1
+
+[sub_resource type="Resource" id="Resource_vxqo2"]
+script = ExtResource("4_4xoal")
+item = SubResource("Resource_5ghmu")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(18.4615, 11.8462)
@@ -28,7 +36,7 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 2.5
 mining_tool_needed = "axe"
-drop = SubResource("Resource_wsxh3")
+drop = Array[ExtResource("4_4xoal")]([SubResource("Resource_vxqo2")])
 inv = NodePath("CanvasLayer/ExtendedInv")
 inv_ui = NodePath("CanvasLayer/ExtendedInv/TextureRect2")
 mining_progress_control = NodePath("Node2D/MiningProgress")

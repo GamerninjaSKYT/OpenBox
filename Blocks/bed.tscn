@@ -1,15 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://nvthm61sge7c"]
+[gd_scene load_steps=10 format=3 uid="uid://nvthm61sge7c"]
 
 [ext_resource type="Script" path="res://Block.gd" id="1_esuik"]
 [ext_resource type="Resource" uid="uid://bb1crdhcrcbli" path="res://Items/bed.tres" id="2_jruko"]
 [ext_resource type="Script" path="res://item_instance.gd" id="3_vgbpk"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_2yw77"]
 [ext_resource type="Texture2D" uid="uid://b1j0rgf0b1na0" path="res://bed.png" id="4_c2kxd"]
 [ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="5_2suor"]
 
-[sub_resource type="Resource" id="Resource_hmun6"]
+[sub_resource type="Resource" id="Resource_is36x"]
 script = ExtResource("3_vgbpk")
 item = ExtResource("2_jruko")
 count = 1
+
+[sub_resource type="Resource" id="Resource_3sdlq"]
+script = ExtResource("4_2yw77")
+item = SubResource("Resource_is36x")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
 size = Vector2(18.6154, 20.48)
@@ -23,7 +31,7 @@ col = NodePath(".")
 destroyable = true
 destroy_time = 2.0
 mining_tool_needed = "axe"
-drop = SubResource("Resource_hmun6")
+drop = Array[ExtResource("4_2yw77")]([SubResource("Resource_3sdlq")])
 mining_progress_control = NodePath("Node2D/MiningProgress")
 mining_progress_rot = NodePath("Node2D")
 is_bed = true
