@@ -160,9 +160,9 @@ func LoadChunk(pos):
 					var height = heightmap.get_noise_2d((c.position.x+(x*128))/200,(c.position.y+(y*128))/200)
 					var decorvalue = decormap.get_noise_2d((c.position.x+(x*128)),(c.position.y+(y*128)))
 					var temp = tempmap.get_noise_2d((c.position.x+(x*128))/2000,(c.position.y+(y*128))/2000)
-					var desert_temp_threshold = 0.3
-					var snow_threshold = -0.3
-					var tree_temp_threshold = 0.275
+					var desert_temp_threshold = 0.225
+					var snow_threshold = -0.225
+					var tree_temp_threshold = 0.2
 					var block = grass # grass
 					if temp > desert_temp_threshold:
 						block = objectlist["sand_ground"] # sand
