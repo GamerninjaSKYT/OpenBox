@@ -184,6 +184,13 @@ func UpdateBuildZone(item):
 	buildsprite.texture = item.get_build_sprite()
 	buildsprite.position = item.build_sprite_offset
 	build_col.scale = item.build_col_size
+	var must_place_satisfied = (item.must_place_on.size() == 0)
+	if !must_place_satisfied:
+		var stuff = m.GetAllInRadiusOnPos(50,buildzone.global_position)
+		for f in stuff:
+			if f is block:
+				if item.must_place_on.has(f.id):
+					must_place_satisfied = true
 	var obstructions = m.GetAllInRadiusOnPos(50,buildzone.global_position,buildzone.collision_mask)
 	if item.placement_ignores_player and obstructions.has(self):
 		obstructions.erase(self)
@@ -195,7 +202,7 @@ func UpdateBuildZone(item):
 				obstructions.erase(o)
 			elif item.can_place_on_ids.has(o.id):
 				obstructions.erase(o)
-	if obstructions.size() == 0 and buildzone.global_position.distance_to(global_position) <= reach:
+	if obstructions.size() == 0 and must_place_satisfied and buildzone.global_position.distance_to(global_position) <= reach:
 		buildsprite.modulate = buildcan_color
 		return true
 	else:

@@ -16,6 +16,7 @@ build_offset = Vector2(0, 0)
 build_col_size = Vector2(6.25, 6.25)
 build_sprite_offset = Vector2(0, 0)
 can_place_on_ids = Array[String]([])
+must_place_on = Array[String]([])
 ignores_can_place_on = false
 placement_ignores_player = false
 can_rotate = true
