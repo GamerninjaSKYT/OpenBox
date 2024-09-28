@@ -71,8 +71,9 @@ func OnMouseHover(delta):
 		var on_top = true
 		if can_place_on:
 			for b in GetBlocksInRadius(50):
-				if b.main_sprite.z_index > main_sprite.z_index:
-					on_top = false
+				if b.main_sprite != null:
+					if b.main_sprite.z_index > main_sprite.z_index:
+						on_top = false
 		if on_top and global_position.distance_to(get_tree().root.get_child(0).player.global_position) <= get_tree().root.get_child(0).player.reach:
 			Mine(get_tree().root.get_child(0).player.inv.items[get_tree().root.get_child(0).player.inv.selected_hotbar_slot])
 	if Input.is_action_just_pressed("MR"):
