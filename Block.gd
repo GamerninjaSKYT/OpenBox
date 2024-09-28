@@ -137,8 +137,7 @@ func _on_mouse_exited():
 func Destroy(do_drop = true):
 	if drop != null and do_drop:
 		for d in drop:
-			d.randomize()
-			DropItem(d.item)
+			DropItem(d.randomize())
 	if grow_drop != null and grow >= growtime:
 		DropItem(grow_drop)
 	if inv != null:
@@ -155,13 +154,14 @@ func Destroy(do_drop = true):
 	queue_free()
 
 func DropItem(item):
-	var d = get_tree().root.get_child(0).itemdrop.instantiate()
-	chunkparent.add_child(d)
-	d.position = position
-	d.item = item.duplicate()
-	d.chunkparent = chunkparent
-	d.chunkparent.drops.append(d)
-	d.UpdateItemDrop()
+	if item != null:
+		var d = get_tree().root.get_child(0).itemdrop.instantiate()
+		chunkparent.add_child(d)
+		d.position = position
+		d.item = item.duplicate()
+		d.chunkparent = chunkparent
+		d.chunkparent.drops.append(d)
+		d.UpdateItemDrop()
 
 func MakeWalkable(on = true):
 	var blocks = GetBlocksInRadius(50)

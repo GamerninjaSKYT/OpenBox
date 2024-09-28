@@ -9,6 +9,10 @@ extends Resource
 func randomize():
 	if randf_range(0,100) <= percentagechance and percentagechance > 0:
 		if maxcount != 0:
-			item.count = randi_range(mincount,maxcount)
+			var i = item.duplicate()
+			i.count = randi_range(mincount,maxcount)
+			return i
+		else:
+			return item.duplicate()
 	else:
-		item = null
+		return null
