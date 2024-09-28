@@ -12,7 +12,7 @@ extends Control
 
 func _on_craft_button_down():
 	if inv.items[craftui.resultslot.id] != null:
-		if inv.items[craftui.resultslot.id].item.id != rec.result.item.id:
+		if !inv.items[craftui.resultslot.id].can_merge(rec.result):
 			return
 		if inv.items[craftui.resultslot.id].count + rec.result.count > rec.result.item.maxcount:
 			return
@@ -21,7 +21,7 @@ func _on_craft_button_down():
 	for i in rec.ingredients:
 		if inv.items[craftui.ingredientslots[n].id] == null:
 			cancraft = false
-		elif inv.items[craftui.ingredientslots[n].id].item.id != rec.ingredients[n].item.id:
+		elif !inv.items[craftui.ingredientslots[n].id].can_merge(rec.ingredients[n]):
 			cancraft = false
 		elif inv.items[craftui.ingredientslots[n].id].count < rec.ingredients[n].count:
 			cancraft = false

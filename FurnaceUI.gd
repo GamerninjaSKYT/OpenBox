@@ -38,7 +38,7 @@ func _on_smelt_button_down():
 		for r in m.recipes_furnace:
 			if r.input.id == inv.items[input.id].item.id:
 				if inv.items[result.id] != null:
-					if inv.items[result.id].item.id == r.result.item.id:
+					if inv.items[result.id].can_merge(r.result):
 						if inv.items[result.id].count + r.result.count <= inv.items[result.id].item.maxcount:
 							can_craft = true
 				else:

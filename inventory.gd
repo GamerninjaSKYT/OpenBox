@@ -86,7 +86,7 @@ func AddItem(item:item_instance):
 	for s in slots:
 		var ii = items[i]
 		if ii != null and !s.not_additem_target and !s.cant_put_into:
-			if ii.item.id == item.item.id and ii.count != ii.item.maxcount:
+			if ii.can_merge(item) and ii.count != ii.item.maxcount:
 				items[i].count += item.count
 				countlefttoadd = 0
 				item.count = 0

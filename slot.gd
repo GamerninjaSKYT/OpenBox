@@ -34,7 +34,7 @@ func Click(click_index):
 			var countlefttoadd = item.count
 			var ii = inv.items[id]
 			if ii != null:
-				if ii.item.id == item.item.id and ii.count != ii.item.maxcount and !cant_put_into:
+				if ii.can_merge(item) and ii.count != ii.item.maxcount and !cant_put_into:
 					inv.items[id].count += item.count
 					countlefttoadd = 0
 					player.cursor_item.count = 0
@@ -66,7 +66,7 @@ func Click(click_index):
 				player.cursor_item.count -= 1
 				return
 			if item != null and inv.items[id] != null:
-				if inv.items[id].item.id == item.item.id:
+				if inv.items[id].can_merge(item):
 					if inv.items[id].count < inv.items[id].item.maxcount:
 						inv.items[id].count += 1
 						player.cursor_item.count -= 1
