@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://xbxxoc3djlr4"]
+[gd_scene load_steps=80 format=3 uid="uid://xbxxoc3djlr4"]
 
 [ext_resource type="PackedScene" uid="uid://csivhmue28l3k" path="res://player.tscn" id="1_257w6"]
 [ext_resource type="Script" path="res://WorldManager.gd" id="1_e5byj"]
@@ -32,6 +32,7 @@
 [ext_resource type="Resource" uid="uid://de73b1onfggaq" path="res://Recipes/stick.tres" id="23_uebsp"]
 [ext_resource type="PackedScene" uid="uid://nvthm61sge7c" path="res://Blocks/bed.tscn" id="24_wudtt"]
 [ext_resource type="PackedScene" uid="uid://dienuwh8u5etl" path="res://Blocks/BlueberryBush.tscn" id="25_sknn4"]
+[ext_resource type="PackedScene" uid="uid://dc7mdwd1qqvk0" path="res://Blocks/palm.tscn" id="26_l2rwb"]
 [ext_resource type="Resource" uid="uid://baaqn85ictlul" path="res://Recipes/craftingbench.tres" id="27_llapu"]
 [ext_resource type="Resource" uid="uid://bb0c471lignuq" path="res://Recipes/chest.tres" id="30_1f4ef"]
 [ext_resource type="Resource" uid="uid://88nd0ex3cj78" path="res://Recipes/pickaxe_wooden.tres" id="32_aygyg"]
@@ -68,6 +69,7 @@
 [ext_resource type="Resource" uid="uid://draok10e7bc6g" path="res://Items/blueberry_bush.tres" id="56_vuilx"]
 [ext_resource type="Resource" uid="uid://qewo4n2em5iy" path="res://Items/compass.tres" id="57_xfqlb"]
 [ext_resource type="Resource" uid="uid://bdbrrgwfr5gnb" path="res://Recipes/furnace.tres" id="58_hhcxw"]
+[ext_resource type="Resource" uid="uid://jodtp2wtlfov" path="res://Items/coconut.tres" id="59_1npok"]
 [ext_resource type="Resource" uid="uid://d280a412jmi8h" path="res://Recipes/FurnaceRecipes/ironbar_recipe.tres" id="59_h472b"]
 [ext_resource type="Resource" uid="uid://8v5bwi521tfy" path="res://Recipes/FurnaceRecipes/goldbar_recipe.tres" id="60_s3wrm"]
 [ext_resource type="Resource" uid="uid://brecjnwpgoj2m" path="res://Recipes/pickaxe_iron.tres" id="63_8l3xt"]
@@ -93,6 +95,7 @@ objectlist = {
 "grass": ExtResource("3_qbed4"),
 "ice_floor": ExtResource("19_sutb3"),
 "iron": ExtResource("4_gn617"),
+"palm": ExtResource("26_l2rwb"),
 "raft": ExtResource("21_5aqh1"),
 "rock": ExtResource("5_sgq64"),
 "rock_floor": ExtResource("6_4c445"),
@@ -137,6 +140,7 @@ itemlist = {
 "blueberry_bush": ExtResource("56_vuilx"),
 "chest": ExtResource("49_cjk6o"),
 "coal": ExtResource("39_dcr7n"),
+"coconut": ExtResource("59_1npok"),
 "compass": ExtResource("57_xfqlb"),
 "crafting": ExtResource("40_lo12v"),
 "door": ExtResource("41_pdulq"),

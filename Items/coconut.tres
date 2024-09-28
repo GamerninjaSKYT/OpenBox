@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="inventory_item" load_steps=3 format=3 uid="uid://jodtp2wtlfov"]
+
+[ext_resource type="Texture2D" uid="uid://bjfgex8kan2sg" path="res://coconut.png" id="1_rrl6e"]
+[ext_resource type="Script" path="res://inventory_item.gd" id="2_rryun"]
+
+[resource]
+script = ExtResource("2_rryun")
+name = "Coconut"
+description = "Natural source of milk"
+image = ExtResource("1_rrl6e")
+id = "coconut"
+maxcount = 100
+build_id = ""
+build_offset = Vector2(0, 0)
+build_col_size = Vector2(6.25, 6.25)
+build_sprite_offset = Vector2(0, 0)
+can_place_on_ids = Array[String]([])
+must_place_on = Array[String]([])
+ignores_can_place_on = false
+placement_ignores_player = false
+can_rotate = true
+mining_tool_type = ""
+mining_multiplier = 1.0
+fuel = 0.0
+damage = 0.0
+reload = 1.0
+food = 125.0
+iscompass = false

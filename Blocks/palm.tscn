@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc7mdwd1qqvk0"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_y0ydp"]
+[ext_resource type="Resource" uid="uid://bwjd5mc23wjxo" path="res://Items/wood.tres" id="2_xns0h"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_upu0y"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_22co5"]
+[ext_resource type="Texture2D" uid="uid://doisjc2mjtrm4" path="res://palm.png" id="5_dumji"]
+[ext_resource type="Resource" uid="uid://jodtp2wtlfov" path="res://Items/coconut.tres" id="5_unn6c"]
+[ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="6_bpuif"]
+
+[sub_resource type="Resource" id="Resource_v7oec"]
+script = ExtResource("3_upu0y")
+item = ExtResource("2_xns0h")
+count = 1
+
+[sub_resource type="Resource" id="Resource_a4v3e"]
+script = ExtResource("4_22co5")
+item = SubResource("Resource_v7oec")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
+
+[sub_resource type="Resource" id="Resource_2ande"]
+script = ExtResource("3_upu0y")
+item = ExtResource("5_unn6c")
+count = 1
+
+[sub_resource type="Resource" id="Resource_w4lwy"]
+script = ExtResource("4_22co5")
+item = SubResource("Resource_2ande")
+mincount = 1
+maxcount = 2
+percentagechance = 25.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+size = Vector2(8.61539, 19.8461)
+
+[node name="Palm" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
+input_pickable = true
+script = ExtResource("1_y0ydp")
+id = "palm"
+main_sprite = NodePath("Sprite2D")
+col = NodePath(".")
+destroyable = true
+destroy_time = 5.0
+mining_tool_needed = "axe"
+need_tool_to_drop = true
+drop = Array[ExtResource("4_22co5")]([SubResource("Resource_a4v3e"), SubResource("Resource_w4lwy")])
+mining_progress_control = NodePath("Node2D/MiningProgress")
+mining_progress_rot = NodePath("Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0.499963)
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("5_dumji")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MiningProgress" parent="Node2D" instance=ExtResource("6_bpuif")]
+offset_left = -50.0
+offset_top = 70.0
+offset_right = 93.0
+offset_bottom = 145.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

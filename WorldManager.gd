@@ -164,8 +164,10 @@ func LoadChunk(pos):
 					var snow_threshold = -0.225
 					var tree_temp_threshold = 0.2
 					var block = grass # grass
-					if temp > desert_temp_threshold:
+					if temp > desert_temp_threshold and height > 0:
 						block = objectlist["sand_ground"] # sand
+					if temp > desert_temp_threshold and height >= -0.1 and height < 0.35 and decorvalue > 0.55:
+						AddBlockToChunk(c,objectlist["palm"],x,y)
 					if temp < snow_threshold:
 						block = objectlist["snow"]
 					if height < -0.1: # water
