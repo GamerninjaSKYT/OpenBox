@@ -62,6 +62,7 @@ sprite_back = ExtResource("3_qi315")
 sprite_left = ExtResource("4_k7six")
 sprite_right = ExtResource("5_1k521")
 spriteanim = NodePath("Sprite2D/AnimationPlayer")
+randomwanderchance = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 11

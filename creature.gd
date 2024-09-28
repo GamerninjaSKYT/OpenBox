@@ -24,6 +24,9 @@ var lastchunk = Vector2.ZERO
 var m:WorldManager
 @export var spriteanim:AnimationPlayer
 @export var despawns = true #set to false for animals
+@export var randomwanderchance:float = 0 #0-100% chance 60 times a second
+@export var randomwanderdistance:float = 500
+var last_pos = Vector2.ZERO
 
 func _ready():
 	m = get_tree().root.get_child(0)
@@ -45,6 +48,10 @@ func _process(delta):
 		damage_time -= delta
 func _physics_process(delta):
 	velocity = Vector2.ZERO
+	if last_pos != global_position:
+		last_pos = global_position
+	else:
+		last_target_pos = Vector2.ZERO
 	if follows_player:
 		if global_position.distance_to(player.global_position) <= follow_range:
 			var space_state = get_world_2d().direct_space_state
@@ -53,11 +60,14 @@ func _physics_process(delta):
 			if result:
 				if result["collider"] == player:
 					last_target_pos = player.global_position
-		if last_target_pos != Vector2.ZERO:
-			var direction = global_position.direction_to(last_target_pos)
-			velocity = direction * speed
-			if global_position.distance_to(last_target_pos) < 5:
-				last_target_pos = Vector2.ZERO
+	if randf_range(0,100) <= randomwanderchance/60 and randomwanderchance != 0 and last_target_pos == Vector2.ZERO:
+		var wanderpos = global_position + Vector2(randf_range(-randomwanderdistance,randomwanderdistance),randf_range(-randomwanderdistance,randomwanderdistance))
+		last_target_pos = wanderpos
+	if last_target_pos != Vector2.ZERO:
+		var direction = global_position.direction_to(last_target_pos)
+		velocity = direction * speed
+		if global_position.distance_to(last_target_pos) < 5:
+			last_target_pos = Vector2.ZERO
 	if velocity.x > abs(velocity.y):
 		sprite.texture = sprite_right
 	elif abs(velocity.x) < -velocity.y:
