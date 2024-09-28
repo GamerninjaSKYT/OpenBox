@@ -40,6 +40,7 @@ var notif_time = 0
 var damage_delay = 0
 @export var delay_bar:ProgressBar
 @export var spriteanim:AnimationPlayer
+@export var compass:TextureRect
 
 func _ready():
 	inv_ui.visible = false
@@ -80,7 +81,11 @@ func _process(delta):
 			additional_zero = "0"
 		time_text.text = "Day " + str(m.day) + " " + str(floor(m.ingame_hour)) + ":" + additional_zero + str(minute)
 	inv.Updateslots()
+	compass.visible = false
 	if inv.items[inv.selected_hotbar_slot] != null:
+		if inv.items[inv.selected_hotbar_slot].item.iscompass:
+			compass.visible = true
+			compass.rotation = spawnpoint.angle_to_point(global_position)-deg_to_rad(90)
 		if Input.is_action_just_pressed("MR") and open_inv == null and !inv.mouse_on_slot:
 			UseItem(inv.items[inv.selected_hotbar_slot])
 		if Input.is_action_just_pressed("ML") and open_inv == null and !inv.mouse_on_slot:

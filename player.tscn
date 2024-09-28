@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://csivhmue28l3k"]
+[gd_scene load_steps=27 format=3 uid="uid://csivhmue28l3k"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_45kwr"]
 [ext_resource type="Texture2D" uid="uid://beetiyyai248f" path="res://Ali.png" id="2_lrmkq"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://duaabsefefqmb" path="res://slot_selected.png" id="7_qwn2n"]
 [ext_resource type="Texture2D" uid="uid://dlducynonbt5w" path="res://ice.png" id="14_mfgu7"]
 [ext_resource type="Texture2D" uid="uid://2sgiyk1v8sgh" path="res://healing.png" id="15_77815"]
+[ext_resource type="Texture2D" uid="uid://crd3hol1guqya" path="res://compass_ui.png" id="16_80irk"]
 
 [sub_resource type="Animation" id="Animation_y0lts"]
 length = 0.001
@@ -72,7 +73,7 @@ bg_color = Color(0.815075, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8t4uv"]
 bg_color = Color(0.840221, 0.393718, 0.0984953, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("col", "sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark", "hpbar", "hungerbar", "healinghunger", "notif_ui", "notif_text", "delay_bar", "spriteanim") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("col", "sprite", "buildzone", "buildsprite", "build_col", "inv", "inv_ui", "extended_inv", "time_text", "nightdark", "hpbar", "hungerbar", "healinghunger", "notif_ui", "notif_text", "delay_bar", "spriteanim", "compass") groups=["Player"]]
 collision_layer = 6
 script = ExtResource("1_45kwr")
 col = NodePath("CollisionShape2D")
@@ -98,6 +99,7 @@ notif_ui = NodePath("CanvasLayer/Control/Notif")
 notif_text = NodePath("CanvasLayer/Control/Notif/Label")
 delay_bar = NodePath("CanvasLayer/Control/Reload")
 spriteanim = NodePath("Sprite2D/AnimationPlayer")
+compass = NodePath("CanvasLayer/Control/Compass")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10
@@ -747,5 +749,16 @@ text = "Default aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
+
+[node name="Compass" type="TextureRect" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 0
+offset_left = 1610.0
+offset_top = 880.0
+offset_right = 1650.0
+offset_bottom = 920.0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("16_80irk")
 
 [connection signal="text_changed" from="CanvasLayer/Control/ExtendedInv/LineEdit" to="CanvasLayer/Control/ExtendedInv/CraftRecipes" method="LoadRecipes"]

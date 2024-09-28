@@ -27,6 +27,8 @@ extends Resource
 @export var reload:float = 1
 @export_category("Food")
 @export var food:float = 0
+@export_category("Other")
+@export var iscompass = false
 
 func get_image():
 	return image

@@ -25,3 +25,4 @@ fuel = 0.0
 damage = 0.0
 reload = 1.0
 food = 0.0
+iscompass = false
