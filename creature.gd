@@ -2,6 +2,7 @@ class_name creature
 extends CharacterBody2D
 
 @export var id:String
+@export var col:CollisionShape2D
 @export var follows_player = false
 @export var follow_range:float = 1000
 @export_flags_2d_physics var sight_collision_mask
@@ -21,6 +22,7 @@ var chunkparent:chunk
 var lastchunk = Vector2.ZERO
 @export var hp:float = 10
 @export var maxhp:float = 10
+@export var drop:Array[randomdrop]
 var m:WorldManager
 @export var spriteanim:AnimationPlayer
 @export var despawns = true #set to false for animals
@@ -39,7 +41,7 @@ func _process(delta):
 	if hp > maxhp:
 		hp = maxhp
 	if hp <= 0:
-		Destroy()
+		Die()
 	if damage > 0:
 		if global_position.distance_to(player.global_position) <= damage_range:
 			if damage_time <= 0:
@@ -55,7 +57,7 @@ func _physics_process(delta):
 	if follows_player:
 		if global_position.distance_to(player.global_position) <= follow_range:
 			var space_state = get_world_2d().direct_space_state
-			var query = PhysicsRayQueryParameters2D.create(global_position, player.col.global_position, sight_collision_mask)
+			var query = PhysicsRayQueryParameters2D.create(col.global_position, player.col.global_position, sight_collision_mask)
 			var result = space_state.intersect_ray(query)
 			if result:
 				if result["collider"] == player:
@@ -90,6 +92,22 @@ func Damage(damage):
 	hp -= damage
 	spriteanim.play("hit")
 
+func Die():
+	if drop != null:
+		for d in drop:
+			DropItem(d.randomize())
+	Destroy()
+
 func Destroy():
 	chunkparent.creatures.erase(self)
 	queue_free()
+
+func DropItem(item):
+	if item != null:
+		var d = get_tree().root.get_child(0).itemdrop.instantiate()
+		chunkparent.add_child(d)
+		d.position = position
+		d.item = item.duplicate()
+		d.chunkparent = chunkparent
+		d.chunkparent.drops.append(d)
+		d.UpdateItemDrop()

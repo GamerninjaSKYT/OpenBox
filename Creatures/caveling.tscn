@@ -1,10 +1,51 @@
-[gd_scene load_steps=10 format=3 uid="uid://2be1dwwum8gy"]
+[gd_scene load_steps=21 format=3 uid="uid://2be1dwwum8gy"]
 
 [ext_resource type="Script" path="res://creature.gd" id="1_7w4hn"]
 [ext_resource type="Texture2D" uid="uid://ce8owbe5fqvtx" path="res://caveling.png" id="1_dn0kr"]
 [ext_resource type="Texture2D" uid="uid://dbv78ohypheja" path="res://caveling_back.png" id="3_qi315"]
 [ext_resource type="Texture2D" uid="uid://b5bebwfqgrc0a" path="res://caveling_side.png" id="4_k7six"]
 [ext_resource type="Texture2D" uid="uid://byhd4agltvrrp" path="res://caveling_side2.png" id="5_1k521"]
+[ext_resource type="Resource" uid="uid://cdxriyjs2nacd" path="res://Items/rock.tres" id="6_pyomc"]
+[ext_resource type="Script" path="res://item_instance.gd" id="7_rpr8b"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="8_4b507"]
+[ext_resource type="Resource" uid="uid://bfl3lxm51mhht" path="res://Items/iron.tres" id="9_46nrc"]
+[ext_resource type="Resource" uid="uid://cv1rltrd8lkny" path="res://Items/coal.tres" id="10_hi4ch"]
+
+[sub_resource type="Resource" id="Resource_c3iil"]
+script = ExtResource("7_rpr8b")
+item = ExtResource("6_pyomc")
+count = 1
+
+[sub_resource type="Resource" id="Resource_0m3j4"]
+script = ExtResource("8_4b507")
+item = SubResource("Resource_c3iil")
+mincount = 1
+maxcount = 2
+percentagechance = 50.0
+
+[sub_resource type="Resource" id="Resource_vwr4w"]
+script = ExtResource("7_rpr8b")
+item = ExtResource("9_46nrc")
+count = 1
+
+[sub_resource type="Resource" id="Resource_843nn"]
+script = ExtResource("8_4b507")
+item = SubResource("Resource_vwr4w")
+mincount = 0
+maxcount = 0
+percentagechance = 15.0
+
+[sub_resource type="Resource" id="Resource_2pyba"]
+script = ExtResource("7_rpr8b")
+item = ExtResource("10_hi4ch")
+count = 1
+
+[sub_resource type="Resource" id="Resource_6fwah"]
+script = ExtResource("8_4b507")
+item = SubResource("Resource_2pyba")
+mincount = 0
+maxcount = 0
+percentagechance = 20.0
 
 [sub_resource type="Animation" id="Animation_kdwti"]
 length = 0.001
@@ -46,11 +87,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk5gc"]
 size = Vector2(24, 12)
 
-[node name="Caveling" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "spriteanim")]
+[node name="Caveling" type="CharacterBody2D" node_paths=PackedStringArray("col", "sprite", "spriteanim")]
 position = Vector2(100, -9)
 collision_layer = 2
 script = ExtResource("1_7w4hn")
 id = "caveling"
+col = NodePath("CollisionShape2D")
 follows_player = true
 follow_range = 1250.0
 sight_collision_mask = 5
@@ -61,6 +103,7 @@ sprite_front = ExtResource("1_dn0kr")
 sprite_back = ExtResource("3_qi315")
 sprite_left = ExtResource("4_k7six")
 sprite_right = ExtResource("5_1k521")
+drop = Array[ExtResource("8_4b507")]([SubResource("Resource_0m3j4"), SubResource("Resource_843nn"), SubResource("Resource_6fwah")])
 spriteanim = NodePath("Sprite2D/AnimationPlayer")
 randomwanderchance = 20.0
 
