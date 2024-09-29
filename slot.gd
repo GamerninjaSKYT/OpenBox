@@ -11,6 +11,7 @@ var mouse_over = false
 @export var preview_name:Label
 @export var preview_desc:Label
 @export var preview_dmg:Label
+@export var preview_food:Label
 @export var not_additem_target = false #Things like picking up an item wont affect this slot
 
 func _process(delta):
@@ -20,6 +21,8 @@ func _process(delta):
 		preview_desc.text = inv.items[id].item.description
 		preview_dmg.visible = (inv.items[id].item.damage > 0)
 		preview_dmg.text = "Damage : " + str(inv.items[id].item.damage)
+		preview_food.visible = (inv.items[id].item.food > 0)
+		preview_food.text = "Food : " + str(inv.items[id].item.food/10)
 	if mouse_over:
 		inv.mouse_on_slot = true
 		if Input.is_action_just_pressed("ML"):
