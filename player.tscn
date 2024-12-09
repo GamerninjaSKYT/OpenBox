@@ -91,7 +91,7 @@ inv = NodePath("Inventory")
 inv_ui = NodePath("CanvasLayer/Control/Inv")
 extended_inv = NodePath("CanvasLayer/Control/ExtendedInv")
 time_text = NodePath("CanvasLayer/Control/ExtendedInv/Time")
-nightdark = NodePath("Weather/NightDark")
+nightdark = NodePath("Weather/CanvasModulate")
 hpbar = NodePath("CanvasLayer/Control/HealthBar")
 hungerbar = NodePath("CanvasLayer/Control/HungerBar")
 healinghunger = NodePath("CanvasLayer/Control/HungerBar/HealingHunger")
@@ -149,17 +149,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="NightDark" type="TextureRect" parent="Weather"]
+[node name="CanvasModulate" type="CanvasModulate" parent="Weather"]
 visible = false
-modulate = Color(0, 0, 0, 1)
-z_index = 50
-layout_mode = 0
-offset_left = -2180.0
-offset_top = -1204.0
-offset_right = 2152.0
-offset_bottom = 1150.0
-mouse_filter = 2
-texture = ExtResource("3_yohk6")
+color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2

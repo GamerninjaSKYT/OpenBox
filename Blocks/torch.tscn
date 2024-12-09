@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://b8vpxbut05slp"]
+
+[ext_resource type="Script" path="res://Block.gd" id="1_r3n24"]
+[ext_resource type="Texture2D" uid="uid://cjbprqplggs7l" path="res://torch.png" id="2_233mn"]
+[ext_resource type="Resource" uid="uid://djtovh4plgdx3" path="res://Items/torch.tres" id="2_rw7i1"]
+[ext_resource type="Script" path="res://item_instance.gd" id="3_n8a37"]
+[ext_resource type="Script" path="res://randomdrop.gd" id="4_381mq"]
+[ext_resource type="PackedScene" uid="uid://c0c5juuwqabm8" path="res://mining_progress.tscn" id="6_lgnyk"]
+[ext_resource type="Texture2D" uid="uid://b3454vwnnl34q" path="res://circle.png" id="7_d8gr7"]
+
+[sub_resource type="Resource" id="Resource_g3q6u"]
+script = ExtResource("3_n8a37")
+item = ExtResource("2_rw7i1")
+count = 1
+
+[sub_resource type="Resource" id="Resource_x0vb4"]
+script = ExtResource("4_381mq")
+item = SubResource("Resource_g3q6u")
+mincount = 0
+maxcount = 0
+percentagechance = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ri5i"]
+
+[node name="Torch" type="StaticBody2D" node_paths=PackedStringArray("main_sprite", "col", "mining_progress_control", "mining_progress_rot")]
+collision_layer = 2
+input_pickable = true
+script = ExtResource("1_r3n24")
+id = "torch"
+main_sprite = NodePath("Sprite2D")
+col = NodePath(".")
+destroyable = true
+mining_tool_needed = "axe"
+drop = Array[ExtResource("4_381mq")]([SubResource("Resource_x0vb4")])
+mining_progress_control = NodePath("Node2D/MiningProgress")
+mining_progress_rot = NodePath("Node2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.5, 6.5)
+shape = SubResource("RectangleShape2D_3ri5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_233mn")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="MiningProgress" parent="Node2D" instance=ExtResource("6_lgnyk")]
+offset_left = -50.0
+offset_top = 70.0
+offset_right = 93.0
+offset_bottom = 145.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+z_index = -100
+z_as_relative = false
+texture_filter = 1
+blend_mode = 2
+texture = ExtResource("7_d8gr7")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

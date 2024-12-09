@@ -125,7 +125,11 @@ func _process(delta):
 	ingame_hour = (daytime/60)
 	is_day = (ingame_hour >= 6 and ingame_hour < 18)
 	day = floor((time + 60*day_beginning_hour)/(60*24))+1
-	player.nightdark.modulate.a = (float(abs(ingame_hour-12))/12)-0.5
+	var dark_var = 1.5 #2 for complete darkness at midnight
+	var clr = ((float(abs(ingame_hour-12))/12)-0.5)*dark_var
+	player.nightdark.color.r = min(-clr+1,1)
+	player.nightdark.color.g = min(-clr+1,1)
+	player.nightdark.color.b = min(-clr+1,1)
 	if loadchunks:
 		chunkinterval_progress += delta
 		if chunkinterval_progress >= chunkinterval:
